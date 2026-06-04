@@ -1,0 +1,23 @@
+:root {
+  --font-sans: "Proxima Nova", Arial, sans-serif;
+  --font-display: "Lexend Deca", Arial, sans-serif;
+  --font-mono: "JetBrains Mono", "Courier New", monospace;
+
+  --color-paper: #f6f4ef;
+  --color-paper-strong: #fffefa;
+  --color-ink: #111111;
+  --color-muted: #66645f;
+  --color-line: #d9d5cc;
+  --color-line-strong: #151515;
+  --color-teal: #007f86;
+  --color-teal-dark: #00646b;
+  --color-orange: #e87545;
+  --color-black: #111111;
+  --color-white: #ffffff;
+
+  --shadow-paper: 8px 8px 0 rgba(17, 17, 17, 0.08);
+  --shadow-soft: 0 24px 60px rgba(17, 17, 17, 0.08);
+
+  --space-page: clamp(1.25rem, 3vw, 2rem);
+  --max-width: 1180px;
+}

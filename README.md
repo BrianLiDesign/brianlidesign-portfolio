@@ -1,92 +1,54 @@
-# Brian Li Website & Portfolio
+# Brian Li · Systems Lab
 
-## Table of Contents
+A static-export Next.js portfolio for Brian Li, focused on hardware-software systems, robotics-adjacent engineering, and useful feedback for real people.
 
-1. [Project Description](#project-description)
-2. [Getting Started](#getting-started)
-   - [Installation](#installation)
-3. [File Structure](#file-structure)
-4. [Contact](#contact)
-5. [Acknowledgments](#acknowledgments)
+## Local Development
 
-## Project Description
+```bash
+npm install
+npm run dev
+```
 
-A clean and minimalist hub showcasing the work and ethos of a Computer Engineering student at Cal Poly San Luis Obispo. With a focus on the tagline "Code with Precision. Circuits with Purpose," my website highlights my technical projects, writing, and professional background in an elegant, user-friendly format
-<brianlidesign.github.io>
+Open `http://localhost:3000`.
 
-- Homepage: Immediately introduces me with a concise declaration of profession and philosophy, reinforced by visuals of my workspace, collaborative moments, and engineering schematics
-  [brianlidesign.github.io][website-url]
+## Build
 
-- Navigation: Simple, intuitive links guide visitors to key areas:
+```bash
+npm run build
+```
 
-  - Projects – A curated gallery of my engineering and coding endeavors.
+Next.js exports the static site to `out/`.
 
-  - Writing – A space for my technical musings, essays, or reflections.
+## Deployment
 
-  - About – Details my background, academic focus, and personal motivation.
+GitHub Actions builds the site and deploys `out/` to GitHub Pages via `.github/workflows/deploy.yml`.
 
-- Accessibility & Credibility: Easily accessible icons link to my GitHub, LinkedIn, and YouTube profiles, offering multi-channel engagement
-  [brianlidesign.github.io][website-url]
-- Plus, a “View this site’s source code” link transparently showcases my development process
-  [brianlidesign.github.io][website-url]
+The site uses `output: "export"` and does not rely on server-only Next.js features.
 
-- Design Aesthetic: Clean layout, purposeful visuals, and structured navigation offer a welcoming and professional introduction to who I am and what I do.
+## Structure
 
-## Getting Started
+```txt
+public/             Static assets served from the site root
+src/app/            App Router pages
+src/components/     Reusable UI, sections, visuals, and interactive modules
+src/content/        Editable project, Debug Log, writing, and site copy
+src/lib/            Routes, metadata, and pure logic
+src/styles/         Global CSS and design tokens
+docs/               Architecture, content, Figma, and roadmap notes
+```
 
-### Installation
+## Editing Content
 
-Clone and install.
+- Homepage/nav/footer copy: `src/content/site.ts`
+- Case studies: `src/content/projects.ts`
+- Debug Log entries: `src/content/debug-log.ts`
+- Writing entries: `src/content/writing.ts`
+- Resume highlights: `src/content/resume-highlights.ts`
 
-## File Structure
+## Design Baseline
 
-.
-├── .github
-│ └── dependabot.yml
-├── assets
-│ ├── data
-│ ├── fonts
-│ └── images
-│ └── icons
-├── css
-│ ├── slider.css
-│ └── style.css
-├── js
-│ ├── header-scroll.js
-│ ├── index.js
-│ └── page-scroll.js
-├── pages
-│ ├── about.html
-│ ├── flip-that-digit.html
-│ ├── projects.html
-│ ├── writing.html
-│ ├── 404.html
-│ ├── googlea935....html
-│ └── index.html
-└── README.md
+The current homepage follows the Figma prototype structure:
 
-/.github: This directory contains GitHub-specific configuration files. In this case, it includes `dependabot.yml`, which automates dependency updates for my project.
+`Hero → Proof Chips → Signal Sketch → Signal Ribbon → ReBalance Demo → How I Work → Hawaii/Community Bridge → Case Studies → Debug Log → Footer`.
 
-/assets: This directory contains static resources that support the website. It is subdivided into:
-
-- /data: Stores data files, such as resumes or documents used on the site.
-- /fonts: Contains custom font files for consistent typography across the website.
-- /images: Contains image assets used throughout the site. Within it, /icons holds smaller icon graphics.
-
-/css: This directory contains stylesheets (CSS files) that define how the website looks, including layout, colors, and typography.
-
-/js: This directory contains JavaScript files that add interactivity and dynamic behavior to the site, such as scrolling effects and event handling.
-
-/pages: This directory contains the main HTML pages of the website, such as `index.html`, `projects.html`, and `about.html`. These are the actual pages visitors will navigate to.
-
-README.md: A text file containing reference information about the project, such as setup instructions, usage details, or notes for developers.
-
-## Contact
-
-Brian Li - <brian.li.social@gmail.com>
-
-## Acknowledgments
-
-<!-- MARKDOWN LINKS & IMAGES -->
-
-[website-url]: https://brianlidesign.github.io/
+The design should stay light, technical, candid, and grounded in real engineering evidence.

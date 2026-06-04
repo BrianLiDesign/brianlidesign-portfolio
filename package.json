@@ -1,23 +1,35 @@
 {
   "name": "brianlidesign.github.io",
-  "version": "1.0.0",
-  "description": "1. [Project Description](#project-description)\r 2. [Getting Started](#getting-started)\r    - [Installation](#installation)\r 3. [File Structure](#file-structure)\r 4. [Contact](#contact)\r 5. [Acknowledgments](#acknowledgments)",
-  "main": "index.js",
+  "version": "2.0.0",
+  "private": true,
+  "description": "Brian Li's systems lab portfolio for hardware-software, embedded, and community-centered engineering work.",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "typecheck": "tsc --noEmit",
+    "test": "npm run typecheck"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/BrianLiDesign/brianlidesign.github.io.git"
   },
-  "keywords": [],
-  "author": "",
+  "author": "Brian Li",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/BrianLiDesign/brianlidesign.github.io/issues"
   },
-  "homepage": "https://github.com/BrianLiDesign/brianlidesign.github.io#readme",
+  "homepage": "https://brianlidesign.github.io/",
   "dependencies": {
+    "lucide-react": "^0.468.0",
+    "next": "^16.0.7",
+    "react": "^19.2.1",
+    "react-dom": "^19.2.1",
     "typescript": "^5.9.3"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.2",
+    "@types/react": "^19.0.2",
+    "@types/react-dom": "^19.0.2"
   }
 }
