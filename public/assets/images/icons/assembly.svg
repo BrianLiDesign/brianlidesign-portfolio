@@ -1,1 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><text x="2" y="18" font-family="monospace" font-size="14" font-weight="bold">ASM</text></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-label="Assembly">
+  <rect width="24" height="24" rx="4" fill="#0091BD"/>
+  <text x="12" y="16" text-anchor="middle" font-family="monospace" font-size="8" font-weight="700" fill="#FFFFFF">ASM</text>
+</svg>

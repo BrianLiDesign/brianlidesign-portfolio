@@ -1595,8 +1595,11 @@ input[type="range"] {
 }
 
 .tag__icon {
-  color: var(--color-teal);
   flex: 0 0 auto;
+}
+
+.tag__icon:not(img) {
+  color: var(--color-teal);
 }
 
 .debug-log-section {
