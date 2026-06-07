@@ -1,8 +1,10 @@
 import { Metadata } from "next";
 import Image from "next/image";
 import {
+  Cable,
   Code,
   Cpu,
+  Fingerprint,
   Heart,
   Monitor,
   Package,
@@ -12,6 +14,7 @@ import {
   Video,
   Waves,
   Wrench,
+  Zap,
 } from "lucide-react";
 import {
   aboutIntro,
@@ -50,6 +53,60 @@ const skillIcons: Record<string, React.ElementType> = {
   cpu: Cpu,
   "pen-tool": PenTool,
 };
+
+const technicalSkillSvgIcons: Record<string, string> = {
+  C: "/assets/images/icons/c.svg",
+  Python: "/assets/images/icons/python.svg",
+  SystemVerilog: "/assets/images/icons/systemverilog.svg",
+  Assembly: "/assets/images/icons/assembly.svg",
+  TypeScript: "/assets/images/icons/typescript.svg",
+  JavaScript: "/assets/images/icons/javascript.svg",
+  "HTML/CSS": "/assets/images/icons/html.svg",
+  "Next.js": "/assets/images/icons/nextjs.svg",
+  React: "/assets/images/icons/react.svg",
+  "Node.js": "/assets/images/icons/nodejs.svg",
+  "MongoDB/Mongoose": "/assets/images/icons/mongodb.svg",
+  Git: "/assets/images/icons/git.svg",
+  "VS Code": "/assets/images/icons/microsoft-visual-studio-code.svg",
+  "Basys3 / FPGA": "/assets/images/icons/xilinx.svg",
+  Arduino: "/assets/images/icons/arduino.svg",
+  Figma: "/assets/images/icons/figma.svg",
+  SolidWorks: "/assets/images/icons/solidworks.svg",
+  "Rhinoceros 3D": "/assets/images/icons/rhinoceros-3d.svg",
+  "Adobe Illustrator": "/assets/images/icons/adobe-illustrator.svg",
+};
+
+const technicalSkillLucideIcons: Record<string, React.ElementType> = {
+  "FSR Sensors": Fingerprint,
+  "Web Serial": Cable,
+  Oscilloscope: Zap,
+  Soldering: Wrench,
+  "Video Production": Video,
+};
+
+function SkillTag({ skill }: { skill: string }) {
+  const svgPath = technicalSkillSvgIcons[skill];
+  const LucideIcon = technicalSkillLucideIcons[skill];
+  const hasIcon = svgPath || LucideIcon;
+
+  return (
+    <Tag className={hasIcon ? "tag--with-icon" : undefined}>
+      {svgPath ? (
+        <Image
+          src={svgPath}
+          alt=""
+          width={13}
+          height={13}
+          className="tag__icon"
+          aria-hidden="true"
+        />
+      ) : LucideIcon ? (
+        <LucideIcon aria-hidden="true" className="tag__icon" size={13} />
+      ) : null}
+      <span>{skill}</span>
+    </Tag>
+  );
+}
 
 export default function AboutPage() {
   return (
@@ -203,7 +260,7 @@ export default function AboutPage() {
       ) : null}
 
       {/* Section 6 — Technical skills */}
-      <section className="content-page about-skills">
+      <section className="content-page about-skills" id="technical-skills">
         <p className="section-label">Technical skills</p>
         <div className="skill-grid">
           {technicalSkills.map((group) => {
@@ -216,7 +273,7 @@ export default function AboutPage() {
                 </p>
                 <div className="tag-list">
                   {group.skills.map((skill) => (
-                    <Tag key={skill}>{skill}</Tag>
+                    <SkillTag key={skill} skill={skill} />
                   ))}
                 </div>
               </div>

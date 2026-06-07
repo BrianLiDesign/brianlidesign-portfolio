@@ -14,7 +14,7 @@ import {
   ToggleLeft,
 } from "lucide-react";
 import { ButtonLink } from "@/components/ui/button";
-import { Tag } from "@/components/ui/tag";
+import { CaseStudyTag } from "@/components/ui/case-study-tag";
 import type { CaseStudy } from "@/content/case-studies";
 import { CaseStudyVisualArtifact } from "./case-study-visual-artifact";
 
@@ -153,7 +153,7 @@ export function CaseStudyDetail({ study }: CaseStudyDetailProps) {
           </dl>
           <div className="tag-list">
             {study.tags.map((tag) => (
-              <Tag key={tag}>{tag}</Tag>
+              <CaseStudyTag key={tag} label={tag} />
             ))}
           </div>
         </aside>

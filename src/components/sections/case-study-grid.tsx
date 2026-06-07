@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import type { CSSProperties, PointerEvent } from "react";
 import { projects } from "@/content/projects";
 import { Card } from "@/components/ui/card";
-import { Tag } from "@/components/ui/tag";
+import { CaseStudyTag } from "@/components/ui/case-study-tag";
 
 type ProjectArtifactProps = {
   slug: string;
@@ -248,7 +248,7 @@ export function CaseStudyGrid() {
               <p className="case-study-card__note">note: {project.note}</p>
               <div className="tag-list">
                 {project.tags.map((tag) => (
-                  <Tag key={tag}>{tag}</Tag>
+                  <CaseStudyTag key={tag} label={tag} />
                 ))}
               </div>
             </Card>

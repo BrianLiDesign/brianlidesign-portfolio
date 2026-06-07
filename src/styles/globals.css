@@ -1588,6 +1588,17 @@ input[type="range"] {
   text-transform: uppercase;
 }
 
+.tag--with-icon {
+  align-items: center;
+  display: inline-flex;
+  gap: 0.42rem;
+}
+
+.tag__icon {
+  color: var(--color-teal);
+  flex: 0 0 auto;
+}
+
 .debug-log-section {
   background:
     radial-gradient(

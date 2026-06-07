@@ -1,7 +1,10 @@
+import { ReactNode } from "react";
+
 type TagProps = {
-  children: string;
+  children: ReactNode;
+  className?: string;
 };
 
-export function Tag({ children }: TagProps) {
-  return <span className="tag">{children}</span>;
+export function Tag({ children, className }: TagProps) {
+  return <span className={`tag${className ? ` ${className}` : ""}`}>{children}</span>;
 }
