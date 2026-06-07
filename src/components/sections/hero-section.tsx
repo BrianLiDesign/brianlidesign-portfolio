@@ -1,4 +1,6 @@
-import { hero } from "@/content/site";
+import { hero, heroProofStrip } from "@/content/site";
+import { routes } from "@/lib/routes";
+import { ButtonLink } from "@/components/ui/button";
 import { ProofChips } from "./proof-chips";
 import { SignalSketch } from "@/components/visuals/signal-sketch";
 
@@ -6,9 +8,30 @@ export function HeroSection() {
   return (
     <section className="hero-section" id="top">
       <div className="hero-section__copy">
-        <p className="hero-section__meta">{hero.meta}</p>
+        <p className="hero-section__meta">
+          <span aria-hidden="true" className="hero-section__meta-icon">
+            ≋
+          </span>
+          {hero.meta}
+        </p>
         <h1>{hero.title}</h1>
         <p className="hero-section__summary">{hero.summary}</p>
+        <p className="hero-section__focus">
+          Focused on hardware/software systems, embedded tooling, robotics, and feedback interfaces.
+        </p>
+        <div className="hero-section__actions" aria-label="Primary actions">
+          <ButtonLink href="#rebalance" variant="primary">
+            View ReBalance
+          </ButtonLink>
+          <ButtonLink href={routes.resume} variant="quiet">
+            Download resume
+          </ButtonLink>
+        </div>
+        <div className="hero-proof-strip" aria-label="Strongest proof points">
+          {heroProofStrip.map((proof) => (
+            <span key={proof}>{proof}</span>
+          ))}
+        </div>
         <ProofChips />
       </div>
       <SignalSketch />

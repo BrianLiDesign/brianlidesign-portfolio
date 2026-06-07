@@ -1,16 +1,14 @@
+import { Metadata } from "next";
+import { CaseStudyDetail } from "@/components/sections/case-study-detail";
+import { getCaseStudy } from "@/content/case-studies";
+
+const study = getCaseStudy("flip-that-digit");
+
+export const metadata: Metadata = {
+  title: study.metadataTitle,
+  description: study.metadataDescription,
+};
+
 export default function FlipThatDigitPage() {
-  return (
-    <section className="content-page content-page--compact">
-      <p className="section-label">FPGA / Computer architecture</p>
-      <h1>Flip That Digit</h1>
-      <p>
-        A Basys3 game built around OTTER MCU constraints, seven-segment output, and
-        precise debounce/release handling.
-      </p>
-      <p>
-        Future expansion: state-machine diagrams, release timing notes, memory setup,
-        and deployment/testing artifacts.
-      </p>
-    </section>
-  );
+  return <CaseStudyDetail study={study} />;
 }

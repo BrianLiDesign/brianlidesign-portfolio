@@ -7,9 +7,12 @@ export function RawJitterStrip({ values }: RawJitterStripProps) {
     <div aria-hidden="true" className="raw-jitter">
       {values.map((value, index) => (
         <span
-          className="raw-jitter__bar"
+          className="raw-jitter__bar jitter-bar"
           key={`${index}-${value}`}
-          style={{ height: `${value}%` }}
+          style={{
+            animationDelay: `${index * 25}ms`,
+            height: `${value}%`,
+          }}
         />
       ))}
     </div>

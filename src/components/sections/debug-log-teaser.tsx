@@ -8,7 +8,7 @@ export function DebugLogTeaser() {
   return (
     <section className="debug-log-section" id="debug-log">
       <div className="debug-log-section__copy">
-        <p className="section-label">Debug Log</p>
+        <p className="section-label">Debug log · Failure notes</p>
         <h2>Raw engineering process stays visible.</h2>
         <p>A teaser for writing that reads like a lab notebook, not a polished victory lap.</p>
       </div>

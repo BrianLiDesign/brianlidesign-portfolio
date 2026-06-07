@@ -1,7 +1,13 @@
 :root {
-  --font-sans: "Proxima Nova", Arial, sans-serif;
-  --font-display: "Lexend Deca", Arial, sans-serif;
-  --font-mono: "JetBrains Mono", "Courier New", monospace;
+  --font-sans:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+    Arial, sans-serif;
+  --font-display:
+    var(--font-lexend), -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+  --font-mono:
+    var(--font-jetbrains), "Fira Code", "Cascadia Code", "Courier New",
+    monospace;
 
   --color-paper: #f6f4ef;
   --color-paper-strong: #fffefa;
@@ -20,4 +26,6 @@
 
   --space-page: clamp(1.25rem, 3vw, 2rem);
   --max-width: 1180px;
+  --color-seven-on: #39ff14;
+  --color-seven-off: rgba(9, 59, 9, 0.28);
 }

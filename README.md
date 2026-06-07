@@ -19,6 +19,14 @@ npm run build
 
 Next.js exports the static site to `out/`.
 
+## Preflight
+
+```bash
+npm run preflight
+```
+
+Preflight runs typecheck, static export, asset budgets, and internal link checks. Images under `public/` must stay at or below 2 MB, and videos must stay at or below 50 MB. Run `npm run check:assets` for just the media budget and `npm run check:links` after a build to verify local links, static asset references, and same-page anchors.
+
 ## Deployment
 
 GitHub Actions builds the site and deploys `out/` to GitHub Pages via `.github/workflows/deploy.yml`.

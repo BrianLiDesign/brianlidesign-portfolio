@@ -3,4 +3,5 @@ export const resumeHighlights = [
   "Information Technology Assistant at Cal Poly ITS",
   "Software Developer with Hack4Impact Cal Poly",
   "Cal Poly Computer Engineering, expected 2028",
+  "Punahou School, graduated 2024",
 ] as const;

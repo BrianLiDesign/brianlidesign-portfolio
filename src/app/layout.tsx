@@ -1,8 +1,21 @@
 import type { Metadata } from "next";
+import { Lexend_Deca, JetBrains_Mono } from "next/font/google";
 import { SiteFooter } from "@/components/site/site-footer";
 import { SiteHeader } from "@/components/site/site-header";
 import { siteMetadata } from "@/lib/metadata";
 import "@/styles/globals.css";
+
+const lexendDeca = Lexend_Deca({
+  subsets: ["latin"],
+  variable: "--font-lexend",
+  display: "swap",
+});
+
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ["latin"],
+  variable: "--font-jetbrains",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   title: siteMetadata.title,
@@ -11,19 +24,20 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteMetadata.url),
   manifest: "/site.webmanifest",
   icons: {
-    icon: [
-      { url: "/assets/favicon/favicon.ico" },
-      { url: "/assets/favicon/favicon.svg", type: "image/svg+xml" },
-      { url: "/assets/favicon/favicon-96x96.png", sizes: "96x96", type: "image/png" },
-    ],
-    apple: "/assets/favicon/apple-touch-icon.png",
+    icon: [{ url: "/assets/favicon/favicon.svg", type: "image/svg+xml" }],
   },
 };
 
-export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
+export default function RootLayout({
+  children,
+}: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en">
-      <body>
+    <html
+      lang="en"
+      className={`${lexendDeca.variable} ${jetbrainsMono.variable}`}
+      suppressHydrationWarning
+    >
+      <body id="top">
         <SiteHeader />
         <main>{children}</main>
         <SiteFooter />

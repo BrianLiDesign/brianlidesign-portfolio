@@ -1,7 +1,7 @@
 export const siteMetadata = {
-  title: "Brian Li · Systems Lab",
+  title: "Brian Li · Hardware/Software Systems Portfolio",
   description:
-    "Brian Li builds hardware-software systems that turn real-world signals into useful feedback.",
+    "Brian Li is a Hawaii-born computer engineering student building hardware-software systems, embedded tools, robotics projects, and feedback interfaces.",
   url: "https://brianlidesign.github.io",
   author: "Brian Li",
 };

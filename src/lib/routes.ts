@@ -4,10 +4,11 @@ export const routes = {
   rebalance: "/case-studies/rebalance",
   flipThatDigit: "/case-studies/flip-that-digit",
   operationSurf: "/case-studies/operation-surf",
+  vybeTutor: "/case-studies/vybetutor",
   debugLog: "/debug-log",
   writing: "/writing",
   about: "/about",
-  resume: "/assets/documents/brian-li-resume.pdf",
+  resume: "/assets/documents/Brian_Li_Resume.pdf",
 } as const;
 
 export type RouteKey = keyof typeof routes;

@@ -1,19 +1,28 @@
 import { routes } from "@/lib/routes";
 
 export const navItems = [
-  { label: "Case Studies", href: routes.caseStudies },
-  { label: "Debug Log", href: routes.debugLog },
-  { label: "About", href: routes.about },
-  { label: "Resume", href: routes.resume },
+  { label: "Case Studies", href: routes.caseStudies, icon: false },
+  { label: "Debug Log", href: routes.debugLog, icon: false },
+  { label: "About", href: routes.about, icon: false },
+  { label: "Resume", href: routes.resume, icon: true },
 ] as const;
 
 export const hero = {
-  meta: "Brian Li · Computer Engineering · Cal Poly SLO",
+  meta: "Hawaii-born computer engineering student - hardware/software systems - Cal Poly SLO",
   title:
     "I build hardware-software systems that turn real-world signals into useful feedback.",
   summary:
-    "A systems lab notebook for projects at the edge of code, circuits, robotics, and community service — designed for the messy path between raw data and reliable behavior.",
+    "A systems lab notebook for projects at the edge of code, circuits, robotics, and community service - designed for the messy path between raw data and reliable behavior.",
 };
+
+export const heroProofStrip = [
+  "2nd place CPES Hackathon",
+  "$74 Arduino rehab prototype",
+  "~20 Hz Web Serial pipeline",
+  "600 volunteers",
+  "55% data-fetching complexity reduction",
+  "200+ Jira tickets",
+] as const;
 
 export const proofChips = [
   {
@@ -39,25 +48,41 @@ export const signalStages = [
 ] as const;
 
 export const howIWork = [
-  "prototype with constraints",
-  "debug before polishing",
-  "explain the system clearly",
+  "Prototype under constraints",
+  "Debug before polishing",
+  "Explain tradeoffs clearly",
 ] as const;
 
 export const communityBridge = {
-  label: "Useful feedback for real people",
+  label: "Field context",
   title: "Useful feedback for real people.",
   lines: [
     "Hawaii shaped how I think about technology: useful systems should be understandable, local, and human.",
-    "I’m a Hawaii-born computer engineering student creating and exploring technology one line, circuit, and prototype at a time.",
+    "I'm a Hawaii-born computer engineering student creating and exploring technology one line, circuit, and prototype at a time.",
     "My projects start with a practical purpose, then move through planning, testing, and repeated refinement until the system communicates clearly.",
-    "That shows up in projects where technology has to be useful to people outside the lab: seniors learning technology, volunteers coordinating support, patients needing calm feedback, and local communities.",
+    "That shows up in projects where technology has to be useful to people outside the lab: Digital Ready Hawaii seniors learning technology, volunteers coordinating support, patients needing calm feedback, and local communities.",
   ],
 };
 
 export const footerLinks = [
-  { label: "Email", href: "mailto:brian.li.social@gmail.com" },
-  { label: "GitHub", href: "https://github.com/BrianLiDesign/" },
-  { label: "LinkedIn", href: "https://www.linkedin.com/in/brianlidesign/" },
-  { label: "YouTube", href: "https://www.youtube.com/@brianlidesign/" },
+  {
+    label: "Email",
+    href: "mailto:brian.li.social@gmail.com",
+    icon: "/assets/images/icons/email.svg",
+  },
+  {
+    label: "GitHub",
+    href: "https://github.com/BrianLiDesign/",
+    icon: "/assets/images/icons/github.svg",
+  },
+  {
+    label: "LinkedIn",
+    href: "https://www.linkedin.com/in/brianlidesign/",
+    icon: "/assets/images/icons/linkedin.svg",
+  },
+  {
+    label: "YouTube",
+    href: "https://www.youtube.com/@brianlidesign/",
+    icon: "/assets/images/icons/youtube.svg",
+  },
 ] as const;
