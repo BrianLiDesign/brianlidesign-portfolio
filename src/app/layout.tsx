@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Lexend_Deca, JetBrains_Mono } from "next/font/google";
 import { SiteFooter } from "@/components/site/site-footer";
@@ -42,6 +43,7 @@ export default function RootLayout({
         <SiteHeader />
         <main>{children}</main>
         <SiteFooter />
+        <Analytics />
         <SpeedInsights />
       </body>
     </html>
