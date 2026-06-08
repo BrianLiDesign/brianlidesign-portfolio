@@ -11,3 +11,7 @@ export function trackResumeDownload(location: string) {
 export function trackContactClick(channel: string, location: string) {
   track("contact_click", { channel, location });
 }
+
+export function trackNavClick(label: string, surface: "mobile" | "desktop") {
+  track("nav_click", { label, surface });
+}

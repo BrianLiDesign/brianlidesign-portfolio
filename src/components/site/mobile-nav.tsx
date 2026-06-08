@@ -3,6 +3,11 @@
 import Link from "next/link";
 import { useState } from "react";
 import { navItems } from "@/content/site";
+import {
+  trackNavClick,
+  trackResumeDownload,
+} from "@/lib/analytics-events";
+import { routes } from "@/lib/routes";
 
 export function MobileNav() {
   const [open, setOpen] = useState(false);
@@ -25,7 +30,14 @@ export function MobileNav() {
               className="mobile-nav__link"
               href={item.href}
               key={item.href}
-              onClick={() => setOpen(false)}
+              onClick={() => {
+                if (item.href === routes.resume) {
+                  trackResumeDownload("mobile_nav");
+                } else {
+                  trackNavClick(item.label, "mobile");
+                }
+                setOpen(false);
+              }}
             >
               {item.label}
             </Link>

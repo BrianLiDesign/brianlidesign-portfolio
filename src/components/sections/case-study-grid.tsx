@@ -208,7 +208,13 @@ function ProjectArtifact({ slug }: ProjectArtifactProps) {
   );
 }
 
-export function CaseStudyGrid() {
+type CaseStudyGridProps = {
+  trackLocation?: "home_grid" | "case_studies_page";
+};
+
+export function CaseStudyGrid({
+  trackLocation = "home_grid",
+}: CaseStudyGridProps) {
   return (
     <section className="case-studies-section" id="case-studies">
       <div className="section-heading">
@@ -233,9 +239,7 @@ export function CaseStudyGrid() {
             className="case-study-card__link-wrapper"
             href={project.href}
             key={project.slug}
-            onClick={() =>
-              trackCaseStudyOpen(project.slug, "home_grid")
-            }
+            onClick={() => trackCaseStudyOpen(project.slug, trackLocation)}
           >
             <Card
               className={`case-study-card case-study-card--${project.slug}`}

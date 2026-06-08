@@ -33,6 +33,31 @@ GitHub Actions builds the site and deploys `out/` to GitHub Pages via `.github/w
 
 The site uses `output: "export"` and does not rely on server-only Next.js features.
 
+### Hosting and observability
+
+| Host | URL | Role |
+|------|-----|------|
+| GitHub Pages | https://brianlidesign.github.io | Canonical public site |
+| Vercel | https://brianlidesign.vercel.app | Analytics ingestion + deployment mirror |
+
+Both hosts serve the same static export. Vercel also auto-deploys from `main`.
+
+**Web Analytics** (`@vercel/analytics`) and **Speed Insights** (`@vercel/speed-insights`) run client-side in [`src/app/layout.tsx`](src/app/layout.tsx). GitHub Pages builds cannot use Vercel's auto-injected `/_vercel/*` routes, so non-Vercel builds point at the linked Vercel project's observability endpoints via [`src/lib/vercel-observability.ts`](src/lib/vercel-observability.ts). That bridge is what lets mobile traffic on `brianlidesign.github.io` report vitals (including device type) to the Vercel dashboard.
+
+Custom events (`resume_download`, `case_study_open`, `contact_click`, `nav_click`) live in [`src/lib/analytics-events.ts`](src/lib/analytics-events.ts).
+
+If observability paths change after re-enabling analytics in the Vercel dashboard, refresh them with:
+
+```bash
+node scripts/extract-vercel-observability.mjs https://brianlidesign.vercel.app
+```
+
+Then update the defaults in `src/lib/vercel-observability.ts` or set:
+
+- `NEXT_PUBLIC_VERCEL_OBSERVABILITY_ORIGIN`
+- `NEXT_PUBLIC_VERCEL_ANALYTICS_ID`
+- `NEXT_PUBLIC_VERCEL_SPEED_INSIGHTS_ID`
+
 ## Structure
 
 ```txt
