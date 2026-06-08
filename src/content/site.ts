@@ -64,6 +64,9 @@ export const communityBridge = {
   ],
 };
 
+export const sourceCodeUrl =
+  "https://github.com/BrianLiDesign/brianlidesign.github.io" as const;
+
 export const footerLinks = [
   {
     label: "Email",
