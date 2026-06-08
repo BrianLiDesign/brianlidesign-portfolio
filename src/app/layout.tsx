@@ -5,6 +5,11 @@ import { Lexend_Deca, JetBrains_Mono } from "next/font/google";
 import { SiteFooter } from "@/components/site/site-footer";
 import { SiteHeader } from "@/components/site/site-header";
 import { siteMetadata } from "@/lib/metadata";
+import {
+  externalAnalyticsProps,
+  externalSpeedInsightsProps,
+  isVercelBuild,
+} from "@/lib/vercel-observability";
 import "@/styles/globals.css";
 
 const lexendDeca = Lexend_Deca({
@@ -63,8 +68,13 @@ export default function RootLayout({
         <SiteHeader />
         <main>{children}</main>
         <SiteFooter />
-        <Analytics debug={process.env.NODE_ENV === "development"} />
-        <SpeedInsights />
+        <Analytics
+          debug={process.env.NODE_ENV === "development"}
+          {...(isVercelBuild() ? {} : externalAnalyticsProps)}
+        />
+        <SpeedInsights
+          {...(isVercelBuild() ? {} : externalSpeedInsightsProps)}
+        />
       </body>
     </html>
   );
