@@ -1,5 +1,6 @@
 import { hero, heroProofStrip } from "@/content/site";
 import { routes } from "@/lib/routes";
+import { TrackedButtonLink } from "@/components/analytics/tracked-button-link";
 import { ButtonLink } from "@/components/ui/button";
 import { ProofChips } from "./proof-chips";
 import { SignalSketch } from "@/components/visuals/signal-sketch";
@@ -23,9 +24,9 @@ export function HeroSection() {
           <ButtonLink href="#rebalance" variant="primary">
             View ReBalance
           </ButtonLink>
-          <ButtonLink href={routes.resume} variant="quiet">
+          <TrackedButtonLink href={routes.resume} location="hero" variant="quiet">
             Download resume
-          </ButtonLink>
+          </TrackedButtonLink>
         </div>
         <div className="hero-proof-strip" aria-label="Strongest proof points">
           {heroProofStrip.map((proof) => (

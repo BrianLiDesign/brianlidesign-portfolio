@@ -4,4 +4,5 @@ export const siteMetadata = {
     "Brian Li is a Hawaii-born computer engineering student building hardware-software systems, embedded tools, robotics projects, and feedback interfaces.",
   url: "https://brianlidesign.github.io",
   author: "Brian Li",
-};
+  ogImage: "/assets/images/case-studies/rebalance/hero.png",
+} as const;

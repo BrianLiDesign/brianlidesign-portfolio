@@ -28,6 +28,26 @@ export const metadata: Metadata = {
   icons: {
     icon: [{ url: "/assets/favicon/favicon.svg", type: "image/svg+xml" }],
   },
+  openGraph: {
+    title: siteMetadata.title,
+    description: siteMetadata.description,
+    url: siteMetadata.url,
+    siteName: "Brian Li · Systems Lab",
+    locale: "en_US",
+    type: "website",
+    images: [
+      {
+        url: siteMetadata.ogImage,
+        alt: "ReBalance balance feedback system interface",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: siteMetadata.title,
+    description: siteMetadata.description,
+    images: [siteMetadata.ogImage],
+  },
 };
 
 export default function RootLayout({
@@ -43,7 +63,7 @@ export default function RootLayout({
         <SiteHeader />
         <main>{children}</main>
         <SiteFooter />
-        <Analytics />
+        <Analytics debug={process.env.NODE_ENV === "development"} />
         <SpeedInsights />
       </body>
     </html>

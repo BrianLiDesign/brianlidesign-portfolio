@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import type { CSSProperties, PointerEvent } from "react";
+import { trackCaseStudyOpen } from "@/lib/analytics-events";
 import { projects } from "@/content/projects";
 import { Card } from "@/components/ui/card";
 import { CaseStudyTag } from "@/components/ui/case-study-tag";
@@ -232,6 +233,9 @@ export function CaseStudyGrid() {
             className="case-study-card__link-wrapper"
             href={project.href}
             key={project.slug}
+            onClick={() =>
+              trackCaseStudyOpen(project.slug, "home_grid")
+            }
           >
             <Card
               className={`case-study-card case-study-card--${project.slug}`}

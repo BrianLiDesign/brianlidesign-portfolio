@@ -1,3 +1,4 @@
+import { TrackedAnchor } from "@/components/analytics/tracked-anchor";
 import { footerLinks } from "@/content/site";
 import { routes } from "@/lib/routes";
 
@@ -14,11 +15,20 @@ export function SiteFooter() {
         </p>
       </div>
       <nav aria-label="Footer links" className="site-footer__links">
-        <a href={routes.resume} className="site-footer__link site-footer__link--resume">
+        <TrackedAnchor
+          analytics={{ kind: "resume", location: "footer" }}
+          className="site-footer__link site-footer__link--resume"
+          href={routes.resume}
+        >
           Download resume
-        </a>
+        </TrackedAnchor>
         {footerLinks.map((link) => (
-          <a href={link.href} key={link.href} className="site-footer__link">
+          <TrackedAnchor
+            analytics={{ kind: "contact", channel: link.label, location: "footer" }}
+            className="site-footer__link"
+            href={link.href}
+            key={link.href}
+          >
             <img
               aria-hidden="true"
               className="site-footer__link-icon"
@@ -26,7 +36,7 @@ export function SiteFooter() {
               alt=""
             />
             {link.label}
-          </a>
+          </TrackedAnchor>
         ))}
         <a className="site-footer__link site-footer__link--top" href="#top">
           <img
