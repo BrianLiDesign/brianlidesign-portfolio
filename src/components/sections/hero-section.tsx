@@ -3,7 +3,7 @@ import { routes } from "@/lib/routes";
 import { TrackedButtonLink } from "@/components/analytics/tracked-button-link";
 import { ButtonLink } from "@/components/ui/button";
 import { ProofChips } from "./proof-chips";
-import { SignalSketch } from "@/components/visuals/signal-sketch";
+import { HeroAnimationPanel } from "@/components/visuals/hero-animation-panel";
 
 export function HeroSection() {
   return (
@@ -35,7 +35,7 @@ export function HeroSection() {
         </div>
         <ProofChips />
       </div>
-      <SignalSketch />
+      <HeroAnimationPanel />
     </section>
   );
 }
