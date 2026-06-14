@@ -31,7 +31,13 @@ jobs:
         run: npm ci
 
       - name: Build static site
+        env:
+          NEXT_PUBLIC_BASE_PATH: /brianlidesign-portfolio
+          NEXT_PUBLIC_SITE_URL: https://brianlidesign.github.io/brianlidesign-portfolio
         run: npm run build
+
+      - name: Verify observability bridge
+        run: npm run check:observability
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3

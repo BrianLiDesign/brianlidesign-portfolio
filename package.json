@@ -11,8 +11,9 @@
     "test": "npm run typecheck",
     "check:assets": "node scripts/check-assets.mjs",
     "check:links": "node scripts/check-links.mjs",
+    "check:observability": "node scripts/check-observability.mjs",
     "extract:vercel-observability": "node scripts/extract-vercel-observability.mjs https://brianlidesign.vercel.app",
-    "preflight": "npm test && npm run build && npm run check:assets && npm run check:links"
+    "preflight": "npm test && npm run build && npm run check:assets && npm run check:links && npm run check:observability"
   },
   "repository": {
     "type": "git",

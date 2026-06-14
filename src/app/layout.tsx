@@ -8,7 +8,6 @@ import { siteMetadata } from "@/lib/metadata";
 import {
   externalAnalyticsProps,
   externalSpeedInsightsProps,
-  isVercelBuild,
 } from "@/lib/vercel-observability";
 import "@/styles/globals.css";
 
@@ -70,10 +69,12 @@ export default function RootLayout({
         <SiteFooter />
         <Analytics
           debug={process.env.NODE_ENV === "development"}
-          {...(isVercelBuild() ? {} : externalAnalyticsProps)}
+          {...externalAnalyticsProps}
         />
         <SpeedInsights
-          {...(isVercelBuild() ? {} : externalSpeedInsightsProps)}
+          sampleRate={1}
+          debug={process.env.NODE_ENV === "development"}
+          {...externalSpeedInsightsProps}
         />
       </body>
     </html>

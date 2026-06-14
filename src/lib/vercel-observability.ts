@@ -43,7 +43,3 @@ export const externalSpeedInsightsProps = {
   scriptSrc: observabilityUrl(`${speedInsightsId()}/script.js`),
   endpoint: observabilityUrl(`${speedInsightsId()}/vitals`),
 } as const;
-
-export function isVercelBuild() {
-  return process.env.VERCEL === "1";
-}
