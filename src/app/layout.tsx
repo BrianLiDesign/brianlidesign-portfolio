@@ -11,6 +11,29 @@ import {
 } from "@/lib/vercel-observability";
 import "@/styles/globals.css";
 
+const githubPagesRedirectScript = `
+(() => {
+  const vercelOrigin = "https://brianlidesign.vercel.app";
+  const githubPagesHost = "brianlidesign.github.io";
+  const githubPagesBasePath = "/brianlidesign-portfolio";
+
+  if (window.location.hostname !== githubPagesHost) {
+    return;
+  }
+
+  const path = window.location.pathname;
+  const targetPath = path === githubPagesBasePath
+    ? "/"
+    : path.startsWith(githubPagesBasePath + "/")
+      ? path.slice(githubPagesBasePath.length)
+      : path;
+
+  window.location.replace(
+    vercelOrigin + targetPath + window.location.search + window.location.hash,
+  );
+})();
+`;
+
 const lexendDeca = Lexend_Deca({
   subsets: ["latin"],
   variable: "--font-lexend",
@@ -63,6 +86,9 @@ export default function RootLayout({
       className={`${lexendDeca.variable} ${jetbrainsMono.variable}`}
       suppressHydrationWarning
     >
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: githubPagesRedirectScript }} />
+      </head>
       <body id="top">
         <SiteHeader />
         <main>{children}</main>
