@@ -12,13 +12,18 @@ type ProjectArtifactProps = {
   slug: string;
 };
 
-const filters = ["All", "Hardware", "Embedded", "Backend", "Community"] as const;
+const filters = ["All", "Hardware", "Embedded", "Backend", "Product", "Community"] as const;
 
 const recommendedReading = [
   {
     title: "ReBalance",
     reason: "strongest hardware/software thesis",
     href: "/case-studies/rebalance",
+  },
+  {
+    title: "Spontus",
+    reason: "full-stack marketplace trust system",
+    href: "/case-studies/spontus",
   },
   {
     title: "Operation Surf",
@@ -209,6 +214,26 @@ function ProjectArtifact({ slug }: ProjectArtifactProps) {
         </div>
         <div className="workflow-rail" aria-hidden="true" />
         <p>CRUD / permissions / MongoDB / coordination</p>
+      </div>
+    );
+  }
+
+  if (slug === "spontus") {
+    return (
+      <div
+        className="project-artifact project-artifact--spontus"
+        aria-label="Marketplace trust pipeline artifact"
+      >
+        <div className="spontus-artifact__nodes">
+          {["team", "sponsor", "verify", "listing", "review"].map((node) => (
+            <span key={node}>{node}</span>
+          ))}
+        </div>
+        <div className="spontus-artifact__rails" aria-hidden="true">
+          <i />
+          <i />
+        </div>
+        <p>Marketplace / verification / Supabase / CI gates</p>
       </div>
     );
   }

@@ -115,8 +115,10 @@ function SkillTag({ skill }: { skill: string }) {
 }
 
 export default function AboutPage() {
+  const storyPhotosWithSrc = storyPhotos.filter((photo) => photo.src);
+
   return (
-    <>
+    <div className="about-page">
       {/* Section 1 — Hero intro */}
       <section className="content-page about-hero">
         <div className="about-hero__grid">
@@ -151,8 +153,9 @@ export default function AboutPage() {
               <p key={p.slice(0, 40)}>{p}</p>
             ))}
 
+            {storyPhotosWithSrc.length > 0 ? (
             <div className="photo-row">
-              {storyPhotos.map((photo) => (
+              {storyPhotosWithSrc.map((photo) => (
                 <figure className="photo-slot" key={photo.caption}>
                   {photo.src ? (
                     <Image
@@ -171,6 +174,7 @@ export default function AboutPage() {
                 </figure>
               ))}
             </div>
+            ) : null}
 
             {story.paragraphs.slice(2).map((p) => (
               <p key={p.slice(0, 40)}>{p}</p>
@@ -258,18 +262,17 @@ export default function AboutPage() {
             ))}
           </div>
         </div>
-      </section>
-
-      {education.highschool ? (
-        <section className="content-page about-education about-education--continued">
-          <h2>{education.highschool.school}</h2>
-          <div className="field-notes">
-            <p>
-              <span>graduated:</span> {education.highschool.graduated}
-            </p>
+        {education.highschool ? (
+          <div className="about-highschool">
+            <h2>{education.highschool.school}</h2>
+            <div className="field-notes field-notes--compact">
+              <p>
+                <span>graduated:</span> {education.highschool.graduated}
+              </p>
+            </div>
           </div>
-        </section>
-      ) : null}
+        ) : null}
+      </section>
 
       {/* Section 6 — Technical skills */}
       <section className="content-page about-skills" id="technical-skills">
@@ -345,6 +348,6 @@ export default function AboutPage() {
           </ButtonLink>
         </div>
       </section>
-    </>
+    </div>
   );
 }

@@ -123,6 +123,29 @@ function OperationSurfArtifact() {
   );
 }
 
+function SpontusArtifact() {
+  return (
+    <div className="case-visual case-visual--spontus" aria-label="Marketplace trust pipeline diagram">
+      <div className="case-visual__marketplace-sides">
+        <span>Team</span>
+        <span>Sponsor</span>
+      </div>
+      <div className="case-visual__trust-line" aria-hidden="true">
+        <i />
+        <i />
+        <i />
+      </div>
+      <div className="case-visual__trust-steps">
+        {["Verification", "Listing", "Application", "Review"].map((step, index) => (
+          <span key={step} style={{ "--delay": `${index * 120}ms` } as CSSProperties}>
+            {step}
+          </span>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 function VybeTutorArtifact() {
   return (
     <div className="case-visual case-visual--learning" aria-label="IDE tutoring loop diagram">
@@ -138,6 +161,7 @@ function VybeTutorArtifact() {
 export function CaseStudyVisualArtifact({ visual }: CaseStudyVisualArtifactProps) {
   const artifact = {
     rebalance: <ReBalanceArtifact />,
+    spontus: <SpontusArtifact />,
     "flip-that-digit": <FlipThatDigitArtifact />,
     "operation-surf": <OperationSurfArtifact />,
     vybetutor: <VybeTutorArtifact />,

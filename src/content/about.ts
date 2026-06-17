@@ -74,7 +74,7 @@ export const timeline: TimelineEntry[] = [
       "Started B.S. Computer Engineering. Digital design, computer architecture, and embedded systems became the foundation.",
   },
   {
-    year: "2024",
+    year: "2025",
     title: "Hack4Impact Cal Poly",
     description:
       "Joined as a software developer. Built backend workflows for Operation Surf - 600 volunteers, access-aware CRUD, real coordination.",
@@ -124,7 +124,7 @@ export const experience: ExperienceEntry[] = [
   {
     role: "Software Developer",
     org: "Hack4Impact Cal Poly",
-    period: "2024 - Present",
+    period: "2025 - Present",
     description:
       "Built backend systems for Operation Surf - a nonprofit coordinating 600 volunteers. Designed access-aware CRUD operations, API workflows, and permission structures using MongoDB and Next.js.",
     tags: ["600 Volunteers", "MongoDB", "Next.js", "API Design", "Nonprofit"],

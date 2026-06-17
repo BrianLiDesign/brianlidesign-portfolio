@@ -47,7 +47,7 @@ export type CaseStudyMedia = {
 };
 
 export type CaseStudyVisualHighlight = {
-  type: "rebalance" | "flip-that-digit" | "operation-surf" | "vybetutor";
+  type: "rebalance" | "spontus" | "flip-that-digit" | "operation-surf" | "vybetutor";
   title: string;
   caption: string;
 };
@@ -285,6 +285,245 @@ const avgRight = average(samples.map((sample) => sample.right));`,
     ],
     reflection:
       "ReBalance shows my hardware/software bias: I do not treat the UI as separate from the physical system. The useful work was designing the translation layer between imperfect sensors and human-readable feedback.",
+  },
+  spontus: {
+    slug: "spontus",
+    title: "Spontus",
+    href: routes.spontus,
+    label: "Marketplace trust infrastructure",
+    metadataTitle: "Spontus - Case Study",
+    metadataDescription:
+      "A college sports sponsorship marketplace case study focused on verification, domain modeling, Supabase schema planning, and engineering quality gates.",
+    sourceRepo: "https://github.com/spontus-reach/spontus",
+    localSourcePath: "C:\\Users\\brian\\Documents\\GitHub\\spontus",
+    thesis:
+      "The hard part was not creating listings. It was making teams and sponsors trustworthy enough to transact.",
+    summary: [
+      "Spontus connects college club sports teams with sponsors through structured team profiles, sponsor profiles, sponsorship listings, applications, and review workflows.",
+      "My work focused on turning the marketplace into an executable system: canonical domain language, trust states, verification gates, schema planning, security automation, and demo continuity.",
+    ],
+    proofPoints: [
+      "40 commits by Brian at review time",
+      "merged auth + verification system",
+      "Supabase/RLS schema foundation in progress",
+      "offline demo flow restored",
+    ],
+    ownership: {
+      summary:
+        "Co-founded the product with Joshua Naim; owned major trust, verification, data-foundation, and repo-quality work while keeping team-shared product and UI work clearly separated.",
+      items: [
+        "Owned domain documentation and MVP slicing that turned a marketplace idea into Teams, Sponsors, Listings, Applications, Deals, Deliverables, Proof, and Contacts.",
+        "Owned the merged auth and verification system in PR #12, including email validation, profile completion, status transitions, tests, and Supabase data access.",
+        "Owned repo/security tooling and demo-resilience work across PR #10, PR #24, PR #30, and the in-progress Supabase/RLS foundation in PR #31.",
+      ],
+    },
+    heroMedia: {
+      type: "placeholder",
+      alt: "Spontus marketplace trust workflow placeholder",
+      caption: "Spontus product screenshots are being sanitized; the case study currently uses source-linked workflow evidence.",
+      note: "Replace with landing, onboarding, listing, admin verification, and application screenshots when ready.",
+    },
+    details: [
+      { label: "Role", value: "Co-founder / product engineer" },
+      { label: "Stack", value: "Next.js, React, TypeScript, Tailwind, Supabase, GitHub Actions" },
+      { label: "Status", value: "Active MVP foundation" },
+      { label: "Evidence", value: "PR #12, PR #10, PR #24, PR #30, PR #31" },
+    ],
+    tags: ["Next.js", "Supabase", "Marketplace", "Verification", "CI"],
+    flow: {
+      title: "Trust-to-transaction flow",
+      steps: [
+        { label: "team .edu signup", icon: "lock" },
+        { label: "sponsor work email", icon: "lock" },
+        { label: "profile completion", icon: "scan-line" },
+        { label: "manual verification", icon: "git-branch" },
+        { label: "application review", icon: "database" },
+      ],
+    },
+    mediaGallery: [
+      {
+        type: "placeholder",
+        alt: "Spontus admin verification queue screenshot placeholder",
+        caption: "Admin verification queue screenshot needed.",
+        note: "Use this slot for the internal review queue once safe screenshots are captured.",
+      },
+      {
+        type: "placeholder",
+        alt: "Spontus sponsor listing composer screenshot placeholder",
+        caption: "Sponsor listing composer screenshot needed.",
+        note: "Show offer type, requested assets, eligibility criteria, and listing status.",
+      },
+      {
+        type: "placeholder",
+        alt: "Spontus team application flow screenshot placeholder",
+        caption: "Team application flow screenshot needed.",
+        note: "Show how a verified team applies to a verified sponsor listing.",
+      },
+      {
+        type: "placeholder",
+        alt: "Spontus Supabase schema workflow artifact placeholder",
+        caption: "Supabase schema/workflow artifact needed.",
+        note: "Use a schema or PR evidence image showing tables, RLS, and workflow gates.",
+      },
+    ],
+    visualHighlight: {
+      type: "spontus",
+      title: "Marketplace trust is a system, not a screen",
+      caption:
+        "The artifact follows both sides through identity checks, profile completion, verification, listing access, and application review.",
+    },
+    deepDives: [
+      {
+        title: "Domain model before code",
+        kicker: "The first product decision was language.",
+        body:
+          "Spontus needed a shared vocabulary before the UI could be trusted: Teams, Sponsors, Sponsorship Listings, Applications, Deals, Deliverables, Proof, and Contacts. That model gave product specs, database planning, and implementation slices one map.",
+        proof: [
+          "The domain model defines marketplace entities and lifecycle states before final schema details.",
+          "MVP build slices sequence the product into team profile, sponsor listing, application, sponsor review, and admin verification loops.",
+          "The backend plan keeps payments, matching, and CRM depth out of the MVP so trust workflows can ship first.",
+        ],
+        links: [
+          {
+            label: "Domain model",
+            href: "https://github.com/spontus-reach/spontus/blob/main/docs/product/domain-model.md",
+            kind: "Source section",
+          },
+          {
+            label: "MVP build slices",
+            href: "https://github.com/spontus-reach/spontus/blob/main/docs/product/mvp-build-slices.md",
+            kind: "Source section",
+          },
+          {
+            label: "Backend plan",
+            href: "https://github.com/spontus-reach/spontus/blob/main/docs/engineering/backend-plan.md",
+            kind: "Source section",
+          },
+        ],
+      },
+      {
+        title: "Verification as marketplace trust",
+        kicker: "A listing marketplace fails if anyone can look legitimate.",
+        body:
+          "PR #12 added team .edu validation, sponsor work-email validation, profile completion, verification status tracking, and application gating. The goal was not just form validation; it was making access depend on explicit trust states.",
+        proof: [
+          "Teams and sponsors enter different signup paths with different email-domain expectations.",
+          "Profiles move through draft, submitted_for_verification, verified, needs_changes, and suspended states.",
+          "Application flows check verification status so unverified sides cannot bypass the marketplace trust layer.",
+        ],
+        links: [
+          {
+            label: "PR #12",
+            href: "https://github.com/spontus-reach/spontus/pull/12",
+            kind: "Source section",
+          },
+          {
+            label: "Verification provider",
+            href: "https://github.com/spontus-reach/spontus/blob/main/src/components/providers/verification-provider.tsx",
+            kind: "Source section",
+          },
+          {
+            label: "Verification tests",
+            href: "https://github.com/spontus-reach/spontus/blob/main/src/lib/__tests__/verification-status.test.ts",
+            kind: "Source section",
+          },
+        ],
+      },
+      {
+        title: "Operational foundations",
+        kicker: "An MVP still needs guardrails.",
+        body:
+          "The repo work pairs product velocity with operational discipline: community docs, PR quality gates, workflow linting, security review, Supabase schema direction, UUIDs, RLS policies, audit triggers, contacts, and advisory quality-review automations.",
+        proof: [
+          "PR #10 established repo-quality and security tooling around contribution and workflow hygiene.",
+          "PR #24 restored offline seeded demo behavior when Supabase was unavailable.",
+          "PR #31 adds schema and security workflow foundations, including RLS direction and advisory workflow gates.",
+        ],
+        links: [
+          {
+            label: "PR #10",
+            href: "https://github.com/spontus-reach/spontus/pull/10",
+            kind: "Source section",
+          },
+          {
+            label: "PR #24",
+            href: "https://github.com/spontus-reach/spontus/pull/24",
+            kind: "Source section",
+          },
+          {
+            label: "PR #31",
+            href: "https://github.com/spontus-reach/spontus/pull/31",
+            kind: "Source section",
+          },
+        ],
+      },
+    ],
+    codeHighlights: [
+      {
+        title: "Verification transition guard",
+        source: "spontus/src/components/providers/verification-provider.tsx",
+        language: "tsx",
+        code: `const SUBMITTABLE_STATUSES = ["draft", "needs_changes"];
+
+if ((status === "needs_changes" || status === "suspended") && !note) {
+  return;
+}`,
+        explanation:
+          "Verification is modeled as a guarded workflow: only specific states can resubmit, and negative review states require a reason.",
+        links: [
+          {
+            label: "Open verification provider",
+            href: "https://github.com/spontus-reach/spontus/blob/main/src/components/providers/verification-provider.tsx",
+            kind: "Source section",
+          },
+        ],
+      },
+      {
+        title: "Offline seeded application path",
+        source: "spontus/src/components/providers/applications-provider.tsx",
+        language: "tsx",
+        code: `if (!isSupabaseConfigured) {
+  setApplications((prev) => [
+    ...prev,
+    createSeededApplication(listingId, teamId, fitNote),
+  ]);
+}`,
+        explanation:
+          "The MVP stays demoable when Supabase is unavailable, preserving create/review flows instead of letting infrastructure state break the product story.",
+        links: [
+          {
+            label: "Open PR #24",
+            href: "https://github.com/spontus-reach/spontus/pull/24",
+            kind: "Source section",
+          },
+        ],
+      },
+      {
+        title: "Schema starts with trust boundaries",
+        source: "spontus/supabase/schema.sql",
+        language: "sql",
+        code: `CREATE TABLE sponsorship_listings (...);
+CREATE TABLE applications (...);
+ALTER TABLE teams ENABLE ROW LEVEL SECURITY;
+ALTER TABLE sponsors ENABLE ROW LEVEL SECURITY;`,
+        explanation:
+          "The database foundation tracks marketplace entities directly and treats access control as part of the schema direction, not a frontend-only concern.",
+        links: [
+          {
+            label: "Open schema PR",
+            href: "https://github.com/spontus-reach/spontus/pull/31",
+            kind: "Source section",
+          },
+        ],
+      },
+    ],
+    outcome: [
+      "Turned product ambiguity into a shared domain model, MVP sequence, and implementable trust workflow.",
+      "Shipped merged verification and demo-resilience work while keeping schema/security foundations moving in PR review.",
+      "Showed hiring-manager-relevant ownership across product framing, full-stack implementation, testing, and repo operations.",
+    ],
+    reflection:
+      "Spontus shows that marketplace engineering is trust engineering. The product only works if identity, eligibility, data access, and workflow boundaries are explicit enough for both teams and sponsors to act on.",
   },
   "flip-that-digit": {
     slug: "flip-that-digit",

@@ -248,9 +248,77 @@ function OperationSurfEvidence() {
   );
 }
 
+function SpontusEvidence() {
+  const trustSteps = [
+    "Team signs up with .edu",
+    "Sponsor uses work email",
+    "Profile completion",
+    "Manual verification",
+    "Verified marketplace access",
+    "Application review",
+  ];
+
+  const riskControls = [
+    ["Fake team", ".edu validation + verification status"],
+    ["Untrusted sponsor", "work-email validation + sponsor verification"],
+    ["Premature database exposure", "Supabase RLS/schema foundation"],
+    ["Fragile demo", "offline seeded fallback"],
+    ["Repo drift", "CI, security, workflow checks"],
+  ];
+
+  return (
+    <section className="case-study-proof-module content-page content-page--wide">
+      <div className="section-heading">
+        <div>
+          <p className="section-label">Marketplace trust system</p>
+          <h2>Verification gates turn listings into credible opportunities.</h2>
+        </div>
+        <p className="section-heading__credibility">
+          The core product work connects business risk to technical controls:
+          identity checks, profile completion, verification state, schema
+          boundaries, and workflow automation.
+        </p>
+      </div>
+      <ol className="spontus-trust-flow" aria-label="Spontus trust workflow">
+        {trustSteps.map((step) => (
+          <li key={step}>{step}</li>
+        ))}
+      </ol>
+      <div className="risk-control-matrix" role="table" aria-label="Business risks mapped to technical controls">
+        <div role="row">
+          <strong role="columnheader">Business risk</strong>
+          <strong role="columnheader">Technical control</strong>
+        </div>
+        {riskControls.map(([risk, control]) => (
+          <div role="row" key={risk}>
+            <span role="cell">{risk}</span>
+            <span role="cell">{control}</span>
+          </div>
+        ))}
+      </div>
+      <div className="implementation-detail-grid">
+        {[
+          "canonical domain model",
+          "MVP build slices",
+          "verification status provider",
+          "profile completion tests",
+          "Supabase schema direction",
+          "security workflow gates",
+        ].map((detail) => (
+          <span key={detail}>{detail}</span>
+        ))}
+      </div>
+    </section>
+  );
+}
+
 function CaseStudyProofModule({ slug }: { slug: CaseStudy["slug"] }) {
   if (slug === "rebalance") {
     return <ReBalanceEvidence />;
+  }
+
+  if (slug === "spontus") {
+    return <SpontusEvidence />;
   }
 
   if (slug === "flip-that-digit") {

@@ -43,6 +43,27 @@ export const projects: Project[] = [
     artifacts: ["live calibration demo", "raw jitter visualization", "balance zone model"],
   },
   {
+    slug: "spontus",
+    label: "Marketplace - Trust and verification system",
+    title: "Spontus",
+    href: routes.spontus,
+    summary:
+      "A college sports sponsorship marketplace built around verified teams, verified sponsors, structured listings, and application workflows.",
+    role: "Co-founder / product engineer",
+    evidence: "Domain model, verification workflow, Supabase schema, CI/security gates",
+    note: "turned marketplace ambiguity into trust, data, and workflow systems",
+    tags: ["Next.js", "Supabase", "Marketplace", "Verification", "CI"],
+    categories: ["Backend", "Product"],
+    maturity: "Active MVP foundation",
+    sourceRepo: "https://github.com/spontus-reach/spontus",
+    localSourcePath: "C:\\Users\\brian\\Documents\\GitHub\\spontus",
+    caseStudyThesis:
+      "A two-sided marketplace only works when identity, eligibility, and workflow boundaries are explicit.",
+    technicalHighlights: ["verification status model", "Supabase RLS schema", "security workflow gates"],
+    codeHighlights: ["verification-provider.tsx", "applications-mock.ts", "supabase/schema.sql"],
+    artifacts: ["domain model", "MVP slices", "admin verification queue"],
+  },
+  {
     slug: "flip-that-digit",
     label: "FPGA - Digital logic file",
     title: "Flip That Digit",
