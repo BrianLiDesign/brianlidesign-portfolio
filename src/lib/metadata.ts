@@ -1,4 +1,4 @@
-const defaultSiteUrl = "https://brianlidesign.github.io/brianlidesign-portfolio";
+const defaultSiteUrl = "https://brianlidesign.vercel.app";
 
 export const siteMetadata = {
   title: "Brian Li · Hardware/Software Systems Portfolio",

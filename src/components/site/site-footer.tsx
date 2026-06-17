@@ -1,4 +1,5 @@
 import { TrackedAnchor } from "@/components/analytics/tracked-anchor";
+import Link from "next/link";
 import { footerLinks, sourceCodeUrl } from "@/content/site";
 import { routes } from "@/lib/routes";
 
@@ -13,6 +14,20 @@ export function SiteFooter() {
         <p className="site-footer__availability">
           Open to conversations about embedded systems, robotics, hardware/software tooling, and useful feedback interfaces.
         </p>
+      </div>
+      <div className="site-footer__sitemap" aria-label="Footer sitemap">
+        <div>
+          <p>Work</p>
+          <Link href={routes.caseStudies}>Case Studies</Link>
+          <Link href={routes.debugLog}>Debug Log</Link>
+          <Link href={routes.resume}>Resume</Link>
+        </div>
+        <div>
+          <p>Projects</p>
+          <Link href={routes.rebalance}>ReBalance</Link>
+          <Link href={routes.flipThatDigit}>Flip That Digit</Link>
+          <Link href={routes.operationSurf}>Operation Surf</Link>
+        </div>
       </div>
       <nav aria-label="Footer links" className="site-footer__links">
         {footerLinks.map((link) => (
@@ -34,7 +49,7 @@ export function SiteFooter() {
         <TrackedAnchor
           analytics={{ kind: "resume", location: "footer" }}
           className="site-footer__link site-footer__link--resume"
-          href={routes.resume}
+          href={routes.resumePdf}
         >
           Download resume
         </TrackedAnchor>

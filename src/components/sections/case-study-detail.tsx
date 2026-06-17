@@ -105,6 +105,165 @@ function MediaFrame({
   );
 }
 
+function ReBalanceEvidence() {
+  return (
+    <section className="case-study-proof-module content-page content-page--wide">
+      <div className="section-heading">
+        <div>
+          <p className="section-label">Architecture and calibration</p>
+          <h2>Raw pressure becomes a calmer correction cue.</h2>
+        </div>
+        <p className="section-heading__credibility">
+          The system keeps the debugging signal visible while separating it from
+          the feedback a patient should act on.
+        </p>
+      </div>
+      <ol className="system-diagram" aria-label="ReBalance architecture">
+        {["FSR sensors", "Arduino", "Web Serial", "calibration model", "dashboard cue", "user correction"].map((step) => (
+          <li key={step}>{step}</li>
+        ))}
+      </ol>
+      <div className="before-after-grid">
+        <article>
+          <span>Before calibration</span>
+          <h3>Jitter drives the cue.</h3>
+          <p>Raw pressure is useful for diagnosis, but it can flicker too much for rehabilitation feedback.</p>
+        </article>
+        <article>
+          <span>After calibration</span>
+          <h3>Dead zone and offset correction settle the output.</h3>
+          <p>Baseline correction, an active threshold, and zone scoring make the public cue calmer than the input.</p>
+        </article>
+      </div>
+      <div className="implementation-detail-grid">
+        {["Sensor sampling around 20 Hz", "Newline-delimited Web Serial parsing", "Per-side baseline calibration", "Dead-zone threshold", "UI smoothing through zone labels", "Invalid frame and idle-state handling"].map((detail) => (
+          <span key={detail}>{detail}</span>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+function FlipThatDigitEvidence() {
+  return (
+    <section className="case-study-proof-module content-page content-page--wide">
+      <div className="section-heading">
+        <div>
+          <p className="section-label">State machine and display packing</p>
+          <h2>The game models physical switch behavior.</h2>
+        </div>
+        <p className="section-heading__credibility">
+          The important work is timing: press, debounce, validate, update, and
+          wait for release before another event can count.
+        </p>
+      </div>
+      <ol className="state-machine-diagram" aria-label="Flip That Digit state machine">
+        {["WAIT", "PRESS DETECTED", "DEBOUNCE", "VALIDATE SWITCH", "UPDATE SCORE", "WAIT FOR RELEASE"].map((state) => (
+          <li key={state}>{state}</li>
+        ))}
+      </ol>
+      <div className="display-packing-grid">
+        <article>
+          <span>digit</span>
+          <strong>8</strong>
+          <code>0b1111111</code>
+        </article>
+        <article>
+          <span>segment mask</span>
+          <strong>4</strong>
+          <code>0b0110011</code>
+        </article>
+        <article>
+          <span>display output</span>
+          <strong>target &lt;&lt; 12 | score</strong>
+          <code>MMIO write</code>
+        </article>
+      </div>
+      <div className="implementation-detail-grid">
+        {["Mechanical switch bounce", "Limited seven-segment output", "Memory-mapped I/O", "Assembly loop constraints", "OTTER MCU integration"].map((detail) => (
+          <span key={detail}>{detail}</span>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+function OperationSurfEvidence() {
+  return (
+    <section className="case-study-proof-module content-page content-page--wide">
+      <div className="section-heading">
+        <div>
+          <p className="section-label">API boundaries and permissions</p>
+          <h2>One shaped response replaces scattered frontend joins.</h2>
+        </div>
+        <p className="section-heading__credibility">
+          The backend owns access rules and returns coordination-shaped data
+          before the UI sees it.
+        </p>
+      </div>
+      <div className="api-before-after">
+        <article>
+          <span>Before</span>
+          <p>frontend fetches volunteer</p>
+          <p>frontend fetches shifts</p>
+          <p>frontend fetches programs</p>
+          <p>frontend joins manually</p>
+        </article>
+        <article>
+          <span>After</span>
+          <p>single enriched API response</p>
+          <p>admin-only fields removed from public payloads</p>
+          <p>signup responses include shift and program context</p>
+        </article>
+      </div>
+      <div className="permission-matrix" role="table" aria-label="Operation Surf permission matrix">
+        <div role="row">
+          {["User type", "Public programs", "Private details", "Edit shifts", "Manage signups"].map((cell) => (
+            <strong role="columnheader" key={cell}>{cell}</strong>
+          ))}
+        </div>
+        {[
+          ["Public visitor", "Yes", "No", "No", "No"],
+          ["Volunteer", "Yes", "Limited", "No", "Own"],
+          ["Admin", "Yes", "Yes", "Yes", "Yes"],
+        ].map((row) => (
+          <div role="row" key={row[0]}>
+            {row.map((cell) => (
+              <span role="cell" key={cell}>{cell}</span>
+            ))}
+          </div>
+        ))}
+      </div>
+      <div className="endpoint-list" aria-label="Representative endpoints">
+        {["GET /api/programs", "GET /api/signups/:id", "POST /api/volunteers", "PATCH /api/admin/shifts/:id"].map((endpoint) => (
+          <code key={endpoint}>{endpoint}</code>
+        ))}
+      </div>
+      <div className="data-model-sketch">
+        <p><strong>Program</strong> has many Shifts</p>
+        <p><strong>Volunteer</strong> has many Signups</p>
+        <p><strong>Signup</strong> belongs to Volunteer and Shift</p>
+      </div>
+    </section>
+  );
+}
+
+function CaseStudyProofModule({ slug }: { slug: CaseStudy["slug"] }) {
+  if (slug === "rebalance") {
+    return <ReBalanceEvidence />;
+  }
+
+  if (slug === "flip-that-digit") {
+    return <FlipThatDigitEvidence />;
+  }
+
+  if (slug === "operation-surf") {
+    return <OperationSurfEvidence />;
+  }
+
+  return null;
+}
+
 export function CaseStudyDetail({ study }: CaseStudyDetailProps) {
   return (
     <>
@@ -127,7 +286,13 @@ export function CaseStudyDetail({ study }: CaseStudyDetailProps) {
                 View source repo
               </ButtonLink>
             ) : null}
+            <ButtonLink href="/resume" variant="quiet">
+              Resume context
+            </ButtonLink>
           </div>
+          <p className="case-study-resume-note">
+            This project appears under Projects on my resume.
+          </p>
         </div>
         <div className="case-study-hero__media">
           <MediaFrame media={study.heroMedia} priority />
@@ -177,6 +342,8 @@ export function CaseStudyDetail({ study }: CaseStudyDetailProps) {
           ))}
         </ol>
       </section>
+
+      <CaseStudyProofModule slug={study.slug} />
 
       <section className="case-study-gallery content-page content-page--wide" id="project-artifacts">
         <div className="section-heading">

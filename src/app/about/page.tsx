@@ -23,10 +23,16 @@ import {
   timeline,
   experience,
   education,
+  workingPrinciples,
+  currentlyLearning,
   technicalSkills,
 } from "@/content/about";
 import { Tag } from "@/components/ui/tag";
 import { Card } from "@/components/ui/card";
+import { ButtonLink } from "@/components/ui/button";
+import { TrackedAnchor } from "@/components/analytics/tracked-anchor";
+import { TrackedButtonLink } from "@/components/analytics/tracked-button-link";
+import { routes } from "@/lib/routes";
 
 export const metadata: Metadata = {
   title: "About — Brian Li",
@@ -125,7 +131,13 @@ export default function AboutPage() {
           </div>
           <div className="about-portrait">
             <div className="about-portrait__frame">
-              <span className="about-portrait__label">portrait — pending</span>
+              <Image
+                alt="Brian Li portrait"
+                fill
+                priority
+                sizes="(max-width: 980px) 240px, 320px"
+                src="/assets/images/personal/brian-li-portrait-square.jpg"
+              />
             </div>
           </div>
         </div>
@@ -279,6 +291,58 @@ export default function AboutPage() {
               </div>
             );
           })}
+        </div>
+      </section>
+
+      <section className="content-page about-principles">
+        <div className="section-heading">
+          <div>
+            <p className="section-label">Working principles</p>
+            <h2>Understandable, local, human - in practice.</h2>
+          </div>
+          <p className="section-heading__credibility">
+            These are the behaviors behind the motto, not just portfolio copy.
+          </p>
+        </div>
+        <div className="principle-grid">
+          {workingPrinciples.map((principle) => (
+            <article key={principle.title}>
+              <h3>{principle.title}</h3>
+              <p>{principle.body}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="content-page about-currently-learning">
+        <p className="section-label">Currently learning</p>
+        <div className="tag-list">
+          {currentlyLearning.map((item) => (
+            <Tag key={item}>{item}</Tag>
+          ))}
+        </div>
+      </section>
+
+      <section className="content-page about-cta">
+        <h2>
+          If you are building tools around embedded systems, robotics,
+          hardware/software interfaces, or community technology, I would be
+          glad to talk.
+        </h2>
+        <div className="hero-section__actions" aria-label="About page actions">
+          <TrackedAnchor
+            analytics={{ kind: "contact", channel: "Email", location: "about_cta" }}
+            className="button button--primary"
+            href="mailto:brian.li.social@gmail.com"
+          >
+            Email Brian
+          </TrackedAnchor>
+          <TrackedButtonLink href={routes.resumePdf} location="about_cta" variant="quiet">
+            Download resume
+          </TrackedButtonLink>
+          <ButtonLink href={routes.caseStudies} variant="quiet">
+            View case studies
+          </ButtonLink>
         </div>
       </section>
     </>

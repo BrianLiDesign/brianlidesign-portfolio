@@ -89,7 +89,7 @@ export const timeline: TimelineEntry[] = [
     year: "2025",
     title: "Booz Allen Hamilton",
     description:
-      "Incoming Systems Engineer Intern - applying hardware-software thinking at enterprise scale.",
+      "Systems Engineer Intern - applying hardware-software thinking at enterprise scale.",
   },
 ];
 
@@ -104,7 +104,7 @@ export type ExperienceEntry = {
 
 export const experience: ExperienceEntry[] = [
   {
-    role: "Incoming Systems Engineer Intern",
+    role: "Systems Engineer Intern",
     org: "Booz Allen Hamilton",
     period: "Summer 2025",
     description:
@@ -151,6 +151,28 @@ export const education = {
     graduated: "2024",
   },
 };
+
+export const workingPrinciples = [
+  {
+    title: "Understandable",
+    body: "I expose the system state instead of hiding it.",
+  },
+  {
+    title: "Local",
+    body: "I design for the context where the tool is actually used.",
+  },
+  {
+    title: "Human",
+    body: "I prefer calmer feedback over impressive noise.",
+  },
+] as const;
+
+export const currentlyLearning = [
+  "embedded systems",
+  "robotics control",
+  "hardware/software tooling",
+  "better debugging workflows",
+] as const;
 
 export type SkillGroup = {
   label: string;

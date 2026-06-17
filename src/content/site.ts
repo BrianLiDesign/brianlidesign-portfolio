@@ -1,10 +1,30 @@
 import { routes } from "@/lib/routes";
 
 export const navItems = [
-  { label: "Case Studies", href: routes.caseStudies, icon: false },
-  { label: "Debug Log", href: routes.debugLog, icon: false },
-  { label: "About", href: routes.about, icon: false },
-  { label: "Resume", href: routes.resume, icon: true },
+  {
+    label: "Case Studies",
+    href: routes.caseStudies,
+    description: "project evidence",
+    icon: false,
+  },
+  {
+    label: "Debug Log",
+    href: routes.debugLog,
+    description: "engineering decisions",
+    icon: false,
+  },
+  {
+    label: "About",
+    href: routes.about,
+    description: "background and values",
+    icon: false,
+  },
+  {
+    label: "Resume",
+    href: routes.resume,
+    description: "HTML resume and PDF",
+    icon: true,
+  },
 ] as const;
 
 export const hero = {
@@ -28,14 +48,17 @@ export const proofChips = [
   {
     title: "ReBalance",
     proof: "4 FSR sensors + 20 Hz Web Serial feedback",
+    href: routes.rebalance,
   },
   {
     title: "Flip That Digit",
     proof: "SystemVerilog/Assembly on Basys3",
+    href: routes.flipThatDigit,
   },
   {
     title: "Operation Surf",
     proof: "backend systems for 600 volunteers",
+    href: routes.operationSurf,
   },
 ] as const;
 

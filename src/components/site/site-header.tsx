@@ -1,11 +1,23 @@
+"use client";
+
 import Link from "next/link";
-import { ArrowDownToLine } from "lucide-react";
-import { TrackedAnchor } from "@/components/analytics/tracked-anchor";
+import { ArrowRight } from "lucide-react";
+import { usePathname } from "next/navigation";
 import { navItems } from "@/content/site";
 import { routes } from "@/lib/routes";
 import { MobileNav } from "./mobile-nav";
 
+function isActivePath(pathname: string, href: string) {
+  if (href === routes.home) {
+    return pathname === routes.home;
+  }
+
+  return pathname === href || pathname.startsWith(`${href}/`);
+}
+
 export function SiteHeader() {
+  const pathname = usePathname();
+
   return (
     <header className="site-header">
       <Link aria-label="Brian Li Systems Lab home" className="brand" href={routes.home}>
@@ -13,23 +25,21 @@ export function SiteHeader() {
         <span className="brand__text">Brian Li / Systems Lab</span>
       </Link>
       <nav aria-label="Primary navigation" className="site-header__nav">
-        {navItems.map((item) =>
-          item.href === routes.resume ? (
-            <TrackedAnchor
-              analytics={{ kind: "resume", location: "header" }}
-              className="site-header__link"
-              href={item.href}
-              key={item.href}
-            >
-              {item.label}
-              <ArrowDownToLine aria-hidden="true" size={16} strokeWidth={2.5} />
-            </TrackedAnchor>
-          ) : (
-            <Link className="site-header__link" href={item.href} key={item.href}>
-              {item.label}
-            </Link>
-          ),
-        )}
+        {navItems.map((item) => (
+          <Link
+            aria-current={isActivePath(pathname, item.href) ? "page" : undefined}
+            className={`site-header__link${
+              isActivePath(pathname, item.href) ? " site-header__link--active" : ""
+            }`}
+            href={item.href}
+            key={item.href}
+          >
+            {item.label}
+            {item.href === routes.resume ? (
+              <ArrowRight aria-hidden="true" size={16} strokeWidth={2.5} />
+            ) : null}
+          </Link>
+        ))}
       </nav>
       <MobileNav />
     </header>

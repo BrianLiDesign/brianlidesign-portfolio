@@ -24,7 +24,7 @@ export function HeroSection() {
           <ButtonLink href="#rebalance" variant="primary">
             View ReBalance
           </ButtonLink>
-          <TrackedButtonLink href={routes.resume} location="hero" variant="quiet">
+          <TrackedButtonLink href={routes.resumePdf} location="hero" variant="quiet">
             Download resume
           </TrackedButtonLink>
         </div>

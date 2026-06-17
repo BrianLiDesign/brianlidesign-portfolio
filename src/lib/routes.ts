@@ -8,7 +8,8 @@ export const routes = {
   debugLog: "/debug-log",
   writing: "/writing",
   about: "/about",
-  resume: "/assets/documents/Brian_Li_Resume.pdf",
+  resume: "/resume",
+  resumePdf: "/assets/documents/Brian_Li_Resume.pdf",
 } as const;
 
 export type RouteKey = keyof typeof routes;

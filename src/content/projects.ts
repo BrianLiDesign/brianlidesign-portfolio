@@ -10,6 +10,8 @@ export type Project = {
   evidence: string;
   note: string;
   tags: string[];
+  categories: string[];
+  maturity: string;
   sourceRepo?: string;
   localSourcePath?: string;
   caseStudyThesis?: string;
@@ -30,6 +32,8 @@ export const projects: Project[] = [
     evidence: "FSR sensors, Web Serial stream, calibration, feedback UI",
     note: "learned to separate noisy input from readable feedback",
     tags: ["FSR sensors", "Web Serial", "calibration"],
+    categories: ["Hardware", "Embedded"],
+    maturity: "Hackathon prototype",
     sourceRepo: "https://github.com/joshnaim1/rebalance",
     localSourcePath: "C:\\Users\\brian\\Documents\\GitHub\\balanceback",
     caseStudyThesis:
@@ -49,6 +53,8 @@ export const projects: Project[] = [
     evidence: "SystemVerilog + Assembly on Basys3 / OTTER MCU",
     note: "learned how release timing shapes reliable state transitions",
     tags: ["SystemVerilog", "Assembly", "Basys3"],
+    categories: ["Embedded"],
+    maturity: "Course/lab deployment",
     sourceRepo: "https://github.com/BrianLiDesign/flip-that-digit",
     localSourcePath: "C:\\Users\\brian\\Documents\\GitHub\\flip-that-digit",
     caseStudyThesis:
@@ -68,6 +74,8 @@ export const projects: Project[] = [
     evidence: "MongoDB/Mongoose, Next.js, API workflows, permissions",
     note: "learned how backend structure affects real-world coordination",
     tags: ["volunteer ops", "MongoDB", "access-aware CRUD"],
+    categories: ["Backend", "Community"],
+    maturity: "Nonprofit production contribution",
     sourceRepo: "https://github.com/hack4impact-calpoly/Operation-Surf",
     localSourcePath: "C:\\Users\\brian\\Documents\\GitHub\\Operation-Surf",
     caseStudyThesis:
@@ -88,6 +96,8 @@ export const projects: Project[] = [
       "Gemini-driven explanations, Zod-validated outputs, deterministic adaptive engine, MCP doc-enricher",
     note: "privacy-first grading and deterministic difficulty transitions",
     tags: ["TypeScript", "VS Code Extension", "Gemini", "Zod"],
+    categories: ["Backend"],
+    maturity: "Hackathon prototype",
     sourceRepo: "https://github.com/tannosukeee/VybeTutor",
     localSourcePath: "C:\\Users\\brian\\Documents\\GitHub\\KiroHacks",
     caseStudyThesis:

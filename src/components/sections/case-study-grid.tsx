@@ -12,6 +12,26 @@ type ProjectArtifactProps = {
   slug: string;
 };
 
+const filters = ["All", "Hardware", "Embedded", "Backend", "Community"] as const;
+
+const recommendedReading = [
+  {
+    title: "ReBalance",
+    reason: "strongest hardware/software thesis",
+    href: "/case-studies/rebalance",
+  },
+  {
+    title: "Operation Surf",
+    reason: "backend/API evidence",
+    href: "/case-studies/operation-surf",
+  },
+  {
+    title: "Flip That Digit",
+    reason: "embedded systems constraint work",
+    href: "/case-studies/flip-that-digit",
+  },
+] as const;
+
 const flipStates = ["wait", "press", "release", "update"];
 const hoverDigits = [0, 1, 2, 3];
 
@@ -215,6 +235,12 @@ type CaseStudyGridProps = {
 export function CaseStudyGrid({
   trackLocation = "home_grid",
 }: CaseStudyGridProps) {
+  const [activeFilter, setActiveFilter] = useState<(typeof filters)[number]>("All");
+  const visibleProjects =
+    activeFilter === "All"
+      ? projects
+      : projects.filter((project) => project.categories.includes(activeFilter));
+
   return (
     <section className="case-studies-section" id="case-studies">
       <div className="section-heading">
@@ -233,8 +259,36 @@ export function CaseStudyGrid({
           </p>
         </div>
       </div>
+      <div className="case-study-index-tools">
+        <div className="case-study-filters" aria-label="Filter case studies">
+          {filters.map((filter) => (
+            <button
+              aria-pressed={activeFilter === filter}
+              className={activeFilter === filter ? "is-active" : ""}
+              key={filter}
+              onClick={() => setActiveFilter(filter)}
+              type="button"
+            >
+              {filter}
+            </button>
+          ))}
+        </div>
+        <aside className="reading-order" aria-label="Recommended reading order">
+          <p>Start here</p>
+          <ol>
+            {recommendedReading.map((item) => (
+              <li key={item.href}>
+                <Link href={item.href}>
+                  <strong>{item.title}</strong>
+                  <span>{item.reason}</span>
+                </Link>
+              </li>
+            ))}
+          </ol>
+        </aside>
+      </div>
       <div className="case-study-grid">
-        {projects.map((project, index) => (
+        {visibleProjects.map((project, index) => (
           <Link
             className="case-study-card__link-wrapper"
             href={project.href}
@@ -248,12 +302,14 @@ export function CaseStudyGrid({
                 case file {String(index + 1).padStart(2, "0")}
               </span>
               <p className="case-study-card__label">{project.label}</p>
+              <p className="case-study-card__maturity">{project.maturity}</p>
               <ProjectArtifact slug={project.slug} />
               <h3>{project.title}</h3>
               <p>{project.summary}</p>
               <p className="case-study-card__role">Role: {project.role}</p>
               <p className="case-study-card__evidence">{project.evidence}</p>
               <p className="case-study-card__note">note: {project.note}</p>
+              <span className="case-study-card__cta">View case study</span>
               <div className="tag-list">
                 {project.tags.map((tag) => (
                   <CaseStudyTag key={tag} label={tag} />

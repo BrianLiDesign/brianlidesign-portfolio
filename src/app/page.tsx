@@ -5,11 +5,13 @@ import { FlagshipRebalance } from "@/components/sections/flagship-rebalance";
 import { HeroSection } from "@/components/sections/hero-section";
 import { HowIWork } from "@/components/sections/how-i-work";
 import { SignalRibbon } from "@/components/sections/signal-ribbon";
+import { WhatIBuild } from "@/components/sections/what-i-build";
 
 export default function HomePage() {
   return (
     <>
       <HeroSection />
+      <WhatIBuild />
       <SignalRibbon />
       <FlagshipRebalance />
       <HowIWork />

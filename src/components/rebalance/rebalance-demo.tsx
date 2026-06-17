@@ -92,6 +92,26 @@ export function ReBalanceDemo() {
           value={pressure}
         />
       </div>
+      <div className="rebalance-board" aria-label="Balance board center of pressure">
+        <div className="rebalance-board__labels">
+          <span>left foot</span>
+          <span>dead zone</span>
+          <span>right foot</span>
+        </div>
+        <div className="rebalance-board__deck">
+          <span className="rebalance-board__threshold rebalance-board__threshold--left">
+            correction threshold
+          </span>
+          <span className="rebalance-board__dead-zone" />
+          <span className="rebalance-board__threshold rebalance-board__threshold--right">
+            correction threshold
+          </span>
+          <i
+            className="rebalance-board__pressure-dot"
+            style={{ left: `${state.rightPressure}%` }}
+          />
+        </div>
+      </div>
       <div className="pressure-grid">
         <PressureMeter label="Left pressure" tone="left" value={state.leftPressure} />
         <PressureMeter label="Right pressure" tone="right" value={state.rightPressure} />

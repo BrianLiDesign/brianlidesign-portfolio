@@ -65,6 +65,7 @@ export function HeroAnimationPanel() {
             onClick={() => handleSlideSelect(index)}
             type="button"
           >
+            <span className="hero-animation-panel__label">{item.label}</span>
             <span
               className={`hero-animation-panel__progress ${
                 activeSlide === index ? "hero-slide-progress" : ""
@@ -93,6 +94,10 @@ export function HeroAnimationPanel() {
           <OperationSurfHeroAnimation />
         )}
       </div>
+      <figcaption className="hero-animation-panel__caption">
+        <strong>{slide.title}</strong>
+        <span>{slide.caption}</span>
+      </figcaption>
     </figure>
   );
 }

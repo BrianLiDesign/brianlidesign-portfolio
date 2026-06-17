@@ -2,15 +2,17 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import { navItems } from "@/content/site";
-import {
-  trackNavClick,
-  trackResumeDownload,
-} from "@/lib/analytics-events";
-import { routes } from "@/lib/routes";
+import { usePathname } from "next/navigation";
+import { footerLinks, navItems } from "@/content/site";
+import { trackNavClick } from "@/lib/analytics-events";
+
+function isActivePath(pathname: string, href: string) {
+  return pathname === href || pathname.startsWith(`${href}/`);
+}
 
 export function MobileNav() {
   const [open, setOpen] = useState(false);
+  const pathname = usePathname();
 
   return (
     <div className="mobile-nav">
@@ -25,23 +27,39 @@ export function MobileNav() {
       </button>
       {open ? (
         <nav aria-label="Mobile navigation" className="mobile-nav__panel">
+          <div className="mobile-nav__panel-header">
+            <span>Navigation</span>
+            <span>case file index</span>
+          </div>
           {navItems.map((item) => (
             <Link
-              className="mobile-nav__link"
+              aria-current={isActivePath(pathname, item.href) ? "page" : undefined}
+              className={`mobile-nav__link${
+                isActivePath(pathname, item.href) ? " mobile-nav__link--active" : ""
+              }`}
               href={item.href}
               key={item.href}
               onClick={() => {
-                if (item.href === routes.resume) {
-                  trackResumeDownload("mobile_nav");
-                } else {
-                  trackNavClick(item.label, "mobile");
-                }
+                trackNavClick(item.label, "mobile");
                 setOpen(false);
               }}
             >
-              {item.label}
+              <span>{item.label}</span>
+              <small>{item.description}</small>
             </Link>
           ))}
+          <div className="mobile-nav__socials" aria-label="Contact links">
+            {footerLinks.slice(0, 3).map((link) => (
+              <a
+                href={link.href}
+                key={link.href}
+                rel={link.href.startsWith("http") ? "noopener noreferrer" : undefined}
+                target={link.href.startsWith("http") ? "_blank" : undefined}
+              >
+                {link.label}
+              </a>
+            ))}
+          </div>
         </nav>
       ) : null}
     </div>

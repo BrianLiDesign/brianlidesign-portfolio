@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Lexend_Deca, JetBrains_Mono } from "next/font/google";
+import { ContactCta } from "@/components/site/contact-cta";
 import { SiteFooter } from "@/components/site/site-footer";
 import { SiteHeader } from "@/components/site/site-header";
 import { siteMetadata } from "@/lib/metadata";
@@ -51,6 +52,9 @@ export const metadata: Metadata = {
   description: siteMetadata.description,
   authors: [{ name: siteMetadata.author }],
   metadataBase: new URL(siteMetadata.url),
+  alternates: {
+    canonical: siteMetadata.url,
+  },
   manifest: "/site.webmanifest",
   icons: {
     icon: [{ url: "/assets/favicon/favicon.svg", type: "image/svg+xml" }],
@@ -92,6 +96,7 @@ export default function RootLayout({
       <body id="top">
         <SiteHeader />
         <main>{children}</main>
+        <ContactCta />
         <SiteFooter />
         <Analytics
           debug={process.env.NODE_ENV === "development"}
