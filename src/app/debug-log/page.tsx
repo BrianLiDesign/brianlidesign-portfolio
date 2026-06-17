@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export default function DebugLogPage() {
   return (
-    <section className="content-page">
+    <section className="content-page debug-log-page">
       <p className="section-label">Debug Log</p>
       <h1>Failure notes, decision changes, and engineering judgment.</h1>
       <div className="debug-list">
