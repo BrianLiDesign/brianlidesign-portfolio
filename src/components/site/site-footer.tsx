@@ -1,5 +1,6 @@
 import { TrackedAnchor } from "@/components/analytics/tracked-anchor";
 import Link from "next/link";
+import { Download } from "lucide-react";
 import { footerLinks, sourceCodeUrl } from "@/content/site";
 import { routes } from "@/lib/routes";
 
@@ -51,6 +52,12 @@ export function SiteFooter() {
           className="site-footer__link site-footer__link--resume"
           href={routes.resumePdf}
         >
+          <Download
+            aria-hidden="true"
+            className="site-footer__link-icon"
+            size={16}
+            strokeWidth={2.5}
+          />
           Download resume
         </TrackedAnchor>
         <a

@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+import { Download } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { navItems } from "@/content/site";
 import { routes } from "@/lib/routes";
@@ -35,8 +35,8 @@ export function SiteHeader() {
             key={item.href}
           >
             {item.label}
-            {item.href === routes.resume ? (
-              <ArrowRight aria-hidden="true" size={16} strokeWidth={2.5} />
+            {item.icon ? (
+              <Download aria-hidden="true" size={16} strokeWidth={2.5} />
             ) : null}
           </Link>
         ))}

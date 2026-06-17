@@ -21,8 +21,8 @@ export const navItems = [
   },
   {
     label: "Resume",
-    href: routes.resume,
-    description: "HTML resume and PDF",
+    href: routes.resumePdf,
+    description: "PDF resume",
     icon: true,
   },
 ] as const;
