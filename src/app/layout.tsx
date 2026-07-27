@@ -6,10 +6,6 @@ import { ContactCta } from "@/components/site/contact-cta";
 import { SiteFooter } from "@/components/site/site-footer";
 import { SiteHeader } from "@/components/site/site-header";
 import { siteMetadata } from "@/lib/metadata";
-import {
-  externalAnalyticsProps,
-  externalSpeedInsightsProps,
-} from "@/lib/vercel-observability";
 import "@/styles/globals.css";
 
 const githubPagesRedirectScript = `
@@ -87,10 +83,12 @@ export default function RootLayout({
   return (
     <html
       lang="en"
+      data-scroll-behavior="smooth"
       className={`${lexendDeca.variable} ${jetbrainsMono.variable}`}
       suppressHydrationWarning
     >
       <head>
+        {/* biome-ignore lint/security/noDangerouslySetInnerHtml: Static redirect code contains no user-controlled input. */}
         <script dangerouslySetInnerHTML={{ __html: githubPagesRedirectScript }} />
       </head>
       <body id="top">
@@ -98,15 +96,8 @@ export default function RootLayout({
         <main>{children}</main>
         <ContactCta />
         <SiteFooter />
-        <Analytics
-          debug={process.env.NODE_ENV === "development"}
-          {...externalAnalyticsProps}
-        />
-        <SpeedInsights
-          sampleRate={1}
-          debug={process.env.NODE_ENV === "development"}
-          {...externalSpeedInsightsProps}
-        />
+        <Analytics />
+        <SpeedInsights sampleRate={1} />
       </body>
     </html>
   );

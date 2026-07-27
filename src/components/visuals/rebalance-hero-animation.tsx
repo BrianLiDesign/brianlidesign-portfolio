@@ -91,6 +91,7 @@ export function ReBalanceHeroAnimation({
         onKeyDown={handleNodeKeyDown("raw")}
         onPointerEnter={activateNode("raw")}
         onPointerLeave={clearNode}
+        role="button"
         tabIndex={0}
       >
         <rect className="signal-node__hit-area" height="112" width="170" x="34" y="44" />
@@ -110,6 +111,7 @@ export function ReBalanceHeroAnimation({
         onKeyDown={handleNodeKeyDown("calibrate")}
         onPointerEnter={activateNode("calibrate")}
         onPointerLeave={clearNode}
+        role="button"
         tabIndex={0}
       >
         <rect className="signal-node__hit-area" height="128" width="176" x="282" y="188" />
@@ -136,6 +138,7 @@ export function ReBalanceHeroAnimation({
         onKeyDown={handleNodeKeyDown("cue")}
         onPointerEnter={activateNode("cue")}
         onPointerLeave={clearNode}
+        role="button"
         tabIndex={0}
       >
         <rect className="signal-node__hit-area" height="92" width="150" x="530" y="350" />

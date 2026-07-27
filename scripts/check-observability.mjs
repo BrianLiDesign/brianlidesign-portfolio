@@ -1,25 +1,11 @@
 #!/usr/bin/env node
 
-import { readFile } from "node:fs/promises";
+import { readdir, readFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const outDir = path.join(__dirname, "..", "out");
-
-const defaultOrigin = "brianlidesign.vercel.app";
-const defaultAnalyticsId = "4a395dc968fa45e9";
-const defaultSpeedInsightsId = "5e63b2e6336a67ae";
-
-const origin =
-  process.env.NEXT_PUBLIC_VERCEL_OBSERVABILITY_ORIGIN?.replace(
-    /^https?:\/\//,
-    "",
-  ) ?? defaultOrigin;
-const analyticsId =
-  process.env.NEXT_PUBLIC_VERCEL_ANALYTICS_ID ?? defaultAnalyticsId;
-const speedInsightsId =
-  process.env.NEXT_PUBLIC_VERCEL_SPEED_INSIGHTS_ID ?? defaultSpeedInsightsId;
 
 const pagesToCheck = [
   path.join(outDir, "index.html"),
@@ -27,34 +13,54 @@ const pagesToCheck = [
 ];
 
 const requiredFragments = [
-  origin,
-  analyticsId,
-  speedInsightsId,
-  `${speedInsightsId}/vitals`,
-  `${analyticsId}/script.js`,
+  "/_vercel/insights/script.js",
+  "/_vercel/speed-insights/script.js",
 ];
 
 const failures = [];
 
 for (const pagePath of pagesToCheck) {
-  let html;
-
   try {
-    html = await readFile(pagePath, "utf8");
-  } catch (error) {
+    await readFile(pagePath, "utf8");
+  } catch {
     if (pagePath.endsWith("case-studies.html")) {
       continue;
     }
     failures.push(`Missing build output: ${path.relative(outDir, pagePath)}`);
-    continue;
+  }
+}
+
+async function collectJavaScriptFiles(directory) {
+  const entries = await readdir(directory, { withFileTypes: true });
+  const files = [];
+
+  for (const entry of entries) {
+    const entryPath = path.join(directory, entry.name);
+    if (entry.isDirectory()) {
+      files.push(...(await collectJavaScriptFiles(entryPath)));
+    } else if (entry.isFile() && entry.name.endsWith(".js")) {
+      files.push(entryPath);
+    }
   }
 
-  const label = path.relative(outDir, pagePath);
+  return files;
+}
 
-  for (const fragment of requiredFragments) {
-    if (!html.includes(fragment)) {
-      failures.push(`${label}: expected "${fragment}" in HTML`);
-    }
+const chunksDir = path.join(outDir, "_next", "static", "chunks");
+let bundle = "";
+
+try {
+  const chunkPaths = await collectJavaScriptFiles(chunksDir);
+  bundle = (await Promise.all(chunkPaths.map((chunkPath) => readFile(chunkPath, "utf8")))).join(
+    "\n",
+  );
+} catch {
+  failures.push("Missing built JavaScript chunks");
+}
+
+for (const fragment of requiredFragments) {
+  if (!bundle.includes(fragment)) {
+    failures.push(`Built JavaScript: expected "${fragment}"`);
   }
 }
 
@@ -63,12 +69,8 @@ if (failures.length > 0) {
   for (const failure of failures) {
     console.error(`  - ${failure}`);
   }
-  console.error(
-    "\nRun `npm run build` first, then verify src/lib/vercel-observability.ts or NEXT_PUBLIC_VERCEL_* env vars.",
-  );
+  console.error("\nRun `npm run build` first, then verify src/app/layout.tsx.");
   process.exit(1);
 }
 
-console.log(
-  `Observability bridge OK (${origin}, analytics ${analyticsId}, speed insights ${speedInsightsId}).`,
-);
+console.log("Native Vercel observability routes are present.");

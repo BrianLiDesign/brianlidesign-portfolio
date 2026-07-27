@@ -92,7 +92,11 @@ export function ReBalanceDemo() {
           value={pressure}
         />
       </div>
-      <div className="rebalance-board" aria-label="Balance board center of pressure">
+      <div
+        className="rebalance-board"
+        aria-label="Balance board center of pressure"
+        role="img"
+      >
         <div className="rebalance-board__labels">
           <span>left foot</span>
           <span>dead zone</span>

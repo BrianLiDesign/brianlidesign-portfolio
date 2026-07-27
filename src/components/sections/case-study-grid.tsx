@@ -94,6 +94,7 @@ function FlipThatDigitArtifact() {
       onPointerMove={handleArtifactPointer}
       onPointerEnter={() => setArtifactHover(true)}
       onPointerLeave={() => setArtifactHover(false)}
+      role="img"
     >
       <div className="flip-artifact__module">
         <div className="flip-artifact__module-header">
@@ -174,6 +175,7 @@ function ProjectArtifact({ slug }: ProjectArtifactProps) {
       <div
         className="project-artifact project-artifact--rebalance"
         aria-label="Sensor calibration artifact"
+        role="img"
       >
         <div className="project-artifact__header">
           <span>sensor -&gt; calibration -&gt; cue</span>
@@ -206,6 +208,7 @@ function ProjectArtifact({ slug }: ProjectArtifactProps) {
       <div
         className="project-artifact project-artifact--workflow"
         aria-label="Backend operations workflow artifact"
+        role="img"
       >
         <div className="workflow-map">
           {["volunteer", "event", "role", "api"].map((node) => (
@@ -223,6 +226,7 @@ function ProjectArtifact({ slug }: ProjectArtifactProps) {
       <div
         className="project-artifact project-artifact--spontus"
         aria-label="Marketplace trust pipeline artifact"
+        role="img"
       >
         <div className="spontus-artifact__nodes">
           {["team", "sponsor", "verify", "listing", "review"].map((node) => (
@@ -242,6 +246,7 @@ function ProjectArtifact({ slug }: ProjectArtifactProps) {
     <div
       className="project-artifact project-artifact--learning"
       aria-label="IDE learning loop artifact"
+      role="img"
     >
       <div className="learning-loop">
         {["explain", "quiz", "grade", "adapt"].map((step) => (
@@ -285,7 +290,11 @@ export function CaseStudyGrid({
         </div>
       </div>
       <div className="case-study-index-tools">
-        <div className="case-study-filters" aria-label="Filter case studies">
+        <div
+          className="case-study-filters"
+          aria-label="Filter case studies"
+          role="group"
+        >
           {filters.map((filter) => (
             <button
               aria-pressed={activeFilter === filter}

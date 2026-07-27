@@ -1,4 +1,4 @@
-import { Metadata } from "next";
+import type { Metadata } from "next";
 import Image from "next/image";
 import {
   Cable,
@@ -166,7 +166,11 @@ export default function AboutPage() {
                       src={photo.src}
                     />
                   ) : (
-                    <span className="photo-slot__placeholder" aria-label={photo.alt}>
+                    <span
+                      className="photo-slot__placeholder"
+                      aria-label={photo.alt}
+                      role="img"
+                    >
                       <span className="photo-slot__placeholder-icon">◻</span>
                     </span>
                   )}
@@ -332,7 +336,11 @@ export default function AboutPage() {
           hardware/software interfaces, or community technology, I would be
           glad to talk.
         </h2>
-        <div className="hero-section__actions" aria-label="About page actions">
+        <div
+          className="hero-section__actions"
+          aria-label="About page actions"
+          role="group"
+        >
           <TrackedAnchor
             analytics={{ kind: "contact", channel: "Email", location: "about_cta" }}
             className="button button--primary"

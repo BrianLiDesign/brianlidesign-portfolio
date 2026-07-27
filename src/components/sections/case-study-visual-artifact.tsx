@@ -40,7 +40,11 @@ function ReBalanceArtifact() {
   const bars = [34, 58, 41, 72, 50, 28, 64, 45, 69, 38];
 
   return (
-    <div className="case-visual case-visual--rebalance" aria-label="Raw pressure to calibrated cue">
+    <div
+      className="case-visual case-visual--rebalance"
+      aria-label="Raw pressure to calibrated cue"
+      role="img"
+    >
       <div className="case-visual__signal">
         {bars.map((height, index) => (
           <span
@@ -87,6 +91,7 @@ function FlipThatDigitArtifact() {
       onPointerEnter={() => setArtifactHover(true)}
       onPointerLeave={() => setArtifactHover(false)}
       onPointerMove={handleArtifactPointer}
+      role="img"
     >
       <svg aria-label={`Seven-segment display showing ${displayDigit}`} role="img" viewBox="0 0 90 146">
         <rect className="case-visual__display-housing" height="144" rx="10" width="88" x="1" y="1" />
@@ -113,7 +118,11 @@ function FlipThatDigitArtifact() {
 
 function OperationSurfArtifact() {
   return (
-    <div className="case-visual case-visual--workflow" aria-label="API workflow diagram">
+    <div
+      className="case-visual case-visual--workflow"
+      aria-label="API workflow diagram"
+      role="img"
+    >
       {["auth context", "route filter", "query", "enrich", "role payload"].map((step, index) => (
         <span key={step} style={{ "--delay": `${index * 120}ms` } as CSSProperties}>
           {step}
@@ -125,7 +134,11 @@ function OperationSurfArtifact() {
 
 function SpontusArtifact() {
   return (
-    <div className="case-visual case-visual--spontus" aria-label="Marketplace trust pipeline diagram">
+    <div
+      className="case-visual case-visual--spontus"
+      aria-label="Marketplace trust pipeline diagram"
+      role="img"
+    >
       <div className="case-visual__marketplace-sides">
         <span>Team</span>
         <span>Sponsor</span>
@@ -148,7 +161,11 @@ function SpontusArtifact() {
 
 function VybeTutorArtifact() {
   return (
-    <div className="case-visual case-visual--learning" aria-label="IDE tutoring loop diagram">
+    <div
+      className="case-visual case-visual--learning"
+      aria-label="IDE tutoring loop diagram"
+      role="img"
+    >
       {["selected code", "Gemini", "Zod", "local grade", "adapt"].map((step, index) => (
         <span key={step} style={{ "--delay": `${index * 110}ms` } as CSSProperties}>
           {step}

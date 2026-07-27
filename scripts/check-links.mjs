@@ -6,6 +6,11 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const repoRoot = path.resolve(__dirname, "..");
 const outDir = path.join(repoRoot, "out");
 const publicDir = path.join(repoRoot, "public");
+const configuredBasePath = (process.env.NEXT_PUBLIC_BASE_PATH ?? "")
+  .trim()
+  .replace(/^\/?/, "/")
+  .replace(/\/+$/, "");
+const basePath = configuredBasePath === "/" ? "" : configuredBasePath;
 
 const IGNORED_PREFIXES = ["/_next/"];
 const IGNORED_PROTOCOLS = ["http:", "https:", "mailto:", "tel:", "data:", "blob:", "javascript:"];
@@ -84,8 +89,22 @@ function decodePathname(pathname) {
   }
 }
 
+function stripBasePath(pathname) {
+  if (!basePath) {
+    return pathname;
+  }
+
+  if (pathname === basePath) {
+    return "/";
+  }
+
+  return pathname.startsWith(`${basePath}/`)
+    ? pathname.slice(basePath.length)
+    : pathname;
+}
+
 function htmlCandidatesForPath(urlPath) {
-  const decodedPath = decodePathname(stripUrlParts(urlPath));
+  const decodedPath = stripBasePath(decodePathname(stripUrlParts(urlPath)));
 
   if (decodedPath === "/" || decodedPath === "") {
     return [path.join(outDir, "index.html")];
@@ -103,7 +122,7 @@ function htmlCandidatesForPath(urlPath) {
 }
 
 async function resolveOutputPath(urlPath) {
-  const decodedPath = decodePathname(stripUrlParts(urlPath));
+  const decodedPath = stripBasePath(decodePathname(stripUrlParts(urlPath)));
   const withoutLeadingSlash = decodedPath.replace(/^\/+/, "");
   const candidates = htmlCandidatesForPath(decodedPath);
 

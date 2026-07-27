@@ -975,6 +975,11 @@ h3 {
   padding-bottom: 1rem;
 }
 
+.rebalance-demo__header > div,
+.rebalance-demo__output > * {
+  min-width: 0;
+}
+
 .rebalance-demo__icon {
   color: var(--color-teal);
 }
@@ -1094,6 +1099,8 @@ input[type="range"] {
 .raw-panel,
 .score-panel {
   border: 1px solid var(--color-line);
+  min-width: 0;
+  overflow-wrap: anywhere;
   padding: 1rem;
 }
 
@@ -4169,31 +4176,48 @@ main {
   overflow-x: auto;
 }
 
-.risk-control-matrix > div {
+.permission-matrix table,
+.risk-control-matrix table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.permission-matrix caption,
+.risk-control-matrix caption {
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+
+.risk-control-matrix tr {
   display: grid;
   grid-template-columns: 0.9fr 1.4fr;
   min-width: 680px;
 }
 
-.permission-matrix > div {
+.permission-matrix tr {
   display: grid;
   grid-template-columns: 1.2fr repeat(4, 1fr);
   min-width: 720px;
 }
 
-.permission-matrix strong,
-.permission-matrix span,
-.risk-control-matrix strong,
-.risk-control-matrix span {
+.permission-matrix th,
+.permission-matrix td,
+.risk-control-matrix th,
+.risk-control-matrix td {
   border-bottom: 1px solid var(--color-line);
   border-right: 1px solid var(--color-line);
   font-family: var(--font-mono);
   font-size: 0.72rem;
   padding: 0.75rem;
+  text-align: left;
 }
 
-.permission-matrix strong,
-.risk-control-matrix strong {
+.permission-matrix th,
+.risk-control-matrix th {
   background: var(--color-black);
   color: var(--color-white);
   text-transform: uppercase;

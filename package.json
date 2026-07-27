@@ -1,5 +1,5 @@
 {
-  "name": "brianlidesign.github.io",
+  "name": "brianlidesign-portfolio",
   "version": "2.0.0",
   "private": true,
   "description": "Brian Li's systems lab portfolio for hardware-software, embedded, and community-centered engineering work.",
@@ -7,24 +7,25 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
+    "lint": "biome lint src/app src/components src/content src/lib scripts next.config.ts --error-on-warnings",
     "typecheck": "tsc --noEmit",
-    "test": "npm run typecheck",
+    "test": "vitest run",
+    "test:watch": "vitest",
     "check:assets": "node scripts/check-assets.mjs",
     "check:links": "node scripts/check-links.mjs",
     "check:observability": "node scripts/check-observability.mjs",
-    "extract:vercel-observability": "node scripts/extract-vercel-observability.mjs https://brianlidesign.vercel.app",
-    "preflight": "npm test && npm run build && npm run check:assets && npm run check:links && npm run check:observability"
+    "preflight": "npm run lint && npm run typecheck && npm test && npm run build && npm run check:assets && npm run check:links && npm run check:observability"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/BrianLiDesign/brianlidesign.github.io.git"
+    "url": "git+https://github.com/BrianLiDesign/brianlidesign-portfolio.git"
   },
   "author": "Brian Li",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/BrianLiDesign/brianlidesign.github.io/issues"
+    "url": "https://github.com/BrianLiDesign/brianlidesign-portfolio/issues"
   },
-  "homepage": "https://brianlidesign.github.io/",
+  "homepage": "https://brianlidesign.vercel.app/",
   "dependencies": {
     "@vercel/analytics": "^2.0.1",
     "@vercel/speed-insights": "^2.0.0",
@@ -35,9 +36,11 @@
     "typescript": "^5.9.3"
   },
   "devDependencies": {
+    "@biomejs/biome": "^2.5.5",
     "@types/node": "^22.10.2",
     "@types/react": "^19.0.2",
-    "@types/react-dom": "^19.0.2"
+    "@types/react-dom": "^19.0.2",
+    "vitest": "^4.1.10"
   },
   "overrides": {
     "postcss": "8.5.23",

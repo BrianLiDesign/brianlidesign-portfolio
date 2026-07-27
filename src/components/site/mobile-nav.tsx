@@ -48,7 +48,7 @@ export function MobileNav() {
               <small>{item.description}</small>
             </Link>
           ))}
-          <div className="mobile-nav__socials" aria-label="Contact links">
+          <nav className="mobile-nav__socials" aria-label="Contact links">
             {footerLinks.slice(0, 3).map((link) => (
               <a
                 href={link.href}
@@ -59,7 +59,7 @@ export function MobileNav() {
                 {link.label}
               </a>
             ))}
-          </div>
+          </nav>
         </nav>
       ) : null}
     </div>

@@ -20,7 +20,7 @@ export function HeroSection() {
         <p className="hero-section__focus">
           Focused on hardware/software systems, embedded tooling, robotics, and feedback interfaces.
         </p>
-        <div className="hero-section__actions" aria-label="Primary actions">
+        <div className="hero-section__actions" aria-label="Primary actions" role="group">
           <ButtonLink href="#rebalance" variant="primary">
             View ReBalance
           </ButtonLink>
@@ -28,7 +28,7 @@ export function HeroSection() {
             Download resume
           </TrackedButtonLink>
         </div>
-        <div className="hero-proof-strip" aria-label="Strongest proof points">
+        <div className="hero-proof-strip" aria-label="Strongest proof points" role="group">
           {heroProofStrip.map((proof) => (
             <span key={proof}>{proof}</span>
           ))}

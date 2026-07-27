@@ -216,25 +216,36 @@ function OperationSurfEvidence() {
           <p>signup responses include shift and program context</p>
         </article>
       </div>
-      <div className="permission-matrix" role="table" aria-label="Operation Surf permission matrix">
-        <div role="row">
-          {["User type", "Public programs", "Private details", "Edit shifts", "Manage signups"].map((cell) => (
-            <strong role="columnheader" key={cell}>{cell}</strong>
-          ))}
-        </div>
-        {[
-          ["Public visitor", "Yes", "No", "No", "No"],
-          ["Volunteer", "Yes", "Limited", "No", "Own"],
-          ["Admin", "Yes", "Yes", "Yes", "Yes"],
-        ].map((row) => (
-          <div role="row" key={row[0]}>
-            {row.map((cell) => (
-              <span role="cell" key={cell}>{cell}</span>
+      <div className="permission-matrix">
+        <table>
+          <caption>Operation Surf permission matrix</caption>
+          <thead>
+            <tr>
+              {["User type", "Public programs", "Private details", "Edit shifts", "Manage signups"].map((cell) => (
+                <th scope="col" key={cell}>{cell}</th>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            {[
+              ["Public visitor", "Yes", "No", "No", "No"],
+              ["Volunteer", "Yes", "Limited", "No", "Own"],
+              ["Admin", "Yes", "Yes", "Yes", "Yes"],
+            ].map((row) => (
+              <tr key={row[0]}>
+                {row.map((cell, columnIndex) => (
+                  <td key={`${row[0]}-${columnIndex}`}>{cell}</td>
+                ))}
+              </tr>
             ))}
-          </div>
-        ))}
+          </tbody>
+        </table>
       </div>
-      <div className="endpoint-list" aria-label="Representative endpoints">
+      <div
+        className="endpoint-list"
+        aria-label="Representative endpoints"
+        role="group"
+      >
         {["GET /api/programs", "GET /api/signups/:id", "POST /api/volunteers", "PATCH /api/admin/shifts/:id"].map((endpoint) => (
           <code key={endpoint}>{endpoint}</code>
         ))}
@@ -284,17 +295,24 @@ function SpontusEvidence() {
           <li key={step}>{step}</li>
         ))}
       </ol>
-      <div className="risk-control-matrix" role="table" aria-label="Business risks mapped to technical controls">
-        <div role="row">
-          <strong role="columnheader">Business risk</strong>
-          <strong role="columnheader">Technical control</strong>
-        </div>
-        {riskControls.map(([risk, control]) => (
-          <div role="row" key={risk}>
-            <span role="cell">{risk}</span>
-            <span role="cell">{control}</span>
-          </div>
-        ))}
+      <div className="risk-control-matrix">
+        <table>
+          <caption>Business risks mapped to technical controls</caption>
+          <thead>
+            <tr>
+              <th scope="col">Business risk</th>
+              <th scope="col">Technical control</th>
+            </tr>
+          </thead>
+          <tbody>
+            {riskControls.map(([risk, control]) => (
+              <tr key={risk}>
+                <td>{risk}</td>
+                <td>{control}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
       <div className="implementation-detail-grid">
         {[
@@ -343,7 +361,11 @@ export function CaseStudyDetail({ study }: CaseStudyDetailProps) {
           {study.summary.map((paragraph) => (
             <p key={paragraph}>{paragraph}</p>
           ))}
-          <div className="case-study-proof-strip" aria-label={`${study.title} proof points`}>
+          <div
+            className="case-study-proof-strip"
+            aria-label={`${study.title} proof points`}
+            role="group"
+          >
             {study.proofPoints.map((point) => (
               <span key={point}>{point}</span>
             ))}

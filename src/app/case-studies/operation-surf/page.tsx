@@ -1,4 +1,4 @@
-import { Metadata } from "next";
+import type { Metadata } from "next";
 import { CaseStudyDetail } from "@/components/sections/case-study-detail";
 import { getCaseStudy } from "@/content/case-studies";
 

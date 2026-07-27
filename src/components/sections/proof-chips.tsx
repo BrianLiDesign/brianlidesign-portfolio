@@ -4,7 +4,7 @@ import { EvidenceTrace } from "@/components/visuals/evidence-trace";
 
 export function ProofChips() {
   return (
-    <div className="proof-chips" aria-label="Selected engineering proof">
+    <div className="proof-chips" aria-label="Selected engineering proof" role="group">
       {proofChips.map((chip) => (
         <Link className="proof-chip" href={chip.href} key={chip.title}>
           <p>{chip.title}</p>

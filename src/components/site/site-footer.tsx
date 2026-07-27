@@ -16,7 +16,7 @@ export function SiteFooter() {
           Open to conversations about embedded systems, robotics, hardware/software tooling, and useful feedback interfaces.
         </p>
       </div>
-      <div className="site-footer__sitemap" aria-label="Footer sitemap">
+      <nav className="site-footer__sitemap" aria-label="Footer sitemap">
         <div>
           <p>Work</p>
           <Link href={routes.caseStudies}>Case Studies</Link>
@@ -29,7 +29,7 @@ export function SiteFooter() {
           <Link href={routes.flipThatDigit}>Flip That Digit</Link>
           <Link href={routes.operationSurf}>Operation Surf</Link>
         </div>
-      </div>
+      </nav>
       <nav aria-label="Footer links" className="site-footer__links">
         {footerLinks.map((link) => (
           <TrackedAnchor

@@ -3,7 +3,6 @@ import {
   Cable,
   Filter,
   Fingerprint,
-  Puzzle,
   ShieldCheck,
   TestTube,
   Zap,

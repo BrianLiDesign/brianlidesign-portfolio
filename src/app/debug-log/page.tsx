@@ -14,12 +14,20 @@ export default function DebugLogPage() {
               <span className="debug-card__summary-title">{entry.title}</span>
               <span className="debug-card__thesis">{entry.thesis}</span>
             </summary>
-            <div className="debug-card__stages" aria-label={`${entry.title} timeline`}>
+            <div
+              className="debug-card__stages"
+              aria-label={`${entry.title} timeline`}
+              role="group"
+            >
               {entry.stages.map((stage) => (
                 <span key={stage}>{stage}</span>
               ))}
             </div>
-            <div className="debug-card__tags" aria-label={`${entry.title} tags`}>
+            <div
+              className="debug-card__tags"
+              aria-label={`${entry.title} tags`}
+              role="group"
+            >
               {entry.tags.map((tag) => (
                 <span key={tag}>{tag}</span>
               ))}

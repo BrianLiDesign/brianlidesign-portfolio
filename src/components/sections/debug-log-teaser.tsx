@@ -21,7 +21,7 @@ export function DebugLogTeaser() {
       <article className="debug-card">
         <div className="debug-card__header">
           <p className="debug-card__label">{entry.label}</p>
-          <div className="debug-card__stages" aria-label="Log stages">
+          <div className="debug-card__stages" aria-label="Log stages" role="group">
             {entry.stages.map((stage) => (
               <span key={stage}>{stage}</span>
             ))}
@@ -33,7 +33,7 @@ export function DebugLogTeaser() {
             <li key={step.note}>
               <p className="debug-card__process-label">
                 <span>{step.number}</span>
-                <span aria-hidden="true">//</span>
+                <span aria-hidden="true">{"//"}</span>
                 <strong>{step.label}</strong>
               </p>
               <p>{step.note}</p>
@@ -41,7 +41,11 @@ export function DebugLogTeaser() {
           ))}
         </ol>
         <footer className="debug-card__footer">
-          <div className="debug-card__framework" aria-label="Debug log framework">
+          <div
+            className="debug-card__framework"
+            aria-label="Debug log framework"
+            role="group"
+          >
             {processSteps.map((step) => (
               <span key={step.label}>
                 {step.number} {step.label}

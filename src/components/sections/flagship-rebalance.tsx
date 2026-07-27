@@ -7,7 +7,11 @@ export function FlagshipRebalance() {
       <div className="flagship-section__copy">
         <SectionLabel>Flagship case study · Calibration bench</SectionLabel>
         <h2>ReBalance turns unstable sensor input into feedback someone can act on.</h2>
-        <div className="flagship-calibration-brief" aria-label="ReBalance calibration summary">
+        <div
+          className="flagship-calibration-brief"
+          aria-label="ReBalance calibration summary"
+          role="group"
+        >
           <dl className="flagship-calibration-brief__steps">
             <div>
               <dt>Problem</dt>

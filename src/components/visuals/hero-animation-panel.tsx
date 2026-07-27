@@ -23,6 +23,7 @@ export function HeroAnimationPanel() {
           ? "output must be calmer than input"
           : null;
 
+  // biome-ignore lint/correctness/useExhaustiveDependencies: Changing slides must reset the timer even when durations match.
   useEffect(() => {
     const timer = window.setTimeout(() => {
       setActiveNode(null);
