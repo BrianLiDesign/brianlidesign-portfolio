@@ -29,7 +29,7 @@
     "@vercel/analytics": "^2.0.1",
     "@vercel/speed-insights": "^2.0.0",
     "lucide-react": "^1.17.0",
-    "next": "^16.0.7",
+    "next": "^16.2.12",
     "react": "^19.2.1",
     "react-dom": "^19.2.1",
     "typescript": "^5.9.3"
@@ -38,5 +38,9 @@
     "@types/node": "^22.10.2",
     "@types/react": "^19.0.2",
     "@types/react-dom": "^19.0.2"
+  },
+  "overrides": {
+    "postcss": "8.5.23",
+    "sharp": "0.35.3"
   }
 }

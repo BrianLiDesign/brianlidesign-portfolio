@@ -42,6 +42,34 @@ export const debugLogEntries: DebugLogEntry[] = [
     ],
   },
   {
+    slug: "spontus-verification-gates",
+    label: "Entry 005 · Spontus verification gates",
+    title: "Spontus — verification gates before marketplace access",
+    thesis:
+      "A sponsorship marketplace fails if listings look real before the people behind them are trustworthy.",
+    stages: ["browse-first", "trust-states", "gated-access"],
+    tags: ["verification", "marketplace", "state machine"],
+    caseStudyHref: "/case-studies/spontus",
+    decisionRecord: {
+      context:
+        "Early MVP slices prioritized browse and apply flows before identity and eligibility were enforced end-to-end.",
+      problem:
+        "UI-only checks let unverified teams and sponsors look legitimate, so marketplace actions had no defensible trust boundary.",
+      decision:
+        "Model verification as explicit states and gate listing access and applications on those states.",
+      tradeoff:
+        "Onboarding became slower and more structured, but every marketplace action could assume a verified counterparty.",
+      result:
+        "Application and review flows stopped re-checking trust ad hoc; access followed a single workflow model.",
+      learned: "Marketplace engineering starts with trust states, not listing screens.",
+    },
+    notes: [
+      "Early demos let profiles browse and apply before verification was modeled — the product felt open while trust was still ambiguous.",
+      "PR #12 added team .edu validation, sponsor work-email checks, profile completion, guarded status transitions, and application gating tied to verification state.",
+      "Next pass: finish Supabase/RLS enforcement so server-side rules match the in-app verification model (PR #31 direction).",
+    ],
+  },
+  {
     slug: "flip-that-digit-debounce",
     label: "Entry 002 · Flip That Digit debounce",
     title: "Flip That Digit — debounce & release timing",
