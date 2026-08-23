@@ -39,7 +39,12 @@ export default function NotFound() {
 	const pathname = usePathname();
 	const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 	const [attempts, setAttempts] = useState(0);
+	const [requestedPath, setRequestedPath] = useState<string | null>(null);
 	const [status, setStatus] = useState<DiagnosticStatus>("READY");
+
+	useEffect(() => {
+		setRequestedPath(formatPathname(pathname));
+	}, [pathname]);
 
 	useEffect(() => {
 		return () => {
@@ -58,7 +63,6 @@ export default function NotFound() {
 		}, 560);
 	}
 
-	const requestedPath = formatPathname(pathname);
 	const isScanning = status === "SCANNING";
 
 	return (
@@ -146,7 +150,7 @@ export default function NotFound() {
 
 					<div className="route-inspector__path">
 						<span>Requested path</span>
-						<code>{requestedPath}</code>
+						<code aria-live="polite">{requestedPath ?? "Reading route…"}</code>
 					</div>
 
 					<ol className="route-inspector__trace">
