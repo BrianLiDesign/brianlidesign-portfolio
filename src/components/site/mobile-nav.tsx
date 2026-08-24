@@ -1,8 +1,8 @@
 "use client";
 
-import Link from "next/link";
 import { useState } from "react";
 import { usePathname } from "next/navigation";
+import { SiteLink } from "@/components/ui/site-link";
 import { footerLinks, navItems } from "@/content/site";
 import { trackNavClick } from "@/lib/analytics-events";
 
@@ -32,7 +32,7 @@ export function MobileNav() {
             <span>case file index</span>
           </div>
           {navItems.map((item) => (
-            <Link
+            <SiteLink
               aria-current={isActivePath(pathname, item.href) ? "page" : undefined}
               className={`mobile-nav__link${
                 isActivePath(pathname, item.href) ? " mobile-nav__link--active" : ""
@@ -46,7 +46,7 @@ export function MobileNav() {
             >
               <span>{item.label}</span>
               <small>{item.description}</small>
-            </Link>
+            </SiteLink>
           ))}
           <nav className="mobile-nav__socials" aria-label="Contact links">
             {footerLinks.slice(0, 3).map((link) => (

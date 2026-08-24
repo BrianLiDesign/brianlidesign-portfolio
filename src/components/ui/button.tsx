@@ -1,5 +1,5 @@
-import Link from "next/link";
 import type { AnchorHTMLAttributes, ButtonHTMLAttributes, ReactNode } from "react";
+import { SiteLink } from "@/components/ui/site-link";
 
 type ButtonVariant = "primary" | "quiet" | "dark";
 
@@ -31,18 +31,10 @@ export function ButtonLink({
 }: ButtonLinkProps) {
   const classes = `${variantClass[variant]} ${className}`.trim();
 
-  if (href.startsWith("http") || href.startsWith("mailto:")) {
-    return (
-      <a className={classes} href={href} {...props}>
-        {children}
-      </a>
-    );
-  }
-
   return (
-    <Link className={classes} href={href} {...props}>
+    <SiteLink className={classes} href={href} {...props}>
       {children}
-    </Link>
+    </SiteLink>
   );
 }
 

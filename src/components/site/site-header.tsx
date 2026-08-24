@@ -1,8 +1,8 @@
 "use client";
 
-import Link from "next/link";
 import { Download } from "lucide-react";
 import { usePathname } from "next/navigation";
+import { SiteLink } from "@/components/ui/site-link";
 import { navItems } from "@/content/site";
 import { routes } from "@/lib/routes";
 import { MobileNav } from "./mobile-nav";
@@ -20,13 +20,17 @@ export function SiteHeader() {
 
   return (
     <header className="site-header">
-      <Link aria-label="Brian Li Systems Lab home" className="brand" href={routes.home}>
+      <SiteLink
+        aria-label="Brian Li Systems Lab home"
+        className="brand"
+        href={routes.home}
+      >
         <span className="brand__mark">BL</span>
         <span className="brand__text">Brian Li / Systems Lab</span>
-      </Link>
+      </SiteLink>
       <nav aria-label="Primary navigation" className="site-header__nav">
         {navItems.map((item) => (
-          <Link
+          <SiteLink
             aria-current={isActivePath(pathname, item.href) ? "page" : undefined}
             className={`site-header__link${
               isActivePath(pathname, item.href) ? " site-header__link--active" : ""
@@ -38,7 +42,7 @@ export function SiteHeader() {
             {item.icon ? (
               <Download aria-hidden="true" size={16} strokeWidth={2.5} />
             ) : null}
-          </Link>
+          </SiteLink>
         ))}
       </nav>
       <MobileNav />

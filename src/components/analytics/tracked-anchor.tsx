@@ -1,7 +1,7 @@
 "use client";
 
-import Link from "next/link";
 import type { AnchorHTMLAttributes, ReactNode } from "react";
+import { SiteLink } from "@/components/ui/site-link";
 import {
   trackCaseStudyOpen,
   trackContactClick,
@@ -47,17 +47,9 @@ export function TrackedAnchor({
     onClick?.(event);
   };
 
-  if (href.startsWith("http") || href.startsWith("mailto:")) {
-    return (
-      <a href={href} onClick={handleClick} {...props}>
-        {children}
-      </a>
-    );
-  }
-
   return (
-    <Link href={href} onClick={handleClick} {...props}>
+    <SiteLink href={href} onClick={handleClick} {...props}>
       {children}
-    </Link>
+    </SiteLink>
   );
 }

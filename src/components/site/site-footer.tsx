@@ -1,6 +1,6 @@
 import { TrackedAnchor } from "@/components/analytics/tracked-anchor";
-import Link from "next/link";
 import { Download } from "lucide-react";
+import { SiteLink } from "@/components/ui/site-link";
 import { footerLinks, sourceCodeUrl } from "@/content/site";
 import { routes } from "@/lib/routes";
 
@@ -19,15 +19,15 @@ export function SiteFooter() {
       <nav className="site-footer__sitemap" aria-label="Footer sitemap">
         <div>
           <p>Work</p>
-          <Link href={routes.caseStudies}>Case Studies</Link>
-          <Link href={routes.debugLog}>Debug Log</Link>
-          <Link href={routes.resume}>Resume</Link>
+          <SiteLink href={routes.caseStudies}>Case Studies</SiteLink>
+          <SiteLink href={routes.debugLog}>Debug Log</SiteLink>
+          <SiteLink href={routes.resume}>Resume</SiteLink>
         </div>
         <div>
           <p>Projects</p>
-          <Link href={routes.rebalance}>ReBalance</Link>
-          <Link href={routes.flipThatDigit}>Flip That Digit</Link>
-          <Link href={routes.operationSurf}>Operation Surf</Link>
+          <SiteLink href={routes.rebalance}>ReBalance</SiteLink>
+          <SiteLink href={routes.flipThatDigit}>Flip That Digit</SiteLink>
+          <SiteLink href={routes.operationSurf}>Operation Surf</SiteLink>
         </div>
       </nav>
       <nav aria-label="Footer links" className="site-footer__links">
