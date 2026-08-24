@@ -1,5 +1,12 @@
+import type { Metadata } from "next";
 import { debugLogEntries } from "@/content/debug-log";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+  title: "Engineering Debug Log — Brian Li",
+  description:
+    "Failure notes and engineering decision records from Brian Li's projects, including debugging steps, tradeoffs, changed assumptions, and practical fixes.",
+};
 
 export default function DebugLogPage() {
   return (

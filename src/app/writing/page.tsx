@@ -1,5 +1,12 @@
+import type { Metadata } from "next";
 import { writingEntries } from "@/content/writing";
 import { Tag } from "@/components/ui/tag";
+
+export const metadata: Metadata = {
+  title: "Engineering Notes — Brian Li",
+  description:
+    "Short engineering notes by Brian Li on embedded systems, debugging, hardware-software interfaces, project decisions, and lessons from the systems lab.",
+};
 
 export default function WritingPage() {
   return (

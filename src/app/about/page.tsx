@@ -36,7 +36,8 @@ import { routes } from "@/lib/routes";
 
 export const metadata: Metadata = {
   title: "About — Brian Li",
-  description: aboutIntro.heading,
+  description:
+    "Meet Brian Li, a Hawaii-born Cal Poly computer engineering student building embedded systems, robotics, backend tools, and hardware-software interfaces.",
 };
 
 const asideIcons: Record<string, React.ElementType> = {
