@@ -12,9 +12,14 @@ type ProjectArtifactProps = {
   slug: string;
 };
 
-const filters = ["All", "Hardware", "Embedded", "Backend", "Product", "Community"] as const;
+const filters = ["All", "Systems", "Hardware", "Embedded", "Backend", "Product", "Community"] as const;
 
 const recommendedReading = [
+  {
+    title: "KERES",
+    reason: "simulation, control, and verification",
+    href: "/case-studies/keres",
+  },
   {
     title: "ReBalance",
     reason: "strongest hardware/software thesis",
@@ -29,11 +34,6 @@ const recommendedReading = [
     title: "Operation Surf",
     reason: "backend/API evidence",
     href: "/case-studies/operation-surf",
-  },
-  {
-    title: "Flip That Digit",
-    reason: "embedded systems constraint work",
-    href: "/case-studies/flip-that-digit",
   },
 ] as const;
 
@@ -170,6 +170,30 @@ function FlipThatDigitArtifact() {
 }
 
 function ProjectArtifact({ slug }: ProjectArtifactProps) {
+  if (slug === "keres") {
+    return (
+      <div
+        className="project-artifact project-artifact--keres"
+        aria-label="Abstract KERES experiment trace"
+        role="img"
+      >
+        <div className="keres-card-trace" aria-hidden="true">
+          <span className="keres-card-trace__asset">asset</span>
+          {["01", "02", "03", "04", "05", "06"].map((node) => (
+            <i key={node}>{node}</i>
+          ))}
+          <b />
+        </div>
+        <div className="keres-card-events">
+          {['config', 'coordinate', 'control', 'record', 'replay'].map((event) => (
+            <span key={event}>{event}</span>
+          ))}
+        </div>
+        <p>simulation / PX4 / events / reproducible evidence</p>
+      </div>
+    );
+  }
+
   if (slug === "rebalance") {
     return (
       <div

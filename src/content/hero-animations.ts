@@ -1,9 +1,18 @@
 export const heroAnimations = [
   {
+    id: "keres",
+    eyebrow: "simulation/evidence trace",
+    title: "KERES experiment loop",
+    label: "01 KERES Trace",
+    caption:
+      "Coordination becomes useful when commands, events, metrics, and replay stay connected.",
+    duration: 5200,
+  },
+  {
     id: "rebalance",
     eyebrow: "signal-flow/control-system sketch",
     title: "ReBalance calibration loop",
-    label: "01 Signal Flow",
+    label: "02 Signal Flow",
     caption:
       "Raw pressure is noisy; the product challenge is turning it into calm feedback.",
     duration: 3200,
@@ -12,19 +21,10 @@ export const heroAnimations = [
     id: "flip",
     eyebrow: "fpga/state-machine cycle",
     title: "Flip That Digit debounce loop",
-    label: "02 FPGA State",
+    label: "03 FPGA State",
     caption:
       "The game depends on release timing, debounce logic, and constrained display output.",
     duration: 5200,
-  },
-  {
-    id: "ops",
-    eyebrow: "backend/coordination workflow",
-    title: "Operation Surf access pipeline",
-    label: "03 API Access",
-    caption:
-      "The backend protects coordination data by shaping what each user can access.",
-    duration: 5800,
   },
 ] as const;
 

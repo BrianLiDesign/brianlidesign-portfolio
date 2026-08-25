@@ -13,6 +13,7 @@ This site is a Next.js App Router application exported as static HTML for GitHub
 - `src/app/` owns routes.
 - `src/components/sections/` maps to the Figma page sections.
 - `src/components/rebalance/` owns the interactive pressure demo.
+- `src/components/keres/` owns the KERES replay, formation explorer, architecture interaction, and custom case-study composition.
 - `src/components/visuals/` owns SVG and decorative technical motifs.
 - `src/content/` owns editable copy and project/debug data.
 - `src/lib/` owns route constants, metadata, and pure logic.

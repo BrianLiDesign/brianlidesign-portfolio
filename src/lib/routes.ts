@@ -1,6 +1,7 @@
 export const routes = {
   home: "/",
   caseStudies: "/case-studies",
+  keres: "/case-studies/keres",
   rebalance: "/case-studies/rebalance",
   spontus: "/case-studies/spontus",
   flipThatDigit: "/case-studies/flip-that-digit",

@@ -25,6 +25,7 @@ export function SiteFooter() {
         </div>
         <div>
           <p>Projects</p>
+          <SiteLink href={routes.keres}>KERES</SiteLink>
           <SiteLink href={routes.rebalance}>ReBalance</SiteLink>
           <SiteLink href={routes.flipThatDigit}>Flip That Digit</SiteLink>
           <SiteLink href={routes.operationSurf}>Operation Surf</SiteLink>

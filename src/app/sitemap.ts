@@ -11,6 +11,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${siteMetadata.url}${routes.home}`, lastModified },
     { url: `${siteMetadata.url}${routes.about}`, lastModified },
     { url: `${siteMetadata.url}${routes.caseStudies}`, lastModified },
+    { url: `${siteMetadata.url}${routes.keres}`, lastModified },
     { url: `${siteMetadata.url}${routes.rebalance}`, lastModified },
     { url: `${siteMetadata.url}${routes.flipThatDigit}`, lastModified },
     { url: `${siteMetadata.url}${routes.operationSurf}`, lastModified },

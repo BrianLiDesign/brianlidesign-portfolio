@@ -84,6 +84,7 @@ docs/               Architecture, content, Figma, and roadmap notes
 
 - Homepage/nav/footer copy: `src/content/site.ts`
 - Case studies: `src/content/projects.ts`
+- KERES case-study evidence and public-claim boundaries: `src/content/keres.ts`
 - Debug Log entries: `src/content/debug-log.ts`
 - Writing entries: `src/content/writing.ts`
 - Resume highlights: `src/content/resume-highlights.ts`
@@ -92,6 +93,6 @@ docs/               Architecture, content, Figma, and roadmap notes
 
 The current homepage follows the Figma prototype structure:
 
-`Hero → Proof Chips → Signal Sketch → Signal Ribbon → ReBalance Demo → How I Work → Hawaii/Community Bridge → Case Studies → Debug Log → Footer`.
+`Hero → What I Build → Signal Ribbon → KERES Flagship → How I Work → Hawaii/Community Bridge → Case Studies → Debug Log → Footer`.
 
 The design should stay light, technical, candid, and grounded in real engineering evidence.

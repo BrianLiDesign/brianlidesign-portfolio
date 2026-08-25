@@ -1,7 +1,7 @@
 import { CaseStudyGrid } from "@/components/sections/case-study-grid";
 import { CommunityBridge } from "@/components/sections/community-bridge";
 import { DebugLogTeaser } from "@/components/sections/debug-log-teaser";
-import { FlagshipRebalance } from "@/components/sections/flagship-rebalance";
+import { FlagshipKeres } from "@/components/sections/flagship-keres";
 import { HeroSection } from "@/components/sections/hero-section";
 import { HowIWork } from "@/components/sections/how-i-work";
 import { SignalRibbon } from "@/components/sections/signal-ribbon";
@@ -13,7 +13,7 @@ export default function HomePage() {
       <HeroSection />
       <WhatIBuild />
       <SignalRibbon />
-      <FlagshipRebalance />
+      <FlagshipKeres />
       <HowIWork />
       <CommunityBridge />
       <CaseStudyGrid />

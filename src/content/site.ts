@@ -36,15 +36,20 @@ export const hero = {
 };
 
 export const heroProofStrip = [
-  "2nd place CPES Hackathon",
-  "$74 Arduino rehab prototype",
-  "~20 Hz Web Serial pipeline",
+  "7 KERES coordination strategies",
+  "6 KERES formation families",
+  "417 passing KERES tests",
   "600 volunteers",
   "55% data-fetching complexity reduction",
   "200+ Jira tickets",
 ] as const;
 
 export const proofChips = [
+  {
+    title: "KERES",
+    proof: "simulation, PX4 control, experiments, and replay",
+    href: routes.keres,
+  },
   {
     title: "ReBalance",
     proof: "4 FSR sensors + 20 Hz Web Serial feedback",
@@ -54,11 +59,6 @@ export const proofChips = [
     title: "Flip That Digit",
     proof: "SystemVerilog/Assembly on Basys3",
     href: routes.flipThatDigit,
-  },
-  {
-    title: "Operation Surf",
-    proof: "backend systems for 600 volunteers",
-    href: routes.operationSurf,
   },
 ] as const;
 

@@ -10,6 +10,7 @@ const publicPages = [
 	["/", "index.html"],
 	["/about", "about.html"],
 	["/case-studies", "case-studies.html"],
+	["/case-studies/keres", "case-studies/keres.html"],
 	["/case-studies/rebalance", "case-studies/rebalance.html"],
 	["/case-studies/spontus", "case-studies/spontus.html"],
 	["/case-studies/flip-that-digit", "case-studies/flip-that-digit.html"],

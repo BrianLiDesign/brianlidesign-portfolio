@@ -4,7 +4,7 @@ import { CaseStudyGrid } from "@/components/sections/case-study-grid";
 export const metadata: Metadata = {
   title: "Engineering Case Studies — Brian Li",
   description:
-    "Engineering case studies by Brian Li covering embedded systems, FPGA design, backend workflows, hardware interfaces, and product decisions.",
+    "Engineering case studies by Brian Li covering simulation, robotics, PX4 control, embedded systems, backend workflows, and hardware interfaces.",
 };
 
 export default function CaseStudiesPage() {

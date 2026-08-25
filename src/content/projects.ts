@@ -22,6 +22,24 @@ export type Project = {
 
 export const projects: Project[] = [
   {
+    slug: "keres",
+    label: "Simulation - Coordination and evidence system",
+    title: "KERES",
+    href: routes.keres,
+    summary:
+      "A simulation-first multi-drone research platform connecting coordination, PX4 control, experiment records, event accounting, and replay.",
+    role: "Systems Engineer Intern",
+    evidence: "7 strategies, 6 formations, reproducible run records, 417 passing tests",
+    note: "turned a broad swarm concept into software engineers could configure, measure, and inspect",
+    tags: ["Python", "PX4", "Isaac Sim", "Pegasus", "MAVLink"],
+    categories: ["Systems", "Embedded"],
+    maturity: "Booz Allen simulation prototype",
+    caseStudyThesis:
+      "A difficult simulation becomes useful when its coordination, control, and evidence layers are explicit and reproducible.",
+    technicalHighlights: ["PX4 OFFBOARD lifecycle", "matched-seed comparisons", "event recording and replay"],
+    artifacts: ["architecture trace", "formation explorer", "verification record"],
+  },
+  {
     slug: "rebalance",
     label: "Hardware-software - Calibration file",
     title: "ReBalance",

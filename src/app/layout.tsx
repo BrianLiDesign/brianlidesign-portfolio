@@ -65,7 +65,7 @@ export const metadata: Metadata = {
     images: [
       {
         url: siteMetadata.ogImage,
-        alt: "ReBalance balance feedback system interface",
+        alt: "KERES multi-drone simulation and experiment replay interface",
       },
     ],
   },

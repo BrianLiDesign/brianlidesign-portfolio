@@ -86,10 +86,10 @@ export const timeline: TimelineEntry[] = [
       "Information Technology Assistant - hands-on support, troubleshooting, and 200+ Jira tickets across campus systems.",
   },
   {
-    year: "2025",
+    year: "2026",
     title: "Booz Allen Hamilton",
     description:
-      "Systems Engineer Intern - applying hardware-software thinking at enterprise scale.",
+      "Systems Engineer Intern - built simulation, PX4 control, coordination, and reproducible experiment infrastructure for KERES.",
   },
 ];
 
@@ -106,10 +106,10 @@ export const experience: ExperienceEntry[] = [
   {
     role: "Systems Engineer Intern",
     org: "Booz Allen Hamilton",
-    period: "Summer 2025",
+    period: "Summer 2026",
     description:
-      "Systems engineering at enterprise scale - bridging hardware constraints and software architecture in defense and government technology programs.",
-    tags: ["Systems Engineering", "Enterprise", "Hardware-Software"],
+      "Built and integrated major parts of a Python multi-drone simulation platform spanning swarm coordination, PX4 control, Isaac Sim/Pegasus integration, reproducible experiments, and software verification.",
+    tags: ["Python", "PX4 SITL", "Isaac Sim", "Simulation", "Verification"],
     icon: "shield",
   },
   {
@@ -196,7 +196,7 @@ export const technicalSkills: SkillGroup[] = [
   },
   {
     label: "Frameworks & Tools",
-    skills: ["Next.js", "React", "Node.js", "MongoDB/Mongoose", "Git", "VS Code"],
+    skills: ["Next.js", "React", "Node.js", "MongoDB/Mongoose", "Isaac Sim", "Pegasus", "Git", "VS Code"],
     icon: "package",
   },
   {
@@ -204,6 +204,8 @@ export const technicalSkills: SkillGroup[] = [
     skills: [
       "Basys3 / FPGA",
       "Arduino",
+      "PX4 SITL",
+      "MAVLink",
       "FSR Sensors",
       "Web Serial",
       "Oscilloscope",

@@ -1,9 +1,9 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { KeresReplay } from "@/components/keres/keres-replay";
 import { heroAnimations } from "@/content/hero-animations";
 import { FlipDigitHeroAnimation } from "./flip-digit-hero-animation";
-import { OperationSurfHeroAnimation } from "./operation-surf-hero-animation";
 import {
   ReBalanceHeroAnimation,
   type RebalanceSketchNode,
@@ -83,16 +83,16 @@ export function HeroAnimationPanel() {
       </div>
 
       <div className="hero-animation-panel__stage hero-slide-enter" key={slide.id}>
-        {slide.id === "rebalance" ? (
+        {slide.id === "keres" ? (
+          <KeresReplay variant="panel" />
+        ) : slide.id === "rebalance" ? (
           <ReBalanceHeroAnimation
             activeNode={activeNode}
             annotation={annotation}
             setActiveNode={setActiveNode}
           />
-        ) : slide.id === "flip" ? (
-          <FlipDigitHeroAnimation />
         ) : (
-          <OperationSurfHeroAnimation />
+          <FlipDigitHeroAnimation />
         )}
       </div>
       <figcaption className="hero-animation-panel__caption">

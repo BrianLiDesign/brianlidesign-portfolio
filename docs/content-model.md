@@ -4,7 +4,7 @@ Most site content should be edited in `src/content/`.
 
 ## Case Studies
 
-Edit `src/content/projects.ts`.
+Edit `src/content/projects.ts` for the index card model. Detailed shared case-study content lives in `src/content/case-studies.ts`; KERES uses the custom, privacy-bounded model in `src/content/keres.ts`.
 
 Each project has:
 
@@ -18,7 +18,7 @@ Each project has:
 - `note`
 - `tags`
 
-The homepage currently highlights ReBalance, Flip That Digit, and Operation Surf. Add future projects only when the homepage design is expanded to support more than three cards.
+The homepage flagship is KERES. ReBalance, Flip That Digit, Operation Surf, Spontus, and Vybe Tutor remain available through the case-study grid.
 
 ## Debug Log
 

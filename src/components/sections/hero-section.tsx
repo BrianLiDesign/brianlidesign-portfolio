@@ -21,8 +21,8 @@ export function HeroSection() {
           Focused on hardware/software systems, embedded tooling, robotics, and feedback interfaces.
         </p>
         <div className="hero-section__actions" aria-label="Primary actions" role="group">
-          <ButtonLink href="#rebalance" variant="primary">
-            View ReBalance
+          <ButtonLink href={routes.keres} variant="primary">
+            View KERES
           </ButtonLink>
           <TrackedButtonLink href={routes.resumePdf} location="hero" variant="quiet">
             Download resume
