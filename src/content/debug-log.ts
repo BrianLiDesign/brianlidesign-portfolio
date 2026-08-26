@@ -6,6 +6,7 @@ export type DebugLogEntry = {
   stages: string[];
   tags: string[];
   caseStudyHref: string;
+  featured?: boolean;
   decisionRecord: {
     context: string;
     problem: string;
@@ -14,10 +15,68 @@ export type DebugLogEntry = {
     result: string;
     learned: string;
   };
+  trace?: {
+    title: string;
+    paths: {
+      label: string;
+      steps: string[];
+      outcome: string;
+      status: "risk" | "implemented";
+    }[];
+  };
+  noteLabels?: string[];
   notes: string[];
 };
 
 export const debugLogEntries: DebugLogEntry[] = [
+  {
+    slug: "keres-event-ordering",
+    label: "Entry 006 · KERES event ordering",
+    title: "KERES — event order protected the metric",
+    thesis:
+      "When a hostile reached the asset during the same simulation step as an interception, the breach still had to count.",
+    stages: ["edge case", "event order", "regression tests"],
+    tags: ["simulation integrity", "safety accounting", "determinism"],
+    caseStudyHref: "/case-studies/keres",
+    featured: true,
+    decisionRecord: {
+      context:
+        "A simulation update could contain asset contact, safety events, and an interceptor-hostile contact at nearly the same time.",
+      problem:
+        "If interception cleanup ran first, it could remove a hostile before breach accounting inspected the same step and create a misleading success metric.",
+      decision:
+        "Run safety and breach accounting before interception resolution, with same-step asset breach taking precedence.",
+      tradeoff:
+        "The update loop needed explicit event precedence instead of treating all contacts as interchangeable cleanup work.",
+      result:
+        "Run records preserve the breach even when interception contact occurs in the same step, so the metric matches the simulated event order.",
+      learned:
+        "Event ordering is part of the measurement model. If the order can change an outcome, it belongs in the specification and the tests.",
+    },
+    trace: {
+      title: "Same-step event trace",
+      paths: [
+        {
+          label: "Risky order",
+          steps: ["Resolve interception", "Remove hostile", "Check asset breach"],
+          outcome: "Asset contact can disappear from the run metrics.",
+          status: "risk",
+        },
+        {
+          label: "Implemented order",
+          steps: ["Check breach + safety", "Record event outcome", "Resolve interception"],
+          outcome: "The breach remains recorded before contact cleanup.",
+          status: "implemented",
+        },
+      ],
+    },
+    noteLabels: ["Failure case", "Decision", "Regression coverage"],
+    notes: [
+      "Model the edge case where a hostile reaches the asset during the same update as interceptor contact.",
+      "Make breach and safety accounting run first, then resolve the abstract interception without rewriting the earlier outcome.",
+      "Lock the rule down with tests for single-contact resolution, sustained contact, separation and re-entry, and same-step breach precedence.",
+    ],
+  },
   {
     slug: "rebalance-calibration-failure",
     label: "Entry 001 · ReBalance calibration failure",

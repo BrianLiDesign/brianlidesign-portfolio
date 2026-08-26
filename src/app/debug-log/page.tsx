@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
+import { AlertTriangle, Check, GitCompareArrows } from "lucide-react";
 import { debugLogEntries } from "@/content/debug-log";
 import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Engineering Debug Log — Brian Li",
   description:
-    "Failure notes and engineering decision records from Brian Li's projects, including debugging steps, tradeoffs, changed assumptions, and practical fixes.",
+    "Engineering decision records from Brian Li's projects, including KERES event ordering, debugging steps, tradeoffs, changed assumptions, and practical fixes.",
 };
 
 export default function DebugLogPage() {
@@ -15,7 +16,11 @@ export default function DebugLogPage() {
       <h1>Failure notes, decision changes, and engineering judgment.</h1>
       <div className="debug-list">
         {debugLogEntries.map((entry) => (
-          <details className="debug-card" key={entry.slug}>
+          <details
+            className={`debug-card${entry.featured ? " debug-card--featured" : ""}`}
+            key={entry.slug}
+            open={entry.featured}
+          >
             <summary>
               <span className="debug-card__label">{entry.label}</span>
               <span className="debug-card__summary-title">{entry.title}</span>
@@ -47,9 +52,46 @@ export default function DebugLogPage() {
                 </div>
               ))}
             </dl>
+            {entry.trace ? (
+              <section className="debug-trace" aria-labelledby={`${entry.slug}-trace-title`}>
+                <h3 id={`${entry.slug}-trace-title`}>
+                  <GitCompareArrows aria-hidden="true" />
+                  {entry.trace.title}
+                </h3>
+                <div className="debug-trace__paths">
+                  {entry.trace.paths.map((path) => {
+                    const StatusIcon = path.status === "risk" ? AlertTriangle : Check;
+
+                    return (
+                      <article
+                        className={`debug-trace__path debug-trace__path--${path.status}`}
+                        key={path.label}
+                      >
+                        <p className="debug-trace__path-label">
+                          <StatusIcon aria-hidden="true" />
+                          {path.label}
+                        </p>
+                        <ol aria-label={`${path.label} sequence`}>
+                          {path.steps.map((step, index) => (
+                            <li key={step}>
+                              <span>{String(index + 1).padStart(2, "0")}</span>
+                              {step}
+                            </li>
+                          ))}
+                        </ol>
+                        <p className="debug-trace__outcome">{path.outcome}</p>
+                      </article>
+                    );
+                  })}
+                </div>
+              </section>
+            ) : null}
             <ol>
-              {entry.notes.map((note) => (
-                <li key={note}>{note}</li>
+              {entry.notes.map((note, index) => (
+                <li key={note}>
+                  {entry.noteLabels?.[index] ? <strong>{entry.noteLabels[index]}</strong> : null}
+                  {note}
+                </li>
               ))}
             </ol>
             <Link className="debug-card__link" href={entry.caseStudyHref}>

@@ -6,7 +6,7 @@ import { routes } from "@/lib/routes";
 export function DebugLogTeaser() {
   const entry = debugLogEntries[0];
   const processSteps = entry.notes.map((note, index) => ({
-    label: ["Context", "Decision", "Next test"][index] ?? "Note",
+    label: entry.noteLabels?.[index] ?? ["Context", "Decision", "Next test"][index] ?? "Note",
     note,
     number: String(index + 1).padStart(2, "0"),
   }));
