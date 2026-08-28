@@ -111,14 +111,16 @@ function htmlCandidatesForPath(urlPath) {
   }
 
   const withoutLeadingSlash = decodedPath.replace(/^\/+/, "");
-  const candidates = [path.join(outDir, withoutLeadingSlash)];
 
   if (!path.extname(withoutLeadingSlash)) {
-    candidates.push(path.join(outDir, `${withoutLeadingSlash}.html`));
-    candidates.push(path.join(outDir, withoutLeadingSlash, "index.html"));
+    return [
+      path.join(outDir, `${withoutLeadingSlash}.html`),
+      path.join(outDir, withoutLeadingSlash, "index.html"),
+      path.join(outDir, withoutLeadingSlash),
+    ];
   }
 
-  return candidates;
+  return [path.join(outDir, withoutLeadingSlash)];
 }
 
 async function resolveOutputPath(urlPath) {

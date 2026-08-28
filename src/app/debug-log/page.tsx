@@ -18,6 +18,7 @@ export default function DebugLogPage() {
         {debugLogEntries.map((entry) => (
           <details
             className={`debug-card${entry.featured ? " debug-card--featured" : ""}`}
+            id={entry.slug}
             key={entry.slug}
             open={entry.featured}
           >

@@ -4,12 +4,12 @@ import { TrackedButtonLink } from "@/components/analytics/tracked-button-link";
 import { Tag } from "@/components/ui/tag";
 import { education, experience, technicalSkills } from "@/content/about";
 import { projects } from "@/content/projects";
+import { resumeIntroduction, resumeMetadataDescription } from "@/content/resume";
 import { routes } from "@/lib/routes";
 
 export const metadata: Metadata = {
   title: "Resume - Brian Li",
-  description:
-    "HTML resume for Brian Li, a Cal Poly computer engineering student focused on hardware/software systems.",
+  description: resumeMetadataDescription,
 };
 
 export default function ResumePage() {
@@ -19,11 +19,7 @@ export default function ResumePage() {
         <div>
           <p className="section-label">Resume</p>
           <h1>Brian Li</h1>
-          <p>
-            Computer engineering student focused on embedded systems,
-            hardware/software interfaces, backend workflows, and practical
-            debugging.
-          </p>
+          <p>{resumeIntroduction}</p>
         </div>
         <TrackedButtonLink href={routes.resumePdf} location="resume_page" variant="primary">
           Download PDF

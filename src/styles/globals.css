@@ -4416,6 +4416,37 @@ input[type="range"] {
   gap: 1rem;
 }
 
+.writing-card__link {
+  align-items: center;
+  color: var(--color-teal);
+  display: inline-flex;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  gap: 0.5rem;
+  letter-spacing: 0.06em;
+  margin-top: 1.25rem;
+  text-transform: uppercase;
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  text-underline-offset: 0.3em;
+  transition:
+    color 200ms,
+    text-decoration-color 200ms;
+}
+
+.writing-card__link span {
+  transition: transform 200ms;
+}
+
+.writing-card__link:hover {
+  color: var(--color-ink);
+  text-decoration-color: currentColor;
+}
+
+.writing-card__link:hover span {
+  transform: translateX(0.2rem);
+}
+
 /* About page */
 
 .about-page .content-page {
@@ -5969,6 +6000,10 @@ main {
     color 300ms;
 }
 
+.debug-log-page .debug-card {
+  scroll-margin-top: 5.5rem;
+}
+
 .debug-log-page .debug-card__link:hover {
   background: rgba(0, 180, 216, 0.08);
   border-color: rgba(0, 180, 216, 0.72);
@@ -6275,9 +6310,13 @@ main {
   .principle-grid,
   .experience-grid,
   .skill-grid,
-  .resume-list,
-  .resume-page__header {
+  .resume-list {
     grid-template-columns: 1fr;
+  }
+
+  .resume-page__header {
+    align-items: flex-start;
+    flex-direction: column;
   }
 
   .case-study-flow__steps {

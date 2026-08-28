@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { writingEntries } from "@/content/writing";
 import { Tag } from "@/components/ui/tag";
 
@@ -24,6 +25,10 @@ export default function WritingPage() {
                 <Tag key={tag}>{tag}</Tag>
               ))}
             </div>
+            <Link className="writing-card__link" href={entry.href}>
+              {entry.linkLabel}
+              <span aria-hidden="true">→</span>
+            </Link>
           </article>
         ))}
       </div>
