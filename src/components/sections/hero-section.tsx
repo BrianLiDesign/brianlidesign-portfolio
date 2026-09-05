@@ -1,4 +1,4 @@
-import { hero, heroProofStrip } from "@/content/site";
+import { hero } from "@/content/site";
 import { routes } from "@/lib/routes";
 import { TrackedButtonLink } from "@/components/analytics/tracked-button-link";
 import { ButtonLink } from "@/components/ui/button";
@@ -27,11 +27,6 @@ export function HeroSection() {
           <TrackedButtonLink href={routes.resumePdf} location="hero" variant="quiet">
             Download resume
           </TrackedButtonLink>
-        </div>
-        <div className="hero-proof-strip" aria-label="Strongest proof points" role="group">
-          {heroProofStrip.map((proof) => (
-            <span key={proof}>{proof}</span>
-          ))}
         </div>
         <ProofChips />
       </div>

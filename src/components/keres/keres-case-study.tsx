@@ -26,14 +26,12 @@ export function KeresCaseStudy() {
             </ButtonLink>
           </div>
           <dl className="keres-hero__status">
-            <div>
-              <dt>Status</dt>
-              <dd>Simulation prototype</dd>
-            </div>
-            <div>
-              <dt>Primary language</dt>
-              <dd>Python</dd>
-            </div>
+            {keresProject.summary.map((item) => (
+              <div key={item.label}>
+                <dt>{item.label}</dt>
+                <dd>{item.value}</dd>
+              </div>
+            ))}
           </dl>
         </div>
         <KeresReplay />

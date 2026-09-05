@@ -35,15 +35,6 @@ export const hero = {
     "A systems lab notebook for projects at the edge of code, circuits, robotics, and community service - designed for the messy path between raw data and reliable behavior.",
 };
 
-export const heroProofStrip = [
-  "7 KERES coordination strategies",
-  "6 KERES formation families",
-  "417 passing KERES tests",
-  "600 volunteers",
-  "55% data-fetching complexity reduction",
-  "200+ Jira tickets",
-] as const;
-
 export const proofChips = [
   {
     title: "KERES",
@@ -80,10 +71,8 @@ export const communityBridge = {
   label: "Field context",
   title: "Useful feedback for real people.",
   lines: [
-    "Hawaii shaped how I think about technology: useful systems should be understandable, local, and human.",
-    "I'm a Hawaii-born computer engineering student creating and exploring technology one line, circuit, and prototype at a time.",
-    "My projects start with a practical purpose, then move through planning, testing, and repeated refinement until the system communicates clearly.",
-    "That shows up in projects where technology has to be useful to people outside the lab: Digital Ready Hawaii seniors learning technology, volunteers coordinating support, patients needing calm feedback, and local communities.",
+    "Teaching seniors through Digital Ready Hawaii showed me that technology earns trust when people can understand what it is doing and what to do next.",
+    "That lesson guides projects for volunteers, patients, and local communities: expose the system state, reduce noise, and make the next action clear.",
   ],
 };
 

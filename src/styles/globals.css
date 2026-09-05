@@ -754,6 +754,7 @@ body:has(.keres-page) .site-header {
 .keres-hero__status dd {
   font-size: 0.72rem;
   letter-spacing: 0.12em;
+  line-height: 1.45;
   margin: 0;
   text-transform: uppercase;
 }
@@ -1629,7 +1630,7 @@ body:has(.keres-page) .site-header {
   margin: 0 auto;
   max-width: 1320px;
   min-height: calc(88vh - 68px);
-  padding: clamp(2rem, 5vw, 3.8rem) var(--space-page) clamp(2.4rem, 5vw, 4rem);
+  padding: clamp(1.5rem, 3vw, 2.25rem) var(--space-page) clamp(2.4rem, 5vw, 4rem);
 }
 
 .hero-section__copy {
@@ -1647,7 +1648,7 @@ body:has(.keres-page) .site-header {
   font-size: 0.78rem;
   letter-spacing: 0.04em;
   line-height: 1.45;
-  margin: 0 0 clamp(1.4rem, 3vw, 2rem);
+  margin: 0 0 clamp(1rem, 2vw, 1.4rem);
   max-width: 640px;
   padding: 0.75rem 1rem;
 }
@@ -1677,7 +1678,7 @@ body:has(.keres-page) .site-header {
   color: var(--color-muted);
   font-size: clamp(1.05rem, 2vw, 1.35rem);
   line-height: 1.55;
-  margin: clamp(1.6rem, 3vw, 2rem) 0 1rem;
+  margin: clamp(1.15rem, 2vw, 1.5rem) 0 0.8rem;
   max-width: 620px;
 }
 
@@ -1687,7 +1688,7 @@ body:has(.keres-page) .site-header {
   color: var(--color-ink);
   font-size: 1rem;
   line-height: 1.5;
-  margin: 0 0 1.25rem;
+  margin: 0 0 0.9rem;
   max-width: 620px;
   padding-left: 1rem;
 }
@@ -1720,8 +1721,11 @@ body:has(.keres-page) .site-header {
   letter-spacing: 0.12em;
   line-height: 1.35;
   min-height: 3.1rem;
+  min-width: 0;
+  overflow-wrap: anywhere;
   padding: 0.65rem 0.75rem;
   text-transform: uppercase;
+  white-space: normal;
 }
 
 .proof-chips {
@@ -6215,6 +6219,8 @@ main {
   .hero-section__meta,
   .hero-section h1,
   .hero-section__summary,
+  .hero-section__focus,
+  .hero-section__actions,
   .proof-chips,
   .signal-sketch {
     animation: none;
@@ -6431,8 +6437,12 @@ main {
   }
 
   .contact-cta {
-    bottom: 0.75rem;
-    right: 0.75rem;
+    bottom: auto;
+    justify-content: center;
+    margin: 0 var(--space-page) 1.5rem;
+    position: static;
+    right: auto;
+    width: calc(100% - (2 * var(--space-page)));
   }
 
   .system-diagram,
@@ -6474,12 +6484,4 @@ main {
     font-size: clamp(1.8rem, 8vw, 2.4rem);
   }
 
-  body:has(.keres-page) > .contact-cta,
-  body:has(.debug-log-page) > .contact-cta {
-    bottom: auto;
-    margin: 0 var(--space-page) 1.5rem auto;
-    position: static;
-    right: auto;
-    width: max-content;
-  }
 }

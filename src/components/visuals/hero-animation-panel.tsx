@@ -12,6 +12,7 @@ import {
 export function HeroAnimationPanel() {
   const [activeSlide, setActiveSlide] = useState(0);
   const [activeNode, setActiveNode] = useState<RebalanceSketchNode | null>(null);
+  const [reduceMotion, setReduceMotion] = useState(false);
   const slide = heroAnimations[activeSlide];
 
   const annotation =
@@ -23,15 +24,29 @@ export function HeroAnimationPanel() {
           ? "output must be calmer than input"
           : null;
 
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const updatePreference = () => setReduceMotion(mediaQuery.matches);
+
+    updatePreference();
+    mediaQuery.addEventListener("change", updatePreference);
+
+    return () => mediaQuery.removeEventListener("change", updatePreference);
+  }, []);
+
   // biome-ignore lint/correctness/useExhaustiveDependencies: Changing slides must reset the timer even when durations match.
   useEffect(() => {
+    if (reduceMotion) {
+      return;
+    }
+
     const timer = window.setTimeout(() => {
       setActiveNode(null);
       setActiveSlide((current) => (current + 1) % heroAnimations.length);
     }, slide.duration);
 
     return () => window.clearTimeout(timer);
-  }, [activeSlide, slide.duration]);
+  }, [activeSlide, slide.duration, reduceMotion]);
 
   const handleSlideSelect = (index: number) => {
     setActiveNode(null);
@@ -46,7 +61,7 @@ export function HeroAnimationPanel() {
       <div className="hero-animation-panel__header signal-sketch__header">
         <span>{slide.eyebrow}</span>
         <span>
-          auto · {activeSlide + 1}/{heroAnimations.length}
+          {reduceMotion ? "manual" : "auto"} · {activeSlide + 1}/{heroAnimations.length}
         </span>
       </div>
 

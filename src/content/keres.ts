@@ -5,6 +5,24 @@ export const keresProject = {
   period: "Summer 2026",
   thesis:
     "I helped turn a broad swarm concept into a configurable simulation platform engineers could test, measure, and replay.",
+  summary: [
+    {
+      label: "Contribution",
+      value: "Coordination, PX4 control, experiment infrastructure",
+    },
+    {
+      label: "Team",
+      value: "Booz Allen systems engineering internship",
+    },
+    {
+      label: "Constraints",
+      value: "Simulation prototype; protected operational context",
+    },
+    {
+      label: "Outcome",
+      value: "7 strategies, 6 formations, 417 passing tests",
+    },
+  ],
   scope: {
     inScope: [
       "Simulated multi-drone coordination and defensive formations",
