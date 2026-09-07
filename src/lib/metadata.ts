@@ -1,3 +1,5 @@
+import type { Metadata } from "next";
+
 const defaultSiteUrl = "https://brianlidesign.vercel.app";
 
 export const siteMetadata = {
@@ -8,3 +10,36 @@ export const siteMetadata = {
   author: "Brian Li",
   ogImage: "/assets/images/case-studies/keres/hero.png",
 } as const;
+
+type PageMetadataOptions = {
+  title: string;
+  description: string;
+  path: string;
+  image?: string;
+  imageAlt?: string;
+};
+
+export function createPageMetadata({ title, description, path, image, imageAlt }: PageMetadataOptions): Metadata {
+  const url = new URL(path, siteMetadata.url).toString();
+
+  return {
+    title,
+    description,
+    alternates: { canonical: path },
+    openGraph: {
+      title,
+      description,
+      url,
+      siteName: "Brian Li · Systems Lab",
+      locale: "en_US",
+      type: "website",
+      images: image ? [{ url: image, alt: imageAlt ?? `${title} preview` }] : [],
+    },
+    twitter: {
+      card: image ? "summary_large_image" : "summary",
+      title,
+      description,
+      images: image ? [image] : [],
+    },
+  };
+}

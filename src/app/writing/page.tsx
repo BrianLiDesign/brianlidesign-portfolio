@@ -1,13 +1,15 @@
-import type { Metadata } from "next";
 import Link from "next/link";
 import { writingEntries } from "@/content/writing";
 import { Tag } from "@/components/ui/tag";
+import { createPageMetadata } from "@/lib/metadata";
+import { routes } from "@/lib/routes";
 
-export const metadata: Metadata = {
+export const metadata = createPageMetadata({
   title: "Engineering Notes — Brian Li",
   description:
     "Short engineering notes by Brian Li on embedded systems, debugging, hardware-software interfaces, project decisions, and lessons from the systems lab.",
-};
+  path: routes.writing,
+});
 
 export default function WritingPage() {
   return (

@@ -1,13 +1,15 @@
-import type { Metadata } from "next";
 import { AlertTriangle, Check, GitCompareArrows } from "lucide-react";
 import { debugLogEntries } from "@/content/debug-log";
 import Link from "next/link";
+import { createPageMetadata } from "@/lib/metadata";
+import { routes } from "@/lib/routes";
 
-export const metadata: Metadata = {
+export const metadata = createPageMetadata({
   title: "Engineering Debug Log — Brian Li",
   description:
     "Engineering decision records from Brian Li's projects, including KERES event ordering, debugging steps, tradeoffs, changed assumptions, and practical fixes.",
-};
+  path: routes.debugLog,
+});
 
 export default function DebugLogPage() {
   return (
@@ -27,20 +29,12 @@ export default function DebugLogPage() {
               <span className="debug-card__summary-title">{entry.title}</span>
               <span className="debug-card__thesis">{entry.thesis}</span>
             </summary>
-            <div
-              className="debug-card__stages"
-              aria-label={`${entry.title} timeline`}
-              role="group"
-            >
+            <div className="debug-card__stages" aria-label={`${entry.title} timeline`} role="group">
               {entry.stages.map((stage) => (
                 <span key={stage}>{stage}</span>
               ))}
             </div>
-            <div
-              className="debug-card__tags"
-              aria-label={`${entry.title} tags`}
-              role="group"
-            >
+            <div className="debug-card__tags" aria-label={`${entry.title} tags`} role="group">
               {entry.tags.map((tag) => (
                 <span key={tag}>{tag}</span>
               ))}
@@ -64,10 +58,7 @@ export default function DebugLogPage() {
                     const StatusIcon = path.status === "risk" ? AlertTriangle : Check;
 
                     return (
-                      <article
-                        className={`debug-trace__path debug-trace__path--${path.status}`}
-                        key={path.label}
-                      >
+                      <article className={`debug-trace__path debug-trace__path--${path.status}`} key={path.label}>
                         <p className="debug-trace__path-label">
                           <StatusIcon aria-hidden="true" />
                           {path.label}

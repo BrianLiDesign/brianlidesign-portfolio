@@ -1,4 +1,3 @@
-import type { Metadata } from "next";
 import Link from "next/link";
 import { TrackedButtonLink } from "@/components/analytics/tracked-button-link";
 import { Tag } from "@/components/ui/tag";
@@ -6,11 +5,15 @@ import { education, experience, technicalSkills } from "@/content/about";
 import { projects } from "@/content/projects";
 import { resumeIntroduction, resumeMetadataDescription } from "@/content/resume";
 import { routes } from "@/lib/routes";
+import { createPageMetadata } from "@/lib/metadata";
 
-export const metadata: Metadata = {
+export const metadata = createPageMetadata({
   title: "Resume - Brian Li",
   description: resumeMetadataDescription,
-};
+  path: routes.resume,
+  image: "/assets/images/personal/brian-li-portrait-square.jpg",
+  imageAlt: "Brian Li",
+});
 
 export default function ResumePage() {
   return (
@@ -30,7 +33,9 @@ export default function ResumePage() {
         <h2>Education</h2>
         <article>
           <h3>{education.school}</h3>
-          <p>{education.degree} - {education.expected}</p>
+          <p>
+            {education.degree} - {education.expected}
+          </p>
           <div className="tag-list">
             {education.coursework.slice(0, 8).map((course) => (
               <Tag key={course}>{course}</Tag>

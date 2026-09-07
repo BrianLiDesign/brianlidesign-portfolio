@@ -5,18 +5,18 @@ import { siteMetadata } from "@/lib/metadata";
 export const dynamic = "force-static";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const lastModified = new Date();
-
   return [
-    { url: `${siteMetadata.url}${routes.home}`, lastModified },
-    { url: `${siteMetadata.url}${routes.about}`, lastModified },
-    { url: `${siteMetadata.url}${routes.caseStudies}`, lastModified },
-    { url: `${siteMetadata.url}${routes.keres}`, lastModified },
-    { url: `${siteMetadata.url}${routes.rebalance}`, lastModified },
-    { url: `${siteMetadata.url}${routes.flipThatDigit}`, lastModified },
-    { url: `${siteMetadata.url}${routes.operationSurf}`, lastModified },
-    { url: `${siteMetadata.url}${routes.vybeTutor}`, lastModified },
-    { url: `${siteMetadata.url}${routes.debugLog}`, lastModified },
-    { url: `${siteMetadata.url}${routes.writing}`, lastModified },
+    { url: `${siteMetadata.url}${routes.home}` },
+    { url: `${siteMetadata.url}${routes.about}` },
+    { url: `${siteMetadata.url}${routes.caseStudies}` },
+    { url: `${siteMetadata.url}${routes.keres}` },
+    { url: `${siteMetadata.url}${routes.rebalance}` },
+    { url: `${siteMetadata.url}${routes.spontus}` },
+    { url: `${siteMetadata.url}${routes.flipThatDigit}` },
+    { url: `${siteMetadata.url}${routes.operationSurf}` },
+    { url: `${siteMetadata.url}${routes.vybeTutor}` },
+    { url: `${siteMetadata.url}${routes.debugLog}` },
+    { url: `${siteMetadata.url}${routes.writing}` },
+    { url: `${siteMetadata.url}${routes.resume}` },
   ];
 }

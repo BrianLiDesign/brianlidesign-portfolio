@@ -1,4 +1,3 @@
-import type { Metadata } from "next";
 import Image from "next/image";
 import {
   Cable,
@@ -33,12 +32,16 @@ import { ButtonLink } from "@/components/ui/button";
 import { TrackedAnchor } from "@/components/analytics/tracked-anchor";
 import { TrackedButtonLink } from "@/components/analytics/tracked-button-link";
 import { routes } from "@/lib/routes";
+import { createPageMetadata } from "@/lib/metadata";
 
-export const metadata: Metadata = {
+export const metadata = createPageMetadata({
   title: "About — Brian Li",
   description:
     "Meet Brian Li, a Hawaii-born Cal Poly computer engineering student building embedded systems, robotics, backend tools, and hardware-software interfaces.",
-};
+  path: routes.about,
+  image: "/assets/images/personal/brian-li-portrait-vertical.jpg",
+  imageAlt: "Portrait of Brian Li",
+});
 
 const asideIcons: Record<string, React.ElementType> = {
   waves: Waves,
@@ -99,14 +102,7 @@ function SkillTag({ skill }: { skill: string }) {
   return (
     <Tag className={hasIcon ? "tag--with-icon" : undefined}>
       {svgPath ? (
-        <Image
-          src={svgPath}
-          alt=""
-          width={13}
-          height={13}
-          className="tag__icon"
-          aria-hidden="true"
-        />
+        <Image src={svgPath} alt="" width={13} height={13} className="tag__icon" aria-hidden="true" />
       ) : LucideIcon ? (
         <LucideIcon aria-hidden="true" className="tag__icon" size={13} />
       ) : null}
@@ -128,7 +124,9 @@ export default function AboutPage() {
             <h1>{aboutIntro.heading}</h1>
             <p className="about-hero__lead">{aboutIntro.lead}</p>
             <blockquote className="about-hero__motto">
-              <span aria-hidden="true" className="about-hero__motto-mark">≋</span>
+              <span aria-hidden="true" className="about-hero__motto-mark">
+                ≋
+              </span>
               {aboutIntro.motto}
             </blockquote>
           </div>
@@ -155,30 +153,26 @@ export default function AboutPage() {
             ))}
 
             {storyPhotosWithSrc.length > 0 ? (
-            <div className="photo-row">
-              {storyPhotosWithSrc.map((photo) => (
-                <figure className="photo-slot" key={photo.caption}>
-                  {photo.src ? (
-                    <Image
-                      alt={photo.alt}
-                      className="photo-slot__image"
-                      fill
-                      sizes="(max-width: 980px) 100vw, 50vw"
-                      src={photo.src}
-                    />
-                  ) : (
-                    <span
-                      className="photo-slot__placeholder"
-                      aria-label={photo.alt}
-                      role="img"
-                    >
-                      <span className="photo-slot__placeholder-icon">◻</span>
-                    </span>
-                  )}
-                  <figcaption className="photo-slot__caption">{photo.caption}</figcaption>
-                </figure>
-              ))}
-            </div>
+              <div className="photo-row">
+                {storyPhotosWithSrc.map((photo) => (
+                  <figure className="photo-slot" key={photo.caption}>
+                    {photo.src ? (
+                      <Image
+                        alt={photo.alt}
+                        className="photo-slot__image"
+                        fill
+                        sizes="(max-width: 980px) 100vw, 50vw"
+                        src={photo.src}
+                      />
+                    ) : (
+                      <span className="photo-slot__placeholder" aria-label={photo.alt} role="img">
+                        <span className="photo-slot__placeholder-icon">◻</span>
+                      </span>
+                    )}
+                    <figcaption className="photo-slot__caption">{photo.caption}</figcaption>
+                  </figure>
+                ))}
+              </div>
             ) : null}
 
             {story.paragraphs.slice(2).map((p) => (
@@ -333,17 +327,16 @@ export default function AboutPage() {
 
       <section className="content-page about-cta">
         <h2>
-          If you are building tools around embedded systems, robotics,
-          hardware/software interfaces, or community technology, I would be
-          glad to talk.
+          If you are building tools around embedded systems, robotics, hardware/software interfaces, or community
+          technology, I would be glad to talk.
         </h2>
-        <div
-          className="hero-section__actions"
-          aria-label="About page actions"
-          role="group"
-        >
+        <div className="hero-section__actions" aria-label="About page actions" role="group">
           <TrackedAnchor
-            analytics={{ kind: "contact", channel: "Email", location: "about_cta" }}
+            analytics={{
+              kind: "contact",
+              channel: "Email",
+              location: "about_cta",
+            }}
             className="button button--primary"
             href="mailto:brian.li.social@gmail.com"
           >
