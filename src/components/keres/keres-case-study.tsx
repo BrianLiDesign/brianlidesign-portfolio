@@ -1,6 +1,7 @@
 import { Boxes, Database, Network, RadioTower } from "lucide-react";
 import { ButtonLink } from "@/components/ui/button";
 import { keresProject } from "@/content/keres";
+import { routes } from "@/lib/routes";
 import { KeresArchitectureExplorer } from "./keres-architecture-explorer";
 import { KeresFormationExplorer } from "./keres-formation-explorer";
 import { KeresReplay } from "./keres-replay";
@@ -21,7 +22,7 @@ export function KeresCaseStudy() {
             <ButtonLink href="#architecture" variant="primary">
               Explore the system
             </ButtonLink>
-            <ButtonLink href="/resume" variant="quiet">
+            <ButtonLink href={routes.resumePdf} variant="quiet">
               Resume context
             </ButtonLink>
           </div>

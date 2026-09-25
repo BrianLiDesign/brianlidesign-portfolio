@@ -10,7 +10,6 @@ export const routes = {
   debugLog: "/debug-log",
   writing: "/writing",
   about: "/about",
-  resume: "/resume",
   resumePdf: "/assets/documents/Brian_Li_Resume.pdf",
 } as const;
 

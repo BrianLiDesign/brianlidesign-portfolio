@@ -17,6 +17,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${siteMetadata.url}${routes.vybeTutor}` },
     { url: `${siteMetadata.url}${routes.debugLog}` },
     { url: `${siteMetadata.url}${routes.writing}` },
-    { url: `${siteMetadata.url}${routes.resume}` },
   ];
 }

@@ -21,7 +21,7 @@ export function SiteFooter() {
           <p>Work</p>
           <SiteLink href={routes.caseStudies}>Case Studies</SiteLink>
           <SiteLink href={routes.debugLog}>Debug Log</SiteLink>
-          <SiteLink href={routes.resume}>Resume</SiteLink>
+          <SiteLink href={routes.resumePdf}>Resume</SiteLink>
         </div>
         <div>
           <p>Projects</p>

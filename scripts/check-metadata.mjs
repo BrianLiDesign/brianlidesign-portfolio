@@ -18,7 +18,6 @@ const publicPages = [
   ["/case-studies/vybetutor", "case-studies/vybetutor.html"],
   ["/debug-log", "debug-log.html"],
   ["/writing", "writing.html"],
-  ["/resume", "resume.html"],
 ];
 
 function decodeHtml(value) {

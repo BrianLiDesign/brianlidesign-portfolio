@@ -16,6 +16,7 @@ import {
 import { ButtonLink } from "@/components/ui/button";
 import { CaseStudyTag } from "@/components/ui/case-study-tag";
 import type { CaseStudy } from "@/content/case-studies";
+import { routes } from "@/lib/routes";
 import { CaseStudyVisualArtifact } from "./case-study-visual-artifact";
 
 type CaseStudyDetailProps = {
@@ -376,7 +377,7 @@ export function CaseStudyDetail({ study }: CaseStudyDetailProps) {
                 View source repo
               </ButtonLink>
             ) : null}
-            <ButtonLink href="/resume" variant="quiet">
+            <ButtonLink href={routes.resumePdf} variant="quiet">
               Resume context
             </ButtonLink>
           </div>
