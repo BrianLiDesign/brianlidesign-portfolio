@@ -1,10 +1,11 @@
 import Image from "next/image";
 import {
-  Cable,
+  Accessibility,
+  BadgeCheck,
   Code,
   Cpu,
-  Fingerprint,
-  Heart,
+  GitBranch,
+  HeartHandshake,
   Monitor,
   Package,
   PenTool,
@@ -13,14 +14,14 @@ import {
   Video,
   Waves,
   Wrench,
-  Zap,
 } from "lucide-react";
+import type { CareerEntry, CareerIconName } from "@/content/about";
 import {
   aboutIntro,
   story,
   storyPhotos,
-  timeline,
-  experience,
+  workExperience,
+  leadershipExperience,
   education,
   workingPrinciples,
   currentlyLearning,
@@ -33,11 +34,11 @@ import { TrackedAnchor } from "@/components/analytics/tracked-anchor";
 import { TrackedButtonLink } from "@/components/analytics/tracked-button-link";
 import { routes } from "@/lib/routes";
 import { createPageMetadata } from "@/lib/metadata";
+import { professionalPositioning } from "@/content/positioning";
 
 export const metadata = createPageMetadata({
   title: "About — Brian Li",
-  description:
-    "Meet Brian Li, a Hawaii-born Cal Poly computer engineering student building embedded systems, robotics, backend tools, and hardware-software interfaces.",
+  description: `Brian Li is a ${professionalPositioning.title} building reliable systems across ${professionalPositioning.focusAreas}.`,
   path: routes.about,
   image: "/assets/images/personal/brian-li-portrait-vertical.jpg",
   imageAlt: "Portrait of Brian Li",
@@ -51,17 +52,19 @@ const asideIcons: Record<string, React.ElementType> = {
   wrench: Wrench,
 };
 
-const experienceIcons: Record<string, React.ElementType> = {
+const careerIcons: Record<CareerIconName, React.ElementType> = {
+  accessibility: Accessibility,
+  "badge-check": BadgeCheck,
+  "git-branch": GitBranch,
+  "heart-handshake": HeartHandshake,
   shield: Shield,
   monitor: Monitor,
-  heart: Heart,
 };
 
 const skillIcons: Record<string, React.ElementType> = {
   code: Code,
   package: Package,
   cpu: Cpu,
-  "pen-tool": PenTool,
 };
 
 const technicalSkillSvgIcons: Record<string, string> = {
@@ -86,28 +89,68 @@ const technicalSkillSvgIcons: Record<string, string> = {
   "Adobe Illustrator": "/assets/images/icons/adobe-illustrator.svg",
 };
 
-const technicalSkillLucideIcons: Record<string, React.ElementType> = {
-  "FSR Sensors": Fingerprint,
-  "Web Serial": Cable,
-  Oscilloscope: Zap,
-  Soldering: Wrench,
-  "Video Production": Video,
-};
-
 function SkillTag({ skill }: { skill: string }) {
   const svgPath = technicalSkillSvgIcons[skill];
-  const LucideIcon = technicalSkillLucideIcons[skill];
-  const hasIcon = svgPath || LucideIcon;
 
   return (
-    <Tag className={hasIcon ? "tag--with-icon" : undefined}>
+    <Tag className={svgPath ? "tag--with-icon" : undefined}>
       {svgPath ? (
         <Image src={svgPath} alt="" width={13} height={13} className="tag__icon" aria-hidden="true" />
-      ) : LucideIcon ? (
-        <LucideIcon aria-hidden="true" className="tag__icon" size={13} />
       ) : null}
       <span>{skill}</span>
     </Tag>
+  );
+}
+
+function CareerCard({ entry }: { entry: CareerEntry }) {
+  const FallbackIcon = careerIcons[entry.fallbackIcon];
+
+  return (
+    <Card className={`experience-card${entry.status === "current" ? " experience-card--current" : ""}`}>
+      <div className="experience-card__header">
+        <div className="experience-card__mark" aria-hidden="true">
+          {entry.organizationMark ? (
+            <Image
+              alt=""
+              className="experience-card__mark-image"
+              height={44}
+              src={entry.organizationMark.src}
+              width={44}
+            />
+          ) : FallbackIcon ? (
+            <FallbackIcon className="experience-card__icon" size={22} />
+          ) : null}
+        </div>
+        <div className="experience-card__identity">
+          <p className="experience-card__role">{entry.role}</p>
+          <h3>{entry.organization}</h3>
+        </div>
+      </div>
+      <div className="experience-card__meta">
+        <p className="experience-card__period">{entry.period}</p>
+        {entry.status === "current" ? <span className="experience-card__status">Current</span> : null}
+      </div>
+      <p className="experience-card__scope">{entry.scope}</p>
+      {entry.bullets?.length ? (
+        <ul className="experience-card__bullets">
+          {entry.bullets.map((bullet) => (
+            <li key={bullet}>{bullet}</li>
+          ))}
+        </ul>
+      ) : null}
+      <div className="experience-card__footer">
+        <div className="tag-list">
+          {entry.tags.map((tag) => (
+            <Tag key={tag}>{tag}</Tag>
+          ))}
+        </div>
+        {entry.relatedHref ? (
+          <ButtonLink className="experience-card__link" href={entry.relatedHref} variant="quiet">
+            View related case study
+          </ButtonLink>
+        ) : null}
+      </div>
+    </Card>
   );
 }
 
@@ -196,52 +239,43 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Section 3 — Timeline */}
-      <section className="content-page about-timeline-section">
-        <p className="section-label">Milestones</p>
-        <ol className="about-timeline">
-          {timeline.map((entry, index) => (
-            <li
-              className={`about-timeline__item${index === timeline.length - 1 ? " about-timeline__item--current" : ""}`}
-              key={entry.title}
-            >
-              <span className="about-timeline__year">{entry.year}</span>
-              <div>
-                <strong>{entry.title}</strong>
-                <p>{entry.description}</p>
-              </div>
-            </li>
+      {/* Section 3 - Work experience */}
+      <section className="content-page about-career-section">
+        <div className="section-heading">
+          <div>
+            <p className="section-label">Work experience</p>
+            <h2>Testing, simulation, software, and support in real operating contexts.</h2>
+          </div>
+          <p className="section-heading__credibility">
+            Scope first, with metrics included only when they make the work easier to understand.
+          </p>
+        </div>
+        <div className="experience-grid experience-grid--work">
+          {workExperience.map((entry) => (
+            <CareerCard entry={entry} key={entry.id} />
           ))}
-        </ol>
-      </section>
-
-      {/* Section 4 — Work experience */}
-      <section className="content-page">
-        <p className="section-label">Experience</p>
-        <div className="experience-grid">
-          {experience.map((entry) => {
-            const Icon = experienceIcons[entry.icon];
-            return (
-              <Card className="experience-card" key={entry.org}>
-                <div className="experience-card__header">
-                  {Icon ? <Icon aria-hidden="true" className="experience-card__icon" size={18} /> : null}
-                  <p className="experience-card__role">{entry.role}</p>
-                </div>
-                <h3>{entry.org}</h3>
-                <p className="experience-card__period">{entry.period}</p>
-                <p>{entry.description}</p>
-                <div className="tag-list">
-                  {entry.tags.map((tag) => (
-                    <Tag key={tag}>{tag}</Tag>
-                  ))}
-                </div>
-              </Card>
-            );
-          })}
         </div>
       </section>
 
-      {/* Section 5 — Education */}
+      {/* Section 4 - Leadership and community */}
+      <section className="content-page about-leadership">
+        <div className="section-heading">
+          <div>
+            <p className="section-label">Leadership &amp; community</p>
+            <h2>Current roles guiding technical work and community outcomes.</h2>
+          </div>
+          <p className="section-heading__credibility">
+            Project direction, developer support, and engineering work grounded in the people it serves.
+          </p>
+        </div>
+        <div className="experience-grid experience-grid--leadership">
+          {leadershipExperience.map((entry) => (
+            <CareerCard entry={entry} key={entry.id} />
+          ))}
+        </div>
+      </section>
+
+      {/* Section 5 - Education */}
       <section className="content-page about-education">
         <p className="section-label">Education</p>
         <h2>{education.school}</h2>
@@ -261,6 +295,14 @@ export default function AboutPage() {
             ))}
           </div>
         </div>
+        <div className="about-coursework">
+          <p className="about-coursework__label">Campus involvement</p>
+          <div className="tag-list">
+            {education.affiliations.map((affiliation) => (
+              <Tag key={affiliation}>{affiliation}</Tag>
+            ))}
+          </div>
+        </div>
         {education.highschool ? (
           <div className="about-highschool">
             <h2>{education.highschool.school}</h2>
@@ -273,9 +315,9 @@ export default function AboutPage() {
         ) : null}
       </section>
 
-      {/* Section 6 — Technical skills */}
+      {/* Section 6 - Technical strengths */}
       <section className="content-page about-skills" id="technical-skills">
-        <p className="section-label">Technical skills</p>
+        <p className="section-label">Technical strengths</p>
         <div className="skill-grid">
           {technicalSkills.map((group) => {
             const Icon = skillIcons[group.icon];
@@ -327,8 +369,7 @@ export default function AboutPage() {
 
       <section className="content-page about-cta">
         <h2>
-          If you are building tools around embedded systems, robotics, hardware/software interfaces, or community
-          technology, I would be glad to talk.
+          If you are building reliable systems around {professionalPositioning.focusAreas}, I would be glad to talk.
         </h2>
         <div className="hero-section__actions" aria-label="About page actions" role="group">
           <TrackedAnchor

@@ -17,9 +17,7 @@ export function HeroSection() {
         </p>
         <h1>{hero.title}</h1>
         <p className="hero-section__summary">{hero.summary}</p>
-        <p className="hero-section__focus">
-          Focused on hardware/software systems, embedded tooling, robotics, and feedback interfaces.
-        </p>
+        <p className="hero-section__focus">{hero.focus}</p>
         <div className="hero-section__actions" aria-label="Primary actions" role="group">
           <ButtonLink href={routes.keres} variant="primary">
             View KERES

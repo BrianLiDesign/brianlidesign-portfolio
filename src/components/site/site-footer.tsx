@@ -2,18 +2,17 @@ import { TrackedAnchor } from "@/components/analytics/tracked-anchor";
 import { Download } from "lucide-react";
 import { SiteLink } from "@/components/ui/site-link";
 import { footerLinks, sourceCodeUrl } from "@/content/site";
+import { professionalPositioning } from "@/content/positioning";
 import { routes } from "@/lib/routes";
 
 export function SiteFooter() {
   return (
     <footer className="site-footer">
       <div>
-        <p className="site-footer__meta">
-          Brian Li / Hawaii-born computer engineering student
-        </p>
+        <p className="site-footer__meta">Brian Li / {professionalPositioning.title}</p>
         <h2>Code with precision. Circuits with purpose.</h2>
         <p className="site-footer__availability">
-          Open to conversations about embedded systems, robotics, hardware/software tooling, and useful feedback interfaces.
+          Open to conversations about {professionalPositioning.focusAreas}.
         </p>
       </div>
       <nav className="site-footer__sitemap" aria-label="Footer sitemap">

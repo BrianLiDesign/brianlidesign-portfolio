@@ -4496,10 +4496,6 @@ input[type="range"] {
   max-width: 720px;
 }
 
-.about-page .about-timeline {
-  margin-top: 1rem;
-}
-
 .about-hero {
   min-height: auto;
 }
@@ -4651,115 +4647,52 @@ input[type="range"] {
   text-transform: uppercase;
 }
 
-/* Timeline */
-
-.about-timeline-section {
-  border-top: 1px solid var(--color-line);
-  min-height: auto;
-}
-
-.about-timeline {
-  border-left: 2px solid var(--color-teal);
-  display: grid;
-  gap: 0;
-  list-style: none;
-  margin: 1.5rem 0 0;
-  max-width: 720px;
-  padding: 0;
-}
-
-.about-timeline__item {
-  display: grid;
-  gap: 0.75rem;
-  grid-template-columns: 72px 1fr;
-  padding: 1.25rem 0 1.25rem 1.5rem;
-  position: relative;
-}
-
-.about-timeline__item::before {
-  background: var(--color-paper);
-  border: 2px solid var(--color-teal);
-  border-radius: 50%;
-  content: "";
-  height: 10px;
-  left: -6px;
-  position: absolute;
-  top: 1.55rem;
-  width: 10px;
-}
-
-.about-timeline__item--current::before {
-  background: var(--color-teal);
-}
-
-.about-timeline__item--current::after {
-  animation: timeline-pulse 2s ease-out infinite;
-  border: 2px solid var(--color-teal);
-  border-radius: 50%;
-  content: "";
-  height: 10px;
-  left: -6px;
-  position: absolute;
-  top: 1.55rem;
-  width: 10px;
-}
-
-@keyframes timeline-pulse {
-  0% {
-    opacity: 0.7;
-    transform: scale(1);
-  }
-  100% {
-    opacity: 0;
-    transform: scale(2.8);
-  }
-}
-
-.about-timeline__item + .about-timeline__item {
-  border-top: 1px solid var(--color-line);
-}
-
-.about-timeline__year {
-  color: var(--color-teal);
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
-  letter-spacing: 0.22em;
-  padding-top: 0.15rem;
-  text-transform: uppercase;
-}
-
-.about-timeline__item strong {
-  display: block;
-  font-family: var(--font-display);
-  font-size: 1.1rem;
-  font-weight: 600;
-  margin-bottom: 0.25rem;
-}
-
-.about-timeline__item p {
-  font-size: 0.95rem !important;
-  line-height: 1.5;
-  margin: 0;
-}
-
 /* Experience */
+
+.about-career-section,
+.about-leadership {
+  border-top: 1px solid var(--color-line);
+}
 
 .experience-grid {
   display: grid;
   gap: 1.25rem;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
 .experience-card {
   border-top: 1px solid var(--color-line);
   display: flex;
   flex-direction: column;
+  min-width: 0;
+}
+
+.experience-card--current {
+  border-top-color: var(--color-teal);
 }
 
 .experience-card__header {
-  align-items: center;
+  align-items: flex-start;
   display: flex;
-  gap: 0.5rem;
+  gap: 0.85rem;
+}
+
+.experience-card__mark {
+  align-items: center;
+  background: var(--color-paper-strong);
+  border: 1px solid var(--color-line);
+  display: flex;
+  flex: 0 0 48px;
+  height: 48px;
+  justify-content: center;
+  width: 48px;
+}
+
+.experience-card__mark-image {
+  filter: none;
+  height: 40px;
+  object-fit: contain;
+  width: 40px;
 }
 
 .experience-card__icon {
@@ -4767,32 +4700,77 @@ input[type="range"] {
   flex: 0 0 auto;
 }
 
+.experience-card__identity {
+  min-width: 0;
+}
+
 .experience-card__role {
   color: var(--color-teal) !important;
   font-family: var(--font-mono);
   font-size: 0.72rem !important;
-  letter-spacing: 0.22em;
+  letter-spacing: 0.14em;
   margin: 0;
   text-transform: uppercase;
+}
+
+.experience-card__meta {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  margin: 0.75rem 0 1rem;
 }
 
 .experience-card__period {
   color: var(--color-muted) !important;
   font-family: var(--font-mono);
   font-size: 0.78rem !important;
-  letter-spacing: 0.18em;
-  margin: 0.5rem 0 0.8rem;
+  letter-spacing: 0.12em;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.experience-card__status {
+  background: rgba(0, 127, 134, 0.08);
+  border: 1px solid rgba(0, 127, 134, 0.28);
+  color: var(--color-teal);
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.14em;
+  padding: 0.25rem 0.45rem;
   text-transform: uppercase;
 }
 
 .experience-card h3 {
   margin-bottom: 0;
-  margin-top: 0.6rem;
+  margin-top: 0.35rem;
 }
 
-.experience-card .tag-list {
+.experience-card__scope {
+  margin: 0;
+}
+
+.experience-card__bullets {
+  color: var(--color-muted);
+  display: grid;
+  gap: 0.5rem;
+  margin: 1rem 0 0;
+  padding-left: 1.2rem;
+}
+
+.experience-card__bullets li {
+  line-height: 1.55;
+}
+
+.experience-card__footer {
+  display: grid;
+  gap: 1rem;
   margin-top: auto;
-  padding-top: 0.5rem;
+  padding-top: 1.25rem;
+}
+
+.experience-card__link {
+  justify-self: start;
 }
 
 /* Education */
@@ -6112,8 +6090,7 @@ main {
   .case-visual__signal span,
   .case-visual--workflow span,
   .case-visual--learning span,
-  .calm-output-settle,
-  .about-timeline__item--current::after {
+  .calm-output-settle {
     animation: none !important;
     opacity: 1 !important;
     transform: none !important;

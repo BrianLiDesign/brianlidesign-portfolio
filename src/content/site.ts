@@ -1,4 +1,5 @@
 import { routes } from "@/lib/routes";
+import { professionalPositioning } from "./positioning";
 
 export const navItems = [
   {
@@ -28,11 +29,11 @@ export const navItems = [
 ] as const;
 
 export const hero = {
-  meta: "Hawaii-born computer engineering student - hardware/software systems - Cal Poly SLO",
-  title:
-    "I build hardware-software systems that turn real-world signals into useful feedback.",
+  meta: `${professionalPositioning.title} - hardware/software systems - Cal Poly SLO`,
+  title: "I build and test hardware-software systems for reliable behavior in the real world.",
   summary:
-    "A systems lab notebook for projects at the edge of code, circuits, robotics, and community service - designed for the messy path between raw data and reliable behavior.",
+    "A systems lab notebook spanning software verification, simulation, embedded engineering, and community technology - designed for the messy path between raw data and dependable behavior.",
+  focus: `Focused on ${professionalPositioning.focusAreas}.`,
 };
 
 export const proofChips = [

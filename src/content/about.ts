@@ -1,8 +1,10 @@
+import { professionalPositioning } from "./positioning";
+
 export const aboutIntro = {
   label: "About",
-  heading: "Hawaii-born computer engineering student building useful systems.",
-  lead: "I grew up in Hawaii, where technology either works for the community or it does not get used. Digital Ready Hawaii and teaching seniors shaped the way I think about useful systems: tools have to be understandable, local, and worth trusting.",
-  motto: "Useful systems should be understandable, local, and human.",
+  heading: professionalPositioning.headline,
+  lead: `I work across ${professionalPositioning.focusAreas}. Growing up in Hawaii and teaching seniors through Digital Ready Hawaii shaped the standard I bring to that work: a system should be understandable, dependable, and useful where it is actually deployed.`,
+  motto: "Reliable systems should be understandable, local, and human.",
 };
 
 export type StoryPhoto = {
@@ -31,10 +33,9 @@ export type AsideItem = {
 
 export const story = {
   paragraphs: [
-    "Growing up on the islands, I saw technology through a practical lens. The tools that mattered were the ones that helped real people: seniors learning phone basics through Digital Ready Hawaii, volunteers coordinating support, and local programs that needed technology to be clear instead of impressive.",
-    "That experience still shows up in how I build. I care about the translation layer: the moment a raw sensor reading becomes a correction cue, a backend response becomes a usable workflow, or a confusing device becomes something a senior can use with confidence.",
-    "At Cal Poly, the coursework meets reality. Digital design and computer architecture gave me the foundations; embedded systems and prototyping labs gave me constraints to build within. My projects move through planning, testing, and repeated refinement until the system communicates clearly.",
-    "I value debug-first thinking. Polish comes after the system works. If the measurement model is wrong, no amount of UI refinement will fix the feedback. I would rather show a raw jitter strip alongside a calibrated cue than hide the noise and pretend the signal was clean.",
+    "Growing up on the islands, I learned to judge technology by whether it helps people do real work. Teaching seniors through Digital Ready Hawaii made patience, clarity, and trust feel like engineering requirements rather than finishing touches.",
+    "That standard carries across the systems I build and test. I care about the translation layer: the moment a software requirement becomes a repeatable regression test, a drone command becomes inspectable telemetry, a raw sensor reading becomes a useful cue, or backend data becomes a workflow a nonprofit can depend on.",
+    "At Cal Poly, I pair computer engineering fundamentals with a debug-first practice. I want the measurement model, interfaces, and failure states to be visible before the polish arrives, because reliable systems are built through evidence and iteration rather than presentation alone.",
   ],
   aside: {
     heading: "Outside the lab",
@@ -48,94 +49,122 @@ export const story = {
   },
 };
 
-export type TimelineEntry = {
-  year: string;
-  title: string;
-  description: string;
+export type CareerIconName =
+  | "accessibility"
+  | "badge-check"
+  | "git-branch"
+  | "heart-handshake"
+  | "monitor"
+  | "shield";
+
+export type CareerEntry = {
+  id: string;
+  role: string;
+  organization: string;
+  period: string;
+  status: "current" | "completed";
+  scope: string;
+  bullets?: string[];
+  tags: string[];
+  organizationMark?: {
+    src: string;
+  };
+  fallbackIcon: CareerIconName;
+  relatedHref?: string;
 };
 
-export const timeline: TimelineEntry[] = [
+export const workExperience: CareerEntry[] = [
   {
-    year: "Early",
-    title: "First circuits and code",
-    description:
-      "Started tinkering with electronics and writing scripts - learned that building things is how I understand them.",
+    id: "boeing-software-test-engineer",
+    role: "Software Test Engineer (Part-Time)",
+    organization: "Boeing",
+    period: "Aug 2026 - Present",
+    status: "current",
+    scope:
+      "Automating Python and pytest regression testing and validating software behavior against functional, boundary, error, and regression requirements.",
+    bullets: [
+      "Automated six recurring regression suites, reducing manual testing time by approximately 60%.",
+      "Validated 11 functional, boundary, error, and regression scenarios against software requirements.",
+    ],
+    tags: ["Python", "pytest", "Regression Testing"],
+    fallbackIcon: "badge-check",
   },
   {
-    year: "Hawaii",
-    title: "Digital Ready Hawaii",
-    description:
-      "Taught seniors practical technology skills and saw firsthand why useful systems must be understandable, patient, and local.",
+    id: "booz-allen-systems-engineer-intern",
+    role: "Systems Engineer Intern",
+    organization: "Booz Allen Hamilton",
+    period: "Jun 2026 - Aug 2026",
+    status: "completed",
+    scope:
+      "Built and verified a Python multi-vehicle simulation environment integrating flight control, high-fidelity physics, telemetry, and reproducible test scenarios.",
+    bullets: [
+      "Implemented multi-vehicle coordination, setpoint streaming, typed telemetry, integrity checks, and automated diagnostics.",
+      "Traced 47 requirements and 48 risks to nine simulation scenarios for complete verification coverage.",
+    ],
+    tags: ["Python", "PX4", "Isaac Sim", "Verification"],
+    fallbackIcon: "shield",
+    relatedHref: "/case-studies/keres",
   },
   {
-    year: "2024",
-    title: "Cal Poly SLO",
-    description:
-      "Started B.S. Computer Engineering. Digital design, computer architecture, and embedded systems became the foundation.",
+    id: "operation-surf-software-engineer",
+    role: "Software Engineer (Pro Bono)",
+    organization: "Operation SURF",
+    period: "Sep 2025 - May 2026",
+    status: "completed",
+    scope:
+      "Developed scheduling and data workflows for veteran and volunteer programs using Next.js, REST APIs, and MongoDB.",
+    bullets: [
+      "Consolidated shift and event queries into unified endpoints to reduce duplicate client-side requests.",
+      "Optimized MongoDB aggregation pipelines and indexes to reduce projected database costs.",
+    ],
+    tags: ["Next.js", "REST APIs", "MongoDB"],
+    fallbackIcon: "heart-handshake",
+    relatedHref: "/case-studies/operation-surf",
   },
   {
-    year: "2025",
-    title: "Hack4Impact Cal Poly",
-    description:
-      "Joined as a software developer. Built backend workflows for Operation Surf - 600 volunteers, access-aware CRUD, real coordination.",
-  },
-  {
-    year: "2025",
-    title: "Cal Poly ITS",
-    description:
-      "Information Technology Assistant - hands-on support, troubleshooting, and 200+ Jira tickets across campus systems.",
-  },
-  {
-    year: "2026",
-    title: "Booz Allen Hamilton",
-    description:
-      "Systems Engineer Intern - built simulation, PX4 control, coordination, and reproducible experiment infrastructure for KERES.",
+    id: "cal-poly-its-assistant",
+    role: "IT Assistant (Part-Time)",
+    organization: "Cal Poly Information Technology Services",
+    period: "Nov 2025 - May 2026",
+    status: "completed",
+    scope:
+      "Diagnosed campus network, DNS, application-access, and end-user support issues across university systems.",
+    bullets: ["Resolved more than 40 technical-support tickets involving campus infrastructure and applications."],
+    tags: ["IT Support", "Networking", "Troubleshooting"],
+    fallbackIcon: "monitor",
   },
 ];
 
-export type ExperienceEntry = {
-  role: string;
-  org: string;
-  period: string;
-  description: string;
-  tags: string[];
-  icon: string;
-};
-
-export const experience: ExperienceEntry[] = [
+export const leadershipExperience: CareerEntry[] = [
   {
-    role: "Systems Engineer Intern",
-    org: "Booz Allen Hamilton",
-    period: "Summer 2026",
-    description:
-      "Built and integrated major parts of a Python multi-drone simulation platform spanning swarm coordination, PX4 control, Isaac Sim/Pegasus integration, reproducible experiments, and software verification.",
-    tags: ["Python", "PX4 SITL", "Isaac Sim", "Simulation", "Verification"],
-    icon: "shield",
+    id: "empower-project-lead",
+    role: "Project Lead, Marching Band Haptic Feedback System",
+    organization: "Cal Poly EMPOWER Student Association",
+    period: "Aug 2026 - Present",
+    status: "current",
+    scope:
+      "Leading continued development of a wearable haptic-feedback system designed to help visually impaired musicians navigate marching formations, while coordinating technical direction and project execution across hardware and software components.",
+    tags: ["Project Leadership", "Haptic Feedback", "Embedded Systems"],
+    fallbackIcon: "accessibility",
   },
   {
-    role: "Information Technology Assistant",
-    org: "Cal Poly ITS",
-    period: "2025 - Present",
-    description:
-      "Hands-on technical support across campus infrastructure. Closed 200+ Jira tickets while troubleshooting systems directly with users who need technology to just work.",
-    tags: ["200+ Jira Tickets", "IT Support", "Infrastructure", "Troubleshooting"],
-    icon: "monitor",
-  },
-  {
-    role: "Software Developer",
-    org: "Hack4Impact Cal Poly",
-    period: "2025 - Present",
-    description:
-      "Built backend systems for Operation Surf - a nonprofit coordinating 600 volunteers. Designed access-aware CRUD operations, API workflows, and permission structures using MongoDB and Next.js.",
-    tags: ["600 Volunteers", "MongoDB", "Next.js", "API Design", "Nonprofit"],
-    icon: "heart",
+    id: "hack4impact-tech-lead",
+    role: "Tech Lead",
+    organization: "Hack4Impact Cal Poly",
+    period: "Aug 2026 - Present",
+    status: "current",
+    scope:
+      "Leading technical setup and architecture for a nonprofit software project, translating product needs into scoped engineering work, onboarding developers, and establishing contribution, CI, and workflow standards.",
+    tags: ["Technical Leadership", "Architecture", "Developer Workflows"],
+    fallbackIcon: "git-branch",
   },
 ];
 
 export const education = {
   school: "California Polytechnic State University, San Luis Obispo",
   degree: "B.S. Computer Engineering",
-  expected: "Expected 2028",
+  expected: "Expected May 2028",
+  affiliations: ["Adobe Ambassador", "Cal Poly Engineering Ambassador", "Hack4Impact Developer", "BMES Member"],
   coursework: [
     "Digital Design",
     "Computer Architecture",
@@ -168,10 +197,9 @@ export const workingPrinciples = [
 ] as const;
 
 export const currentlyLearning = [
-  "embedded systems",
-  "robotics control",
-  "hardware/software tooling",
-  "better debugging workflows",
+  "software verification",
+  "embedded control systems",
+  "technical leadership",
 ] as const;
 
 export type SkillGroup = {
@@ -182,46 +210,27 @@ export type SkillGroup = {
 
 export const technicalSkills: SkillGroup[] = [
   {
-    label: "Languages",
-    skills: [
-      "C",
-      "Python",
-      "SystemVerilog",
-      "Assembly",
-      "TypeScript",
-      "JavaScript",
-      "HTML/CSS",
-    ],
+    label: "Testing & Systems",
+    skills: ["Python", "pytest", "GitHub Actions", "Postman", "Ruff", "mypy", "Docker", "Linux"],
     icon: "code",
   },
   {
-    label: "Frameworks & Tools",
-    skills: ["Next.js", "React", "Node.js", "MongoDB/Mongoose", "Isaac Sim", "Pegasus", "Git", "VS Code"],
-    icon: "package",
-  },
-  {
-    label: "Hardware & Embedded",
+    label: "Embedded & Simulation",
     skills: [
-      "Basys3 / FPGA",
-      "Arduino",
       "PX4 SITL",
-      "MAVLink",
-      "FSR Sensors",
-      "Web Serial",
-      "Oscilloscope",
-      "Soldering",
+      "Isaac Sim",
+      "Pegasus",
+      "C/C++",
+      "SystemVerilog",
+      "RISC-V Assembly",
+      "Arduino",
+      "Basys3 / FPGA",
     ],
     icon: "cpu",
   },
   {
-    label: "Design & Other",
-    skills: [
-      "Figma",
-      "SolidWorks",
-      "Rhinoceros 3D",
-      "Adobe Illustrator",
-      "Video Production",
-    ],
-    icon: "pen-tool",
+    label: "Software Platforms",
+    skills: ["TypeScript", "React", "Next.js", "REST APIs", "MongoDB/Mongoose", "SQL", "Zod", "Git"],
+    icon: "package",
   },
 ];
